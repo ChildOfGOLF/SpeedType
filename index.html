@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedType: Typing Speed Test</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>SpeedType: Typing Speed Test</h1>
+        <div class="difficulty">
+            <label for="difficultySelect">Choose difficulty:</label>
+            <select id="difficultySelect">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+
+        <p id="displayText">Here will be a sample text for typing...</p>
+        
+        <textarea id="inputText" placeholder="Start typing here..." rows="5"></textarea>
+        
+        <div class="controls">
+            <button id="startBtn">Start Test</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="results">
+            <p><strong>Time:</strong> <span id="timeDisplay">0</span> seconds</p>
+            <p><strong>Speed:</strong> <span id="speedDisplay">0</span> WPM</p>
+            <p><strong>Errors:</strong> <span id="errorDisplay">0</span></p>
+        </div>
+
+        <div id="finalResults" class="hidden">
+            <h2>Test Completed!</h2>
+            <p>Your speed: <span id="finalSpeed"></span> WPM</p>
+            <p>Errors made: <span id="finalErrors"></span></p>
+            <button id="retryBtn">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
