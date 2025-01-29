@@ -1,20 +1,18 @@
 let timer;
 let startTime;
 let testRunning = false;
-const testTextEasy = "Easy sample text for typing...";
-const testTextMedium = "This is a medium difficulty text for testing your typing skills...";
-const testTextHard = "This is a hard difficulty text with more complex sentences, punctuation, and grammar...";
-let testText = testTextEasy; // Начальный уровень
+let testText = ""; // Изначально текст пустой
 
-document.getElementById('displayText').textContent = testText;
+// Инициализация обработчиков событий
 document.getElementById('startBtn').addEventListener('click', startTest);
 document.getElementById('resetBtn').addEventListener('click', resetTest);
 document.getElementById('inputText').addEventListener('input', checkTyping);
 document.getElementById('retryBtn').addEventListener('click', resetTest);
 document.getElementById('difficultySelect').addEventListener('change', setDifficulty);
 
+// Функция для старта теста
 function startTest() {
-    if (testRunning) return;
+    if (testRunning || !testText) return; // Если тест уже идет или нет текста, ничего не делать
 
     testRunning = true;
     startTime = new Date().getTime();
@@ -28,12 +26,14 @@ function startTest() {
     timer = setInterval(updateTime, 1000);
 }
 
+// Функция для обновления времени
 function updateTime() {
     const currentTime = new Date().getTime();
     const elapsedTime = Math.floor((currentTime - startTime) / 1000);
     document.getElementById('timeDisplay').textContent = elapsedTime;
 }
 
+// Функция для сброса теста
 function resetTest() {
     clearInterval(timer);
     testRunning = false;
@@ -45,6 +45,7 @@ function resetTest() {
     document.getElementById('finalResults').classList.add('hidden');
 }
 
+// Функция для проверки введенного текста
 function checkTyping() {
     const inputText = document.getElementById('inputText').value;
     const elapsedTime = (new Date().getTime() - startTime) / 60000;
@@ -65,6 +66,7 @@ function checkTyping() {
     }
 }
 
+// Функция для подсчета ошибок
 function calculateErrors(input, original) {
     let errorCount = 0;
     const inputWords = input.trim().split('');
@@ -79,20 +81,32 @@ function calculateErrors(input, original) {
     return errorCount;
 }
 
-function setDifficulty() {
+// Функция для отправки запроса на сервер и получения текста в зависимости от сложности
+async function setDifficulty() {
     const difficulty = document.getElementById('difficultySelect').value;
 
-    switch (difficulty) {
-        case 'easy':
-            testText = testTextEasy;
-            break;
-        case 'medium':
-            testText = testTextMedium;
-            break;
-        case 'hard':
-            testText = testTextHard;
-            break;
-    }
+    // Формируем URL для получения текста по сложности
+    const url = `http://localhost:8080/texts?difficulty=${difficulty}`;
 
-    document.getElementById('displayText').textContent = testText;
+    // Делаем запрос к API
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch text');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.length > 0) {
+                // Получаем первый текст из ответа (можно сделать логику для выбора случайного)
+                const textContent = data[0].content;
+                document.getElementById('displayText').textContent = textContent;
+            } else {
+                document.getElementById('displayText').textContent = 'No text available for this difficulty.';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
 }
+
