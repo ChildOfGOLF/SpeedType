@@ -12,7 +12,6 @@ public class TextController {
     @Autowired
     private TextRepository textRepository;
 
-    // Получить тексты по сложности
     @GetMapping
     public List<Text> getTextsByDifficulty(@RequestParam String difficulty) {
         return textRepository.findByDifficulty(difficulty);
