@@ -17,7 +17,6 @@ public class TypingResult {
     private int typingSpeed;
     private LocalDateTime date;
 
-    // Геттеры и сеттеры
 
     public Long getId() {
         return id;
