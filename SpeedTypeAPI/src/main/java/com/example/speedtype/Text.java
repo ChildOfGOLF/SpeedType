@@ -16,7 +16,6 @@ public class Text {
 
     private String difficulty;
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }
