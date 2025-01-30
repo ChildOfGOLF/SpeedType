@@ -1,18 +1,16 @@
 let timer;
 let startTime;
 let testRunning = false;
-let testText = ""; // Изначально текст пустой
+let testText = "";
 
-// Инициализация обработчиков событий
 document.getElementById('startBtn').addEventListener('click', startTest);
 document.getElementById('resetBtn').addEventListener('click', resetTest);
 document.getElementById('inputText').addEventListener('input', checkTyping);
 document.getElementById('retryBtn').addEventListener('click', resetTest);
 document.getElementById('difficultySelect').addEventListener('change', setDifficulty);
 
-// Функция для старта теста
 function startTest() {
-    if (testRunning || !testText) return; // Если тест уже идет или нет текста, ничего не делать
+    if (testRunning || !testText) return;
 
     testRunning = true;
     startTime = new Date().getTime();
@@ -26,14 +24,12 @@ function startTest() {
     timer = setInterval(updateTime, 1000);
 }
 
-// Функция для обновления времени
 function updateTime() {
     const currentTime = new Date().getTime();
     const elapsedTime = Math.floor((currentTime - startTime) / 1000);
     document.getElementById('timeDisplay').textContent = elapsedTime;
 }
 
-// Функция для сброса теста
 function resetTest() {
     clearInterval(timer);
     testRunning = false;
@@ -45,7 +41,6 @@ function resetTest() {
     document.getElementById('finalResults').classList.add('hidden');
 }
 
-// Функция для проверки введенного текста
 function checkTyping() {
     const inputText = document.getElementById('inputText').value;
     const elapsedTime = (new Date().getTime() - startTime) / 60000;
@@ -66,7 +61,6 @@ function checkTyping() {
     }
 }
 
-// Функция для подсчета ошибок
 function calculateErrors(input, original) {
     let errorCount = 0;
     const inputWords = input.trim().split('');
@@ -81,14 +75,11 @@ function calculateErrors(input, original) {
     return errorCount;
 }
 
-// Функция для отправки запроса на сервер и получения текста в зависимости от сложности
 async function setDifficulty() {
     const difficulty = document.getElementById('difficultySelect').value;
 
-    // Формируем URL для получения текста по сложности
     const url = `http://localhost:8080/texts?difficulty=${difficulty}`;
 
-    // Делаем запрос к API
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -98,7 +89,6 @@ async function setDifficulty() {
         })
         .then(data => {
             if (data && data.length > 0) {
-                // Получаем первый текст из ответа (можно сделать логику для выбора случайного)
                 const textContent = data[0].content;
                 document.getElementById('displayText').textContent = textContent;
             } else {
