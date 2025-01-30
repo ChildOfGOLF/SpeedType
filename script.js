@@ -77,7 +77,6 @@ function calculateErrors(input, original) {
 
 async function setDifficulty() {
     const difficulty = document.getElementById('difficultySelect').value;
-
     const url = `http://localhost:8080/texts?difficulty=${difficulty}`;
 
     fetch(url)
@@ -91,12 +90,15 @@ async function setDifficulty() {
             if (data && data.length > 0) {
                 const textContent = data[0].content;
                 document.getElementById('displayText').textContent = textContent;
+                testText = textContent;
             } else {
                 document.getElementById('displayText').textContent = 'No text available for this difficulty.';
+                testText = "";
             }
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
 }
+
 
