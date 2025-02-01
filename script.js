@@ -108,19 +108,25 @@ async function setDifficulty() {
             return response.json();
         })
         .then(data => {
-            if (data && data.length > 0) {
+            console.log("Received data:", data);
+        
+            if (Array.isArray(data) && data.length > 0) {
                 const randomIndex = Math.floor(Math.random() * data.length);
                 const textContent = data[randomIndex].content;
-
+                console.log("Selected text:", textContent);
+        
                 document.getElementById('displayText').textContent = textContent;
                 testText = textContent;
-            } else {
+            } 
+            else if (data && typeof data === "object" && "content" in data) {
+                console.log("Single object received:", data.content);
+                document.getElementById('displayText').textContent = data.content;
+                testText = data.content;
+            } 
+            else {
                 document.getElementById('displayText').textContent = 'No text available for this difficulty.';
             }
         })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
 }
 
 
