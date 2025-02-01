@@ -43,23 +43,43 @@ function resetTest() {
 
 function checkTyping() {
     const inputText = document.getElementById('inputText').value;
-    const elapsedTime = (new Date().getTime() - startTime) / 60000;
+    const displayTextElement = document.getElementById('displayText');
 
-    const wordCount = inputText.trim().split(/\s+/).length;
-    const wpm = Math.round(wordCount / elapsedTime);
-    document.getElementById('speedDisplay').textContent = isNaN(wpm) ? 0 : wpm;
+    let highlightedText = "";
+    let errors = 0;
+    let isCompleted = inputText.length === testText.length;
 
-    const errors = calculateErrors(inputText, testText);
+    for (let i = 0; i < testText.length; i++) {
+        let char = testText[i];
+        let inputChar = inputText[i] || '';
+
+        if (inputChar === char) {
+            highlightedText += `<span class="correct">${char}</span>`;
+        } else if (inputChar) {
+            highlightedText += `<span class="incorrect">${char}</span>`;
+            errors++;
+        } else {
+            highlightedText += `<span class="remaining">${char}</span>`;
+            isCompleted = false;
+        }
+    }
+
+    displayTextElement.innerHTML = highlightedText;
     document.getElementById('errorDisplay').textContent = errors;
 
-    if (inputText === testText) {
+    if (isCompleted) {
         clearInterval(timer);
         testRunning = false;
-        document.getElementById('finalSpeed').textContent = wpm;
+        const elapsedTime = (new Date().getTime() - startTime) / 60000;
+        const wordCount = inputText.trim().split(/\s+/).length;
+        const wpm = Math.round(wordCount / elapsedTime);
+        document.getElementById('finalSpeed').textContent = isNaN(wpm) ? 0 : wpm;
         document.getElementById('finalErrors').textContent = errors;
         document.getElementById('finalResults').classList.remove('hidden');
     }
 }
+
+
 
 function calculateErrors(input, original) {
     let errorCount = 0;
@@ -77,6 +97,7 @@ function calculateErrors(input, original) {
 
 async function setDifficulty() {
     const difficulty = document.getElementById('difficultySelect').value;
+
     const url = `http://localhost:8080/texts?difficulty=${difficulty}`;
 
     fetch(url)
@@ -88,17 +109,19 @@ async function setDifficulty() {
         })
         .then(data => {
             if (data && data.length > 0) {
-                const textContent = data[0].content;
+                const randomIndex = Math.floor(Math.random() * data.length);
+                const textContent = data[randomIndex].content;
+
                 document.getElementById('displayText').textContent = textContent;
                 testText = textContent;
             } else {
                 document.getElementById('displayText').textContent = 'No text available for this difficulty.';
-                testText = "";
             }
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
 }
+
 
 

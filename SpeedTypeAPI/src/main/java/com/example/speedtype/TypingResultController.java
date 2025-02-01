@@ -16,16 +16,19 @@ public class TypingResultController {
         this.typingResultService = typingResultService;
     }
 
+    // Получить все результаты
     @GetMapping
     public List<TypingResult> getAllResults() {
         return typingResultService.getAllResults();
     }
 
+    // Получить результат по ID
     @GetMapping("/{id}")
     public TypingResult getResultById(@PathVariable Long id) {
         return typingResultService.getResultById(id).orElse(null);
     }
 
+    // Сохранить новый результат
     @PostMapping
     public TypingResult saveResult(@RequestBody TypingResult result) {
         return typingResultService.saveResult(result);

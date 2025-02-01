@@ -258,3 +258,76 @@ Wrong user name or password [28000-232]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 50 more
+2025-01-30 16:59:25.193312+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"
+Value too long for column "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"; SQL statement:
+INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING SYSTEM VALUE SELECT "ID", "CONTENT", "DIFFICULTY" FROM "PUBLIC"."TEXT" [22001-232]
+2025-01-30 17:26:13.127538+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"
+Value too long for column "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"; SQL statement:
+INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING SYSTEM VALUE SELECT "ID", "CONTENT", "DIFFICULTY" FROM "PUBLIC"."TEXT" [22001-232]
+2025-01-31 22:08:47.187076+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"
+Value too long for column "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"; SQL statement:
+INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING SYSTEM VALUE SELECT "ID", "CONTENT", "DIFFICULTY" FROM "PUBLIC"."TEXT" [22001-232]
+2025-01-31 19:09:24 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: D:/SpeedType/SpeedType/SpeedTypeAPI/data/testdb.mv.db [2.2.220/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/SpeedType/SpeedType/SpeedTypeAPI/data/testdb.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1547)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2036)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.intellij.database.remote.jdbc.helpers.JdbcHelperImpl.connect(JdbcHelperImpl.java:768)
+	at com.intellij.database.remote.jdbc.impl.RemoteDriverImpl.connect(RemoteDriverImpl.java:153)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: D:/SpeedType/SpeedType/SpeedTypeAPI/data/testdb.mv.db [2.2.220/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/SpeedType/SpeedType/SpeedTypeAPI/data/testdb.mv.db [2.2.220/7]" [50000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 34 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/SpeedType/SpeedType/SpeedTypeAPI/data/testdb.mv.db [2.2.220/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 28 more
+2025-02-01 14:30:43.062264+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"
+Value too long for column "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"; SQL statement:
+INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING SYSTEM VALUE SELECT "ID", "CONTENT", "DIFFICULTY" FROM "PUBLIC"."TEXT" [22001-232]
+2025-02-01 15:11:55.153360+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"
+Value too long for column "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"; SQL statement:
+INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING SYSTEM VALUE SELECT "ID", "CONTENT", "DIFFICULTY" FROM "PUBLIC"."TEXT" [22001-232]
+2025-02-01 15:37:00.884108+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"
+Value too long for column "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"; SQL statement:
+INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING SYSTEM VALUE SELECT "ID", "CONTENT", "DIFFICULTY" FROM "PUBLIC"."TEXT" [22001-232]
