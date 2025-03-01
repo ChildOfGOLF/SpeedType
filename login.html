@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <input type="text" id="regUsername" placeholder="Username">
+        <input type="password" id="regPassword" placeholder="Password">
+        <button onclick="register()">Register</button>
+        
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Username">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        async function register() {
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+            
+            const response = await fetch('http://localhost:8080/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: username, password: password })
+            });
+            const text = await response.text();
+            document.getElementById('message').innerText = text;
+        }
+
+        async function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const response = await fetch('http://localhost:8080/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: username, password: password })
+            });
+            
+            if (response.ok) {
+                const token = await response.text();
+                localStorage.setItem('token', token);
+                document.getElementById('message').innerText = 'Login successful!';
+            } else {
+                document.getElementById('message').innerText = 'Login failed!';
+            }
+        }
+    </script>
+</body>
+</html>

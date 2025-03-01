@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Panel - Manage Texts</h1>
+
+        <h2>Add New Text</h2>
+        <form id="addTextForm">
+            <textarea id="textContent" placeholder="Enter text..." required></textarea>
+            <select id="textDifficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button type="submit">Add Text</button>
+        </form>
+
+        <h2>Existing Texts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Text</th>
+                    <th>Difficulty</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="textsTableBody">
+            </tbody>
+        </table>
+
+        <h2>Edit Text</h2>
+        <form id="editTextForm" class="hidden">
+            <input type="hidden" id="editTextId">
+            <textarea id="editTextContent" required></textarea>
+            <select id="editTextDifficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button type="submit">Save Changes</button>
+            <button type="button" onclick="cancelEdit()">Cancel</button>
+        </form>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
