@@ -24,3 +24,4 @@ application.yml
 Thumbs.db
 node_modules/
 
+SpeedTypeAPI/src/main/resources/application.properties
