@@ -128,6 +128,3 @@ async function setDifficulty() {
             }
         })
 }
-
-
-
