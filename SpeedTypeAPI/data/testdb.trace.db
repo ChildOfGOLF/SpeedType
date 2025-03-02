@@ -339,3 +339,7 @@ INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING S
 org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"
 Value too long for column "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"; SQL statement:
 INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING SYSTEM VALUE SELECT "ID", "CONTENT", "DIFFICULTY" FROM "PUBLIC"."TEXT" [22001-232]
+2025-03-03 01:25:53.246907+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"
+Value too long for column "CONTENT CHARACTER VARYING(255)": "'In the midst of the shifting tides of human history, the continuous evolution o... (273)"; SQL statement:
+INSERT INTO "PUBLIC"."TEXT_COPY_3_0"("ID", "CONTENT", "DIFFICULTY") OVERRIDING SYSTEM VALUE SELECT "ID", "CONTENT", "DIFFICULTY" FROM "PUBLIC"."TEXT" [22001-232]
