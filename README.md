@@ -19,12 +19,11 @@ SpeedType – это веб-приложение для тестирования
 
 ### Клонирование репозитория
 ```bash
-git clone https://github.com/ТВОЙ_GITHUB/TypingSpeedApplication.git
-cd TypingSpeedApplication
+git clone https://github.com/ChildOfGOLF/SpeedType/.git
+cd SpeedType
 ```
 
 ### Настройка переменных окружения
-Создай файл `.env` (если используется) или настрой `application.properties`:
 ```properties
 jwt.secret=your_secret_key
 spring.datasource.url=jdbc:h2:mem:typingdb
