@@ -3,50 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>SpeedType - Admin Panel</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     <div class="container">
-        <h1>Admin Panel - Manage Texts</h1>
+        <!-- Header Section -->
+        <div class="admin-header">
+            <button class="logout-btn" onclick="logout()">← Back to Main</button>
+            <h1>Admin Panel</h1>
+            <p>Manage typing texts and monitor application content</p>
+        </div>
 
-        <h2>Add New Text</h2>
-        <form id="addTextForm">
-            <textarea id="textContent" placeholder="Enter text..." required></textarea>
-            <select id="textDifficulty">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-            <button type="submit">Add Text</button>
-        </form>
+        <!-- Main Content -->
+        <div class="admin-content">
+            <!-- Add New Text Section -->
+            <div class="section-header">
+                <div class="section-icon">+</div>
+                <h2>Add New Text</h2>
+            </div>
 
-        <h2>Existing Texts</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Text</th>
-                    <th>Difficulty</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="textsTableBody">
-            </tbody>
-        </table>
+            <div class="form-container">
+                <form id="addTextForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="textContent">Text Content</label>
+                            <textarea id="textContent" placeholder="Enter the text that users will type..." required></textarea>
+                        </div>
+                    </div>
 
-        <h2>Edit Text</h2>
-        <form id="editTextForm" class="hidden">
-            <input type="hidden" id="editTextId">
-            <textarea id="editTextContent" required></textarea>
-            <select id="editTextDifficulty">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-            <button type="submit">Save Changes</button>
-            <button type="button" onclick="cancelEdit()">Cancel</button>
-        </form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="textDifficulty">Difficulty Level</label>
+                            <select id="textDifficulty">
+                                <option value="easy">Easy - Simple words and phrases</option>
+                                <option value="medium">Medium - Technical terms and longer sentences</option>
+                                <option value="hard">Hard - Complex vocabulary and advanced concepts</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: end;">
+                            <button type="submit" class="btn btn-primary">
+                                <span>+</span> Add Text
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Existing Texts Section -->
+            <div class="section-header">
+                <div class="section-icon">T</div>
+                <h2>Existing Texts</h2>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Text Content</th>
+                            <th>Difficulty</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="textsTableBody">
+                        <tr>
+                            <td colspan="4" class="loading">Loading texts...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Edit Text Form -->
+            <div id="editTextForm" class="edit-form hidden">
+                <h3>
+                    <span>Edit Text</span>
+                </h3>
+                <form>
+                    <input type="hidden" id="editTextId">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editTextContent">Text Content</label>
+                            <textarea id="editTextContent" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editTextDifficulty">Difficulty Level</label>
+                            <select id="editTextDifficulty">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <button type="submit" class="btn btn-success">
+                            Save Changes
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelEdit()">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="admin.js"></script>
