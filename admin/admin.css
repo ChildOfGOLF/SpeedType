@@ -20,7 +20,6 @@ body {
     overflow: hidden;
 }
 
-/* Header */
 .admin-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -58,12 +57,10 @@ body {
     transform: translateY(-2px);
 }
 
-/* Main Content */
 .admin-content {
     padding: 40px;
 }
 
-/* Section Headers */
 .section-header {
     display: flex;
     align-items: center;
@@ -90,7 +87,6 @@ body {
     font-weight: bold;
 }
 
-/* Form Styles */
 .form-container {
     background: #f8f9fa;
     padding: 30px;
@@ -138,7 +134,6 @@ textarea {
     font-family: inherit;
 }
 
-/* Button Styles */
 .btn {
     padding: 12px 25px;
     border: none;
@@ -197,7 +192,6 @@ textarea {
     font-size: 14px;
 }
 
-/* Table Styles */
 .table-container {
     background: white;
     border-radius: 15px;
@@ -274,7 +268,6 @@ tr:last-child td {
     gap: 8px;
 }
 
-/* Edit Form */
 .edit-form {
     background: #fff3cd;
     border: 2px solid #ffeaa7;
@@ -291,12 +284,10 @@ tr:last-child td {
     gap: 10px;
 }
 
-/* Hidden class */
 .hidden {
     display: none !important;
 }
 
-/* Loading state */
 .loading {
     text-align: center;
     padding: 40px;
@@ -321,7 +312,6 @@ tr:last-child td {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         margin: 10px;
@@ -367,7 +357,6 @@ tr:last-child td {
     }
 }
 
-/* Success/Error Messages */
 .alert {
     padding: 15px 20px;
     border-radius: 10px;

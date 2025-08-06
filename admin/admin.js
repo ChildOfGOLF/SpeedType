@@ -1,6 +1,5 @@
 const API_URL = "http://localhost:8080/admin/texts";
 
-// Проверяем аутентификацию при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     checkAdminAuth();
 });
@@ -15,7 +14,6 @@ function checkAdminAuth() {
         return;
     }
 
-    // Проверяем валидность токена и права администратора
     verifyAdminToken(token);
 }
 
@@ -33,7 +31,6 @@ async function verifyAdminToken(token) {
             return;
         }
 
-        // Загружаем тексты после успешной проверки
         loadTexts();
     } catch (error) {
         console.error('Error verifying token:', error);
@@ -71,10 +68,8 @@ async function loadTexts() {
         texts.forEach(text => {
             const row = document.createElement("tr");
 
-            // Создаем бейдж для сложности
             const difficultyBadge = `<span class="difficulty-badge difficulty-${text.difficulty}">${text.difficulty}</span>`;
 
-            // Обрезаем длинный текст
             const truncatedContent = text.content.length > 100
                 ? text.content.substring(0, 100) + '...'
                 : text.content;
@@ -108,7 +103,6 @@ document.getElementById("addTextForm").addEventListener("submit", async (event) 
     const difficulty = document.getElementById("textDifficulty").value;
     const submitBtn = event.target.querySelector('button[type="submit"]');
 
-    // Показываем состояние загрузки
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = 'Adding...';
     submitBtn.disabled = true;
@@ -131,7 +125,6 @@ document.getElementById("addTextForm").addEventListener("submit", async (event) 
         console.error('Error adding text:', error);
         showNotification('Failed to add text. Please try again.', 'error');
     } finally {
-        // Восстанавливаем кнопку
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
     }
@@ -166,7 +159,6 @@ function editText(id, content, difficulty) {
     document.getElementById("editTextDifficulty").value = difficulty;
     document.getElementById("editTextForm").classList.remove("hidden");
 
-    // Плавная прокрутка к форме редактирования
     document.getElementById("editTextForm").scrollIntoView({
         behavior: 'smooth',
         block: 'center'
@@ -185,7 +177,6 @@ document.getElementById("editTextForm").addEventListener("submit", async (event)
     const difficulty = document.getElementById("editTextDifficulty").value;
     const submitBtn = event.target.querySelector('button[type="submit"]');
 
-    // Показываем состояние загрузки
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = 'Saving...';
     submitBtn.disabled = true;
@@ -208,30 +199,24 @@ document.getElementById("editTextForm").addEventListener("submit", async (event)
         console.error('Error updating text:', error);
         showNotification('Failed to update text. Please try again.', 'error');
     } finally {
-        // Восстанавливаем кнопку
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
     }
 });
 
-// Функция для показа уведомлений
 function showNotification(message, type) {
-    // Удаляем предыдущие уведомления
     const existingAlert = document.querySelector('.alert');
     if (existingAlert) {
         existingAlert.remove();
     }
 
-    // Создаем новое уведомление
     const alert = document.createElement('div');
     alert.className = `alert alert-${type}`;
     alert.textContent = message;
 
-    // Вставляем в начало контента
     const adminContent = document.querySelector('.admin-content');
     adminContent.insertBefore(alert, adminContent.firstChild);
 
-    // Автоматически скрываем через 5 секунд
     setTimeout(() => {
         if (alert.parentNode) {
             alert.remove();
@@ -239,7 +224,6 @@ function showNotification(message, type) {
     }, 5000);
 }
 
-// Функция для возврата на главную страницу
 function logout() {
     if (confirm('Return to main page?')) {
         window.location.href = '../index.html';
