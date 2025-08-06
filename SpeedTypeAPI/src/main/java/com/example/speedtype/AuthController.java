@@ -15,27 +15,52 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<?> register(@RequestBody UserDTO userDTO) {
+        System.out.println("Registration attempt for user: " + userDTO.getUsername());
+
         if (userDTO.getUsername() == null || userDTO.getUsername().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("Username cannot be null or empty");
         }
 
         try {
             String token = userService.registerUser(userDTO.getUsername(), userDTO.getPassword());
-            return ResponseEntity.ok("User registered successfully. Token: " + token);
+            System.out.println("User registered successfully: " + userDTO.getUsername());
+
+            return ResponseEntity.ok(new TokenResponse(token));
         } catch (RuntimeException e) {
+            System.err.println("Registration failed: " + e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
+        System.out.println("Login attempt for user: " + userDTO.getUsername());
+
         try {
             String token = userService.authenticateUser(userDTO.getUsername(), userDTO.getPassword());
-            return ResponseEntity.ok("Bearer " + token);
+            System.out.println("Login successful for user: " + userDTO.getUsername());
+
+            return ResponseEntity.ok(new TokenResponse(token));
         } catch (RuntimeException e) {
+            System.err.println("Login failed: " + e.getMessage());
             return ResponseEntity.status(401).body(e.getMessage());
+        }
+    }
+
+    public static class TokenResponse {
+        private String token;
+
+        public TokenResponse(String token) {
+            this.token = token;
+        }
+
+        public String getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
         }
     }
 }

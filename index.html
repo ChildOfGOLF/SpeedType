@@ -1,45 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpeedType: Typing Speed Test</title>
+    <title>SpeedType - Typing Speed Test</title>
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
     <div class="container">
-        <h1>SpeedType: Typing Speed Test</h1>
-        <div class="difficulty">
-            <label for="difficultySelect">Choose difficulty:</label>
-            <select id="difficultySelect">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-        </div>
+        <header>
+            <h1>SpeedType</h1>
+            <div class="auth-section">
+                <!-- User Panel (показывается когда пользователь авторизован) -->
+                <div id="userPanel" class="user-panel hidden">
+                    <span>Welcome, <span id="usernameDisplay"></span>!</span>
+                    <button id="myResultsBtn" class="btn btn-secondary">My Results</button>
+                    <button id="logoutBtn" class="btn btn-logout">Logout</button>
+                </div>
 
-        <p id="displayText">Here will be a sample text for typing...</p>
-        
-        <textarea id="inputText" placeholder="Start typing here..." rows="5"></textarea>
-        
-        <div class="controls">
-            <button id="startBtn">Start Test</button>
-            <button id="resetBtn">Reset</button>
-        </div>
+                <!-- Guest Panel (показывается когда пользователь не авторизован) -->
+                <div id="guestPanel" class="guest-panel">
+                    <button id="loginLinkBtn" class="btn btn-primary">Login / Register</button>
+                </div>
+            </div>
+        </header>
 
-        <div class="results">
-            <p><strong>Time:</strong> <span id="timeDisplay">0</span> seconds</p>
-            <p><strong>Speed:</strong> <span id="speedDisplay">0</span> WPM</p>
-            <p><strong>Errors:</strong> <span id="errorDisplay">0</span></p>
-        </div>
+        <main>
+            <div class="difficulty-section">
+                <label for="difficultySelect">Difficulty:</label>
+                <select id="difficultySelect">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
 
-        <div id="finalResults" class="hidden">
-            <h2>Test Completed!</h2>
-            <p>Your speed: <span id="finalSpeed"></span> WPM</p>
-            <p>Errors made: <span id="finalErrors"></span></p>
-            <button id="retryBtn">Try Again</button>
+            <div class="text-display" id="displayText">
+                Loading text...
+            </div>
+
+            <div class="input-section">
+                <textarea id="inputText" placeholder="Type the text above here..." disabled></textarea>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">Start Test</button>
+                <button id="resetBtn" class="btn btn-secondary">Reset</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <label>Time (s):</label>
+                    <span id="timeDisplay">0</span>
+                </div>
+                <div class="stat">
+                    <label>Speed (WPM):</label>
+                    <span id="speedDisplay">0</span>
+                </div>
+                <div class="stat">
+                    <label>Errors:</label>
+                    <span id="errorDisplay">0</span>
+                </div>
+            </div>
+
+            <!-- Final Results -->
+            <div id="finalResults" class="final-results hidden">
+                <h3>Test Complete!</h3>
+                <p>Your typing speed: <strong><span id="finalSpeed">0</span> WPM</strong></p>
+                <p>Total errors: <strong><span id="finalErrors">0</span></strong></p>
+                <button id="retryBtn" class="btn btn-primary">Try Again</button>
+            </div>
+
+            <!-- Save Status -->
+            <div id="saveStatus" class="save-status hidden"></div>
+        </main>
+    </div>
+
+    <!-- My Results Modal -->
+    <div id="myResultsModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Results</h2>
+                <span id="closeModal" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="resultsContainer">
+                    <p>Loading your results...</p>
+                </div>
+            </div>
         </div>
     </div>
 
