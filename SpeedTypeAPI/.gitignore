@@ -4,7 +4,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
 .apt_generated
 .classpath
 .factorypath
@@ -13,13 +12,11 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -30,14 +27,11 @@ build/
 !**/src/test/**/build/
 /src/main/resources/application.properties
 
-### VS Code ###
 .vscode/
 
-### H2 Database files ###
 data/
 *.db
 *.mv.db
 *.trace.db
 
-### Log files ###
 *.log

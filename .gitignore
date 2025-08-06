@@ -1,14 +1,10 @@
-# Log files
 *.log
 
-# BlueJ files
 *.ctxt
 
-# Java crash logs
 hs_err_pid*
 replay_pid*
 
-# IDE files
 .idea/
 .vscode/
 .vs/
@@ -17,29 +13,23 @@ replay_pid*
 *.ipr
 *.class
 
-# Build and temporary directories
 logs/
 tmp/
 target/
 build/
 
-# H2 Database files
 data/
 *.db
 *.mv.db
 *.trace.db
 
-# Environment and config files
 application.properties
 application.yml
 .env
 
-# OS generated files
 .DS_Store
 Thumbs.db
 
-# Node.js
 node_modules/
 
-# Specific application config
 SpeedTypeAPI/src/main/resources/application.properties

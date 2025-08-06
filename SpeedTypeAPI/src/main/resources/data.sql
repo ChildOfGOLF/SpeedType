@@ -1,10 +1,8 @@
--- Создание и заполнение таблицы пользователей
--- Пароль для admin и testuser: "password" (зашифрован BCrypt)
+
 INSERT INTO users (username, password, role) VALUES
 ('admin', '$2a$10$0EgUt/2JcMn5OAkLgMs/kuHpIVLZ5l6m00UmMEEZlgrqbAZTmxr.a', 'ADMIN'),
 ('testuser', '$2a$10$0EgUt/2JcMn5OAkLgMs/kuHpIVLZ5l6m00UmMEEZlgrqbAZTmxr.a', 'USER');
 
--- Создание и заполнение таблицы текстов
 INSERT INTO texts (content, difficulty) VALUES
 ('The quick brown fox jumps over the lazy dog. This is a simple test.', 'easy'),
 ('Programming requires logical thinking and attention to detail.', 'easy'),

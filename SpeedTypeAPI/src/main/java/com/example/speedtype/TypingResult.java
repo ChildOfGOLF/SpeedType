@@ -11,13 +11,12 @@ public class TypingResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Связь многие-к-одному с пользователем
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(name = "typing_speed", nullable = false)
-    private int typingSpeed; // WPM
+    private int typingSpeed;
 
     @Column(name = "errors", nullable = false)
     private int errors;
@@ -38,7 +37,6 @@ public class TypingResult {
         this.date = LocalDateTime.now();
     }
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }
@@ -87,7 +85,6 @@ public class TypingResult {
         this.date = date;
     }
 
-    // Вспомогательный метод для получения имени пользователя
     public String getUserName() {
         return user != null ? user.getUsername() : null;
     }

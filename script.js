@@ -4,19 +4,14 @@ let testRunning = false;
 let testText = "";
 let currentUser = null;
 
-// Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
     setupEventListeners();
 });
 
 function initializeApp() {
-    console.log('Initializing app...');
-    // Check if user is logged in
     checkUserAuth();
-    // Load initial text
     setDifficulty();
-    console.log('App initialization complete');
 }
 
 function setupEventListeners() {
@@ -26,13 +21,11 @@ function setupEventListeners() {
     document.getElementById('retryBtn').addEventListener('click', resetTest);
     document.getElementById('difficultySelect').addEventListener('change', setDifficulty);
 
-    // Auth-related event listeners
     document.getElementById('logoutBtn').addEventListener('click', logout);
     document.getElementById('loginLinkBtn').addEventListener('click', goToLogin);
     document.getElementById('myResultsBtn').addEventListener('click', showMyResults);
     document.getElementById('closeModal').addEventListener('click', closeModal);
 
-    // Close modal when clicking outside
     document.getElementById('myResultsModal').addEventListener('click', function(e) {
         if (e.target === this) {
             closeModal();
@@ -41,15 +34,10 @@ function setupEventListeners() {
 }
 
 function checkUserAuth() {
-    console.log('Checking user auth...');
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
 
-    console.log('Token:', token ? 'exists' : 'not found');
-    console.log('Username:', username);
-
     if (token && username) {
-        // Verify token validity
         verifyToken(token, username);
     } else {
         showGuestPanel();
@@ -57,29 +45,20 @@ function checkUserAuth() {
 }
 
 async function verifyToken(token, username) {
-    console.log('Verifying token for user:', username);
     try {
-        // Используем простой эндпоинт для проверки токена вместо /results/my
         const response = await fetch('http://localhost:8080/texts?difficulty=easy', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        console.log('Token verification response status:', response.status);
-
         if (response.status !== 401 && response.status !== 403) {
-            // Token is valid
-            console.log('Token is valid, showing user panel');
             currentUser = { username, token };
             showUserPanel(username);
         } else {
-            // Token is invalid
-            console.log('Token is invalid, clearing storage');
             localStorage.removeItem('token');
             localStorage.removeItem('username');
             showGuestPanel();
         }
     } catch (error) {
-        console.error('Error verifying token:', error);
         localStorage.removeItem('token');
         localStorage.removeItem('username');
         showGuestPanel();
@@ -87,44 +66,33 @@ async function verifyToken(token, username) {
 }
 
 function showUserPanel(username) {
-    console.log('Showing user panel for:', username);
     document.getElementById('usernameDisplay').textContent = username;
     document.getElementById('userPanel').classList.remove('hidden');
     document.getElementById('guestPanel').classList.add('hidden');
 
-    // Разблокируем поле ввода для авторизованных пользователей
     const inputText = document.getElementById('inputText');
     inputText.disabled = false;
     inputText.placeholder = "Click 'Start Test' and then type the text above here...";
 
-    // Разблокируем кнопку Start Test
     document.getElementById('startBtn').disabled = false;
-
-    console.log('Input field enabled for authenticated user');
 }
 
 function showGuestPanel() {
-    console.log('Showing guest panel');
     document.getElementById('userPanel').classList.add('hidden');
     document.getElementById('guestPanel').classList.remove('hidden');
     currentUser = null;
 
-    // Блокируем поле ввода для гостей
     const inputText = document.getElementById('inputText');
     inputText.disabled = true;
     inputText.placeholder = "Please login to take typing tests...";
     inputText.value = '';
 
-    // Блокируем кнопку Start Test
     document.getElementById('startBtn').disabled = true;
 
-    // Сбрасываем статистику
     document.getElementById('timeDisplay').textContent = '0';
     document.getElementById('speedDisplay').textContent = '0';
     document.getElementById('errorDisplay').textContent = '0';
     document.getElementById('finalResults').classList.add('hidden');
-
-    console.log('Input field disabled for guest user');
 }
 
 function logout() {
@@ -211,12 +179,10 @@ function checkTyping() {
         document.getElementById('finalErrors').textContent = errors;
         document.getElementById('finalResults').classList.remove('hidden');
 
-        // Save result if user is authenticated
         saveResult(finalWpm, errors);
     }
 }
 
-// Enhanced save result function
 async function saveResult(wpm, errors) {
     const saveStatusEl = document.getElementById('saveStatus');
 
@@ -229,13 +195,6 @@ async function saveResult(wpm, errors) {
 
     try {
         showSaveStatus('Saving result...', 'info');
-
-        console.log('Saving result:', {
-            typingSpeed: wpm,
-            errors: errors,
-            difficulty: difficulty,
-            user: currentUser.username
-        });
 
         const response = await fetch('http://localhost:8080/results', {
             method: 'POST',
@@ -250,20 +209,14 @@ async function saveResult(wpm, errors) {
             })
         });
 
-        console.log('Save result response status:', response.status);
-        console.log('Save result response headers:', Object.fromEntries(response.headers.entries()));
-
         if (response.ok) {
             const result = await response.json();
-            console.log('Result saved successfully:', result);
             showSaveStatus('Result saved successfully! 🎉', 'success');
         } else {
             const errorText = await response.text();
-            console.error('Save result error response:', errorText);
             showSaveStatus(`Failed to save result. Status: ${response.status}`, 'error');
         }
     } catch (error) {
-        console.error('Error saving result:', error);
         showSaveStatus(`Error saving result: ${error.message}`, 'error');
     }
 }
@@ -274,29 +227,21 @@ function showSaveStatus(message, type) {
     saveStatusEl.className = `save-status ${type}`;
     saveStatusEl.classList.remove('hidden');
 
-    // Auto-hide after 5 seconds
     setTimeout(() => {
         saveStatusEl.classList.add('hidden');
     }, 5000);
 }
 
-// Results modal functions
 async function showMyResults() {
-    console.log('showMyResults called');
-
     if (!currentUser) {
-        console.log('No current user');
         showSaveStatus('Please login to view your results', 'info');
         return;
     }
 
-    console.log('Current user:', currentUser.username);
     document.getElementById('myResultsModal').classList.remove('hidden');
     document.getElementById('resultsContainer').innerHTML = '<p>Loading your results...</p>';
 
     try {
-        console.log('Making request to /results/my with token:', currentUser.token.substring(0, 20) + '...');
-
         const response = await fetch('http://localhost:8080/results/my', {
             headers: {
                 'Authorization': `Bearer ${currentUser.token}`,
@@ -304,21 +249,15 @@ async function showMyResults() {
             }
         });
 
-        console.log('Response status:', response.status);
-        console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-
         if (response.ok) {
             const results = await response.json();
-            console.log('Received results:', results);
             displayResults(results);
         } else {
             const errorText = await response.text();
-            console.error('Error response:', errorText);
             document.getElementById('resultsContainer').innerHTML =
                 `<p>Failed to load results. Status: ${response.status}</p>`;
         }
     } catch (error) {
-        console.error('Error loading results:', error);
         document.getElementById('resultsContainer').innerHTML =
             `<p>Error loading results: ${error.message}</p>`;
     }
@@ -359,7 +298,6 @@ function displayResults(results) {
 
     html += '</tbody></table>';
 
-    // Add statistics
     const avgSpeed = Math.round(results.reduce((sum, r) => sum + r.typingSpeed, 0) / results.length);
     const bestSpeed = Math.max(...results.map(r => r.typingSpeed));
     const totalTests = results.length;
@@ -404,7 +342,6 @@ async function setDifficulty() {
             document.getElementById('displayText').textContent = 'No text available for this difficulty.';
         }
     } catch (error) {
-        console.error('Error fetching text:', error);
         document.getElementById('displayText').textContent = 'Error loading text. Please try again.';
     }
 }

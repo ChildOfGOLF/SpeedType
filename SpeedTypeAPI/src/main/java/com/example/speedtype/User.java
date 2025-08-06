@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Entity
-@Table(name = "users") // Изменяем название таблицы
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
@@ -25,7 +25,6 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String role = "USER";
 
-    // Связь один-ко-многим с результатами
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TypingResult> typingResults;
 
@@ -37,7 +36,6 @@ public class User implements UserDetails {
         this.role = "USER";
     }
 
-    // UserDetails методы
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role));
@@ -63,7 +61,6 @@ public class User implements UserDetails {
         return true;
     }
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }

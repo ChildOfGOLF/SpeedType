@@ -28,14 +28,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Добавляем CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
-                .headers(headers -> headers.frameOptions().disable()) // Для H2 консоли
+                .headers(headers -> headers.frameOptions().disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll() // Разрешить доступ к H2 консоли
-                        .requestMatchers("/texts/**").permitAll() // Тексты доступны всем
-                        .requestMatchers("/results/**").authenticated() // Результаты только для авторизованных
+                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/texts/**").permitAll()
+                        .requestMatchers("/results/**").authenticated()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

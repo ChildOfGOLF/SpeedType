@@ -4,7 +4,6 @@
     border: 1px solid #bee5eb;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -34,7 +33,7 @@
         margin: 20px;
     }
 }
-/* Base styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -53,7 +52,6 @@ body {
     padding: 20px;
 }
 
-/* Header styles */
 header {
     display: flex;
     justify-content: space-between;
@@ -70,7 +68,6 @@ h1 {
     font-size: 2.5rem;
 }
 
-/* Auth section styles */
 .auth-section {
     display: flex;
     align-items: center;
@@ -82,12 +79,10 @@ h1 {
     gap: 15px;
 }
 
-/* Hidden class - ВАЖНО! */
 .hidden {
     display: none !important;
 }
 
-/* Button styles */
 .btn {
     padding: 10px 20px;
     border: none;
@@ -124,7 +119,6 @@ h1 {
     background-color: #c82333;
 }
 
-/* Main content styles */
 main {
     background: white;
     padding: 30px;
@@ -132,7 +126,6 @@ main {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Difficulty section */
 .difficulty-section {
     margin-bottom: 30px;
 }
@@ -149,7 +142,6 @@ main {
     font-size: 16px;
 }
 
-/* Text display */
 .text-display {
     background-color: #f8f9fa;
     border: 2px solid #dee2e6;
@@ -161,7 +153,6 @@ main {
     min-height: 100px;
 }
 
-/* Text highlighting */
 .correct {
     background-color: #d4edda;
     color: #155724;
@@ -176,7 +167,6 @@ main {
     color: #6c757d;
 }
 
-/* Input section */
 .input-section {
     margin-bottom: 20px;
 }
@@ -202,14 +192,12 @@ main {
     cursor: not-allowed;
 }
 
-/* Controls */
 .controls {
     display: flex;
     gap: 15px;
     margin-bottom: 30px;
 }
 
-/* Stats */
 .stats {
     display: flex;
     justify-content: space-around;
@@ -236,7 +224,6 @@ main {
     color: #007bff;
 }
 
-/* Final results */
 .final-results {
     background-color: #d4edda;
     border: 1px solid #c3e6cb;
@@ -256,7 +243,6 @@ main {
     color: #155724;
 }
 
-/* Modal styles */
 .modal {
     position: fixed;
     top: 0;
@@ -310,7 +296,6 @@ main {
     overflow-y: auto;
 }
 
-/* Results table */
 .results-table {
     width: 100%;
     border-collapse: collapse;
@@ -333,7 +318,6 @@ main {
     background-color: #f5f5f5;
 }
 
-/* Save Status Styles */
 .save-status {
     margin: 15px 0;
     padding: 10px;
@@ -352,4 +336,3 @@ main {
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
-

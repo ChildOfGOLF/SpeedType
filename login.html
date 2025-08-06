@@ -155,7 +155,6 @@
 
         <div id="message" class="message hidden"></div>
 
-        <!-- Login Form -->
         <form id="loginForm">
             <div class="form-group">
                 <label for="loginUsername">Username:</label>
@@ -168,7 +167,6 @@
             <button type="submit" class="btn" id="loginBtn">Login</button>
         </form>
 
-        <!-- Register Form -->
         <form id="registerForm" class="hidden">
             <div class="form-group">
                 <label for="registerUsername">Username:</label>
@@ -189,7 +187,6 @@
     </div>
 
     <script>
-        // Tab switching
         function showLogin() {
             document.getElementById('loginForm').classList.remove('hidden');
             document.getElementById('registerForm').classList.add('hidden');
@@ -206,7 +203,6 @@
             hideMessage();
         }
 
-        // Message functions
         function showMessage(text, type) {
             const messageEl = document.getElementById('message');
             messageEl.textContent = text;
@@ -218,7 +214,6 @@
             document.getElementById('message').classList.add('hidden');
         }
 
-        // Login form handler
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -249,7 +244,6 @@
                     const data = await response.json();
                     console.log('Login successful, received data:', data);
 
-                    // Сохраняем токен и имя пользователя
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('username', username);
 
@@ -258,7 +252,6 @@
 
                     showMessage('Login successful! Redirecting...', 'success');
 
-                    // Перенаправляем на главную страницу через 1 секунду
                     setTimeout(() => {
                         window.location.href = 'index.html';
                     }, 1000);
@@ -276,7 +269,6 @@
             loginBtn.textContent = 'Login';
         });
 
-        // Register form handler
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -313,7 +305,6 @@
                     console.log('Registration successful');
                     showMessage('Registration successful! You can now login.', 'success');
 
-                    // Автоматически переключаемся на форму входа
                     setTimeout(() => {
                         showLogin();
                         document.getElementById('loginUsername').value = username;
@@ -332,7 +323,6 @@
             registerBtn.textContent = 'Register';
         });
 
-        // Check if user is already logged in
         document.addEventListener('DOMContentLoaded', function() {
             const token = localStorage.getItem('token');
             const username = localStorage.getItem('username');

@@ -21,7 +21,6 @@ public class TypingResultResponseDTO {
         this.date = result.getDate();
     }
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }
