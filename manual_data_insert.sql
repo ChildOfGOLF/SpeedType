@@ -1,4 +1,3 @@
--- для инициализации базы данных SpeedType
 
 INSERT INTO users (username, password, role) VALUES
 ('admin', '$2a$10$0EgUt/2JcMn5OAkLgMs/kuHpIVLZ5l6m00UmMEEZlgrqbAZTmxr.a', 'ADMIN'),
@@ -14,3 +13,8 @@ INSERT INTO texts (content, difficulty) VALUES
 ('Quantum computing represents a paradigm shift in computational methodology, utilizing quantum mechanical phenomena.', 'hard'),
 ('Cryptographic protocols ensure secure communication through mathematical complexity and computational infeasibility.', 'hard'),
 ('Machine learning algorithms require extensive training on large datasets to achieve optimal performance metrics.', 'hard');
+
+SELECT 'users' as table_name, count(*) as count FROM users
+UNION ALL
+SELECT 'texts' as table_name, count(*) as count FROM texts;
+
