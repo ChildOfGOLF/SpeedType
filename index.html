@@ -20,11 +20,13 @@
             <div class="auth-section">
                 <div id="userPanel" class="user-panel hidden">
                     <span><span data-translate="welcome">Welcome</span>, <span id="usernameDisplay"></span>!</span>
+                    <button id="leaderboardBtn" class="btn btn-secondary" data-translate="leaderboard">Leaderboard</button>
                     <button id="myResultsBtn" class="btn btn-secondary" data-translate="myResults">My Results</button>
                     <button id="logoutBtn" class="btn btn-logout" data-translate="logout">Logout</button>
                 </div>
 
                 <div id="guestPanel" class="guest-panel">
+                    <button id="leaderboardBtn2" class="btn btn-secondary" data-translate="leaderboard">Leaderboard</button>
                     <button id="loginLinkBtn" class="btn btn-primary" data-translate="login">Login / Register</button>
                 </div>
             </div>
@@ -98,6 +100,39 @@
             <div class="modal-body">
                 <div id="resultsContainer">
                     <p data-translate="loadingResults">Loading your results...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="leaderboardModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="topUsers">Top Users</h2>
+                <span id="closeLeaderboardModal" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="leaderboard-filters">
+                    <div class="filter-group">
+                        <label for="leaderboardDifficulty" data-translate="filterBy">Filter by:</label>
+                        <select id="leaderboardDifficulty">
+                            <option value="all" data-translate="allDifficulties">All Difficulties</option>
+                            <option value="easy" data-translate="easy">Easy</option>
+                            <option value="medium" data-translate="medium">Medium</option>
+                            <option value="hard" data-translate="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="leaderboardLanguage" data-translate="textLanguage">Language:</label>
+                        <select id="leaderboardLanguage">
+                            <option value="all" data-translate="allLanguages">All Languages</option>
+                            <option value="en" data-translate="english">English</option>
+                            <option value="ru" data-translate="russian">Russian</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="leaderboardContainer">
+                    <p data-translate="loadingLeaderboard">Loading leaderboard...</p>
                 </div>
             </div>
         </div>

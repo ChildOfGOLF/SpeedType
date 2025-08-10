@@ -32,9 +32,22 @@ function setupEventListeners() {
     document.getElementById('myResultsBtn').addEventListener('click', showMyResults);
     document.getElementById('closeModal').addEventListener('click', closeModal);
 
+    // Обработчики для рейтинга
+    document.getElementById('leaderboardBtn').addEventListener('click', showLeaderboard);
+    document.getElementById('leaderboardBtn2').addEventListener('click', showLeaderboard);
+    document.getElementById('closeLeaderboardModal').addEventListener('click', closeLeaderboardModal);
+    document.getElementById('leaderboardDifficulty').addEventListener('change', updateLeaderboard);
+    document.getElementById('leaderboardLanguage').addEventListener('change', updateLeaderboard);
+
     document.getElementById('myResultsModal').addEventListener('click', function(e) {
         if (e.target === this) {
             closeModal();
+        }
+    });
+
+    document.getElementById('leaderboardModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeLeaderboardModal();
         }
     });
 }
@@ -78,7 +91,7 @@ function showUserPanel(username) {
 
     const inputText = document.getElementById('inputText');
     inputText.disabled = false;
-    inputText.placeholder = "Click 'Start Test' and then type the text above here...";
+    inputText.placeholder = t('typeHere'); // Используем локализованный текст
 
     document.getElementById('startBtn').disabled = false;
 }
@@ -90,7 +103,7 @@ function showGuestPanel() {
 
     const inputText = document.getElementById('inputText');
     inputText.disabled = true;
-    inputText.placeholder = "Please login to take typing tests...";
+    inputText.placeholder = t('pleaseLogin'); // Используем локализованный текст
     inputText.value = '';
 
     document.getElementById('startBtn').disabled = true;
@@ -148,6 +161,8 @@ function resetTest() {
 }
 
 function checkTyping() {
+    if (!testRunning) return;
+
     const inputText = document.getElementById('inputText').value;
     const displayTextElement = document.getElementById('displayText');
 
@@ -172,6 +187,18 @@ function checkTyping() {
 
     displayTextElement.innerHTML = highlightedText;
     document.getElementById('errorDisplay').textContent = errors;
+
+    // Обновляем WPM в реальном времени
+    if (inputText.length > 0 && startTime) {
+        const currentTime = new Date().getTime();
+        const elapsedTimeMinutes = (currentTime - startTime) / 60000; // в минутах
+
+        if (elapsedTimeMinutes > 0) {
+            const typedWords = inputText.trim().split(/\s+/).length;
+            const currentWPM = Math.round(typedWords / elapsedTimeMinutes);
+            document.getElementById('speedDisplay').textContent = isNaN(currentWPM) ? 0 : currentWPM;
+        }
+    }
 
     if (isCompleted) {
         clearInterval(timer);
@@ -371,4 +398,132 @@ async function setDifficulty() {
     } catch (error) {
         document.getElementById('displayText').textContent = t('errorLoadingText');
     }
+}
+
+// Функции для работы с рейтингом
+async function showLeaderboard() {
+    document.getElementById('leaderboardModal').classList.remove('hidden');
+    await loadLeaderboard();
+}
+
+function closeLeaderboardModal() {
+    document.getElementById('leaderboardModal').classList.add('hidden');
+}
+
+async function updateLeaderboard() {
+    await loadLeaderboard();
+}
+
+async function loadLeaderboard() {
+    const container = document.getElementById('leaderboardContainer');
+    const difficulty = document.getElementById('leaderboardDifficulty').value;
+    const language = document.getElementById('leaderboardLanguage').value;
+
+    container.innerHTML = `<p>${t('loadingLeaderboard')}</p>`;
+
+    try {
+        let url = 'http://localhost:8080/leaderboard/top?limit=20';
+
+        if (difficulty !== 'all' && language !== 'all') {
+            // Если выбраны и сложность, и язык, показываем общий рейтинг с пометкой
+            url = 'http://localhost:8080/leaderboard/top?limit=20';
+        } else if (difficulty !== 'all') {
+            url = `http://localhost:8080/leaderboard/top/difficulty/${difficulty}?limit=20`;
+        } else if (language !== 'all') {
+            url = `http://localhost:8080/leaderboard/top/language/${language}?limit=20`;
+        }
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch leaderboard');
+        }
+
+        const leaderboard = await response.json();
+        displayLeaderboard(leaderboard, difficulty, language);
+
+    } catch (error) {
+        console.error('Error loading leaderboard:', error);
+        container.innerHTML = `<p>${t('noLeaderboardData')}</p>`;
+    }
+}
+
+function displayLeaderboard(leaderboard, filterDifficulty, filterLanguage) {
+    const container = document.getElementById('leaderboardContainer');
+
+    if (leaderboard.length === 0) {
+        container.innerHTML = `<p>${t('noLeaderboardData')}</p>`;
+        return;
+    }
+
+    // Фильтруем данные на фронтенде, если нужно
+    let filteredLeaderboard = leaderboard;
+    if (filterDifficulty !== 'all' && filterLanguage !== 'all') {
+        // Если оба фильтра активны, оставляем только пользователей с такими результатами
+        // Это более сложная логика, пока показываем общий рейтинг
+    }
+
+    let html = `
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>${t('rank')}</th>
+                    <th>${t('username')}</th>
+                    <th>${t('bestWPM')}</th>
+                    <th>${t('averageWPM')}</th>
+                    <th>${t('totalTests')}</th>
+                    <th>${t('lastTest')}</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    filteredLeaderboard.forEach((entry, index) => {
+        const rank = index + 1;
+        const medalHtml = getRankMedal(rank);
+        const date = new Date(entry.lastTestDate).toLocaleDateString();
+
+        html += `
+            <tr>
+                <td class="rank-cell">${medalHtml}${rank}</td>
+                <td class="username-cell">${entry.username}</td>
+                <td class="wpm-cell">${entry.bestWPM}</td>
+                <td>${entry.averageWPM}</td>
+                <td>${entry.totalTests}</td>
+                <td>${date}</td>
+            </tr>
+        `;
+    });
+
+    html += '</tbody></table>';
+
+    // Добавляем информацию о фильтрах
+    if (filterDifficulty !== 'all' || filterLanguage !== 'all') {
+        html += '<div style="margin-top: 15px; text-align: center; color: #6c757d;">';
+        html += '<small>';
+        if (filterDifficulty !== 'all') {
+            html += `${t('difficulty')}: ${t(filterDifficulty)}`;
+        }
+        if (filterDifficulty !== 'all' && filterLanguage !== 'all') {
+            html += ' | ';
+        }
+        if (filterLanguage !== 'all') {
+            html += `${t('textLanguage')}: ${filterLanguage === 'en' ? t('english') : t('russian')}`;
+        }
+        html += '</small>';
+        html += '</div>';
+    }
+
+    container.innerHTML = html;
+}
+
+function getRankMedal(rank) {
+    if (rank === 1) {
+        return '<span class="rank-medal rank-1">1</span>';
+    } else if (rank === 2) {
+        return '<span class="rank-medal rank-2">2</span>';
+    } else if (rank === 3) {
+        return '<span class="rank-medal rank-3">3</span>';
+    }
+    return '';
 }

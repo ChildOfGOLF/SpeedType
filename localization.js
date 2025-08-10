@@ -1,5 +1,6 @@
 const translations = {
     en: {
+        // Заголовки и навигация
         title: "SpeedType - Typing Speed Test",
         welcome: "Welcome",
         login: "Login",
@@ -7,7 +8,9 @@ const translations = {
         logout: "Logout",
         myResults: "My Results",
         interface: "Interface",
+        leaderboard: "Leaderboard",
 
+        // Уровень сложности и язык текста
         difficulty: "Difficulty",
         textLanguage: "Language",
         easy: "Easy",
@@ -17,6 +20,7 @@ const translations = {
         reset: "Reset",
         tryAgain: "Try Again",
 
+        // Результаты теста
         time: "Time (s)",
         speed: "Speed (WPM)",
         errors: "Errors",
@@ -24,24 +28,63 @@ const translations = {
         yourTypingSpeed: "Your typing speed",
         totalErrors: "Total errors",
 
+        // Загрузка текста и результатов
         loadingText: "Loading text...",
         typeHere: "Type the text above here...",
         loadingResults: "Loading your results...",
         errorLoadingText: "Error loading text. Please try again.",
         errorSavingResult: "Error saving result. Please check your connection.",
         connectionError: "Connection error. Please try again.",
+        pleaseLogin: "Please login to take typing tests...",
 
+        // Дата и время
         date: "Date",
         wpm: "WPM",
         difficulty: "Difficulty",
         language: "Language",
         noResults: "No results found.",
 
+        // Языковые настройки
         english: "English",
-        russian: "Russian"
+        russian: "Russian",
+
+        // Рейтинг
+        topUsers: "Top Users",
+        rank: "Rank",
+        username: "Username",
+        bestWPM: "Best WPM",
+        averageWPM: "Average WPM",
+        totalTests: "Total Tests",
+        lastTest: "Last Test",
+        allDifficulties: "All Difficulties",
+        allLanguages: "All Languages",
+        filterBy: "Filter by",
+        loadingLeaderboard: "Loading leaderboard...",
+        noLeaderboardData: "No leaderboard data available.",
+
+        // Авторизация
+        loginTitle: "Login to SpeedType",
+        registerTitle: "Create Account",
+        usernameLabel: "Username",
+        passwordLabel: "Password",
+        confirmPasswordLabel: "Confirm Password",
+        loginButton: "Login",
+        registerButton: "Register",
+        backToMain: "← Back to Main",
+        loginSuccess: "Login successful!",
+        registerSuccess: "Registration successful!",
+        loginError: "Invalid username or password",
+        registerError: "Registration failed",
+        usernamePlaceholder: "Enter username",
+        passwordPlaceholder: "Enter password",
+        confirmPasswordPlaceholder: "Confirm password",
+        passwordMismatch: "Passwords do not match",
+        loggingIn: "Logging in...",
+        registering: "Registering..."
     },
 
     ru: {
+        // Заголовки и навигация
         title: "SpeedType - Тест Скорости Печати",
         welcome: "Добро пожаловать",
         login: "Войти",
@@ -49,7 +92,9 @@ const translations = {
         logout: "Выйти",
         myResults: "Мои Результаты",
         interface: "Интерфейс",
+        leaderboard: "Рейтинг",
 
+        // Уровень сложности и язык текста
         difficulty: "Сложность",
         textLanguage: "Язык",
         easy: "Легкий",
@@ -59,6 +104,7 @@ const translations = {
         reset: "Сброс",
         tryAgain: "Попробовать Снова",
 
+        // Результаты теста
         time: "Время (с)",
         speed: "Скорость (сл/мин)",
         errors: "Ошибки",
@@ -66,21 +112,59 @@ const translations = {
         yourTypingSpeed: "Ваша скорость печати",
         totalErrors: "Всего ошибок",
 
+        // Загрузка текста и результатов
         loadingText: "Загрузка текста...",
         typeHere: "Введите текст выше здесь...",
         loadingResults: "Загрузка ваших результатов...",
         errorLoadingText: "Ошибка загрузки текста. Попробуйте еще раз.",
         errorSavingResult: "Ошибка сохранения результата. Проверьте соединение.",
         connectionError: "Ошибка соединения. Попробуйте еще раз.",
+        pleaseLogin: "Войдите в систему для прохождения тестов печати...",
 
+        // Дата и время
         date: "Дата",
         wpm: "сл/мин",
         difficulty: "Сложность",
         language: "Язык",
         noResults: "Результаты не найдены.",
 
+        // Языковые настройки
         english: "Английский",
-        russian: "Русский"
+        russian: "Русский",
+
+        // Рейтинг
+        topUsers: "Топ Пользователей",
+        rank: "Место",
+        username: "Пользователь",
+        bestWPM: "Лучший Результат",
+        averageWPM: "Средний Результат",
+        totalTests: "Всего Тестов",
+        lastTest: "Последний Тест",
+        allDifficulties: "Все Сложности",
+        allLanguages: "Все Языки",
+        filterBy: "Фильтр по",
+        loadingLeaderboard: "Загрузка рейтинга...",
+        noLeaderboardData: "Данные рейтинга недоступны.",
+
+        // Авторизация
+        loginTitle: "Вход в SpeedType",
+        registerTitle: "Создать Аккаунт",
+        usernameLabel: "Имя пользователя",
+        passwordLabel: "Пароль",
+        confirmPasswordLabel: "Подтвердите Пароль",
+        loginButton: "Войти",
+        registerButton: "Зарегистрироваться",
+        backToMain: "← Назад к главной",
+        loginSuccess: "Вход выполнен успешно!",
+        registerSuccess: "Регистрация прошла успешно!",
+        loginError: "Неверное имя пользователя или пароль",
+        registerError: "Ошибка регистрации",
+        usernamePlaceholder: "Введите имя пользователя",
+        passwordPlaceholder: "Введите пароль",
+        confirmPasswordPlaceholder: "Подтвердите пароль",
+        passwordMismatch: "Пароли не совпадают",
+        loggingIn: "Вход в систему...",
+        registering: "Регистрация..."
     }
 };
 
@@ -96,13 +180,16 @@ function changeInterfaceLanguage(lang) {
     updateInterface();
 }
 
+// Функция для обновления интерфейса
 function updateInterface() {
+    // Обновляем title страницы
     document.title = t('title');
 
+    // Обновляем элементы с data-translate атрибутом
     const elements = document.querySelectorAll('[data-translate]');
     elements.forEach(element => {
         const key = element.getAttribute('data-translate');
-        if (element.tagName === 'INPUT' && element.type === 'text') {
+        if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'password')) {
             element.placeholder = t(key);
         } else if (element.tagName === 'TEXTAREA') {
             element.placeholder = t(key);
@@ -113,9 +200,26 @@ function updateInterface() {
         }
     });
 
+    // Обновляем селектор языка интерфейса
     const langSelect = document.getElementById('interfaceLanguageSelect');
     if (langSelect) {
         langSelect.value = currentLanguage;
+    }
+
+    // Обновляем селектор языка на странице авторизации
+    const authLangSelect = document.getElementById('authLanguageSelect');
+    if (authLangSelect) {
+        authLangSelect.value = currentLanguage;
+    }
+
+    // Обновляем placeholder поля ввода в зависимости от состояния пользователя
+    const inputText = document.getElementById('inputText');
+    if (inputText) {
+        if (inputText.disabled) {
+            inputText.placeholder = t('pleaseLogin');
+        } else {
+            inputText.placeholder = t('typeHere');
+        }
     }
 }
 

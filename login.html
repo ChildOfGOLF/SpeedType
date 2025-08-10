@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SpeedType</title>
+    <title data-translate="loginTitle">Login - SpeedType</title>
     <style>
         * {
             margin: 0;
@@ -142,51 +142,126 @@
         .hidden {
             display: none;
         }
+
+        /* Добавляем стили для переключателя языка */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .language-switcher label {
+            font-size: 12px;
+            color: #495057;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .language-switcher select {
+            padding: 4px 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 12px;
+            background: white;
+            width: auto;
+        }
+
+        @media (max-width: 480px) {
+            .language-switcher {
+                position: static;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="language-switcher">
+        <label for="authLanguageSelect" data-translate="interface">Interface:</label>
+        <select id="authLanguageSelect">
+            <option value="en" data-translate="english">English</option>
+            <option value="ru" data-translate="russian">Russian</option>
+        </select>
+    </div>
+
     <div class="auth-container">
         <h1>SpeedType</h1>
 
         <div class="tab-buttons">
-            <button class="tab-button active" onclick="showLogin()">Login</button>
-            <button class="tab-button" onclick="showRegister()">Register</button>
+            <button class="tab-button active" onclick="showLogin()" data-translate="login">Login</button>
+            <button class="tab-button" onclick="showRegister()" data-translate="register">Register</button>
         </div>
 
         <div id="message" class="message hidden"></div>
 
         <form id="loginForm">
             <div class="form-group">
-                <label for="loginUsername">Username:</label>
-                <input type="text" id="loginUsername" required>
+                <label for="loginUsername" data-translate="usernameLabel">Username:</label>
+                <input type="text" id="loginUsername" data-translate="usernamePlaceholder" placeholder="Enter username" required>
             </div>
             <div class="form-group">
-                <label for="loginPassword">Password:</label>
-                <input type="password" id="loginPassword" required>
+                <label for="loginPassword" data-translate="passwordLabel">Password:</label>
+                <input type="password" id="loginPassword" data-translate="passwordPlaceholder" placeholder="Enter password" required>
             </div>
-            <button type="submit" class="btn" id="loginBtn">Login</button>
+            <button type="submit" class="btn" id="loginBtn" data-translate="loginButton">Login</button>
         </form>
 
         <form id="registerForm" class="hidden">
             <div class="form-group">
-                <label for="registerUsername">Username:</label>
-                <input type="text" id="registerUsername" required>
+                <label for="registerUsername" data-translate="usernameLabel">Username:</label>
+                <input type="text" id="registerUsername" data-translate="usernamePlaceholder" placeholder="Enter username" required>
             </div>
             <div class="form-group">
-                <label for="registerPassword">Password:</label>
-                <input type="password" id="registerPassword" required>
+                <label for="registerPassword" data-translate="passwordLabel">Password:</label>
+                <input type="password" id="registerPassword" data-translate="passwordPlaceholder" placeholder="Enter password" required>
             </div>
             <div class="form-group">
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword" required>
+                <label for="confirmPassword" data-translate="confirmPasswordLabel">Confirm Password:</label>
+                <input type="password" id="confirmPassword" data-translate="confirmPasswordPlaceholder" placeholder="Confirm password" required>
             </div>
-            <button type="submit" class="btn" id="registerBtn">Register</button>
+            <button type="submit" class="btn" id="registerBtn" data-translate="registerButton">Register</button>
         </form>
 
-        <a href="index.html" class="back-link">← Back to SpeedType</a>
+        <a href="index.html" class="back-link" data-translate="backToMain">← Back to SpeedType</a>
     </div>
 
+    <script src="localization.js"></script>
     <script>
+        // Инициализация локализации
+        document.addEventListener('DOMContentLoaded', function() {
+            initLocalization();
+            setupLanguageSwitcher();
+        });
+
+        function setupLanguageSwitcher() {
+            const langSelect = document.getElementById('authLanguageSelect');
+            langSelect.value = currentLanguage;
+            langSelect.addEventListener('change', function() {
+                changeInterfaceLanguage(this.value);
+                updateButtonTexts(); // Обновляем динамические тексты
+            });
+        }
+
+        function updateButtonTexts() {
+            // Обновляем кнопки в зависимости от их состояния
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            
+            if (!loginBtn.disabled) {
+                loginBtn.textContent = t('loginButton');
+            }
+            if (!registerBtn.disabled) {
+                registerBtn.textContent = t('registerButton');
+            }
+        }
+
         function showLogin() {
             document.getElementById('loginForm').classList.remove('hidden');
             document.getElementById('registerForm').classList.add('hidden');
@@ -222,7 +297,7 @@
             const loginBtn = document.getElementById('loginBtn');
 
             loginBtn.disabled = true;
-            loginBtn.textContent = 'Logging in...';
+            loginBtn.textContent = t('loggingIn');
 
             try {
                 console.log('Attempting login for user:', username);
@@ -250,7 +325,7 @@
                     console.log('Token saved to localStorage:', data.token.substring(0, 20) + '...');
                     console.log('Username saved to localStorage:', username);
 
-                    showMessage('Login successful! Redirecting...', 'success');
+                    showMessage(t('loginSuccess'), 'success');
 
                     setTimeout(() => {
                         window.location.href = 'index.html';
@@ -258,15 +333,15 @@
                 } else {
                     const errorText = await response.text();
                     console.error('Login failed:', errorText);
-                    showMessage('Invalid username or password', 'error');
+                    showMessage(t('loginError'), 'error');
                 }
             } catch (error) {
                 console.error('Login error:', error);
-                showMessage('Connection error. Please try again.', 'error');
+                showMessage(t('connectionError'), 'error');
             }
 
             loginBtn.disabled = false;
-            loginBtn.textContent = 'Login';
+            loginBtn.textContent = t('loginButton');
         });
 
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
@@ -278,12 +353,12 @@
             const registerBtn = document.getElementById('registerBtn');
 
             if (password !== confirmPassword) {
-                showMessage('Passwords do not match', 'error');
+                showMessage(t('passwordMismatch'), 'error');
                 return;
             }
 
             registerBtn.disabled = true;
-            registerBtn.textContent = 'Registering...';
+            registerBtn.textContent = t('registering');
 
             try {
                 console.log('Attempting registration for user:', username);
@@ -303,7 +378,7 @@
 
                 if (response.ok) {
                     console.log('Registration successful');
-                    showMessage('Registration successful! You can now login.', 'success');
+                    showMessage(t('registerSuccess'), 'success');
 
                     setTimeout(() => {
                         showLogin();
@@ -312,15 +387,15 @@
                 } else {
                     const errorText = await response.text();
                     console.error('Registration failed:', errorText);
-                    showMessage('Registration failed. Username may already exist.', 'error');
+                    showMessage(t('registerError'), 'error');
                 }
             } catch (error) {
                 console.error('Registration error:', error);
-                showMessage('Connection error. Please try again.', 'error');
+                showMessage(t('connectionError'), 'error');
             }
 
             registerBtn.disabled = false;
-            registerBtn.textContent = 'Register';
+            registerBtn.textContent = t('registerButton');
         });
 
         document.addEventListener('DOMContentLoaded', function() {
