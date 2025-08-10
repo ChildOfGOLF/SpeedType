@@ -49,84 +49,74 @@ function getAuthHeaders() {
 async function loadTexts() {
     try {
         const response = await fetch(API_URL, {
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+            headers: getAuthHeaders()
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        if (response.ok) {
+            const texts = await response.json();
+            displayTexts(texts);
+        } else {
+            throw new Error('Failed to load texts');
         }
-
-        const texts = await response.json();
-        const tableBody = document.getElementById("textsTableBody");
-
-        if (texts.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 40px; color: #6c757d;">No texts found. Add your first text above!</td></tr>';
-            return;
-        }
-
-        tableBody.innerHTML = "";
-        texts.forEach(text => {
-            const row = document.createElement("tr");
-
-            const difficultyBadge = `<span class="difficulty-badge difficulty-${text.difficulty}">${text.difficulty}</span>`;
-
-            const truncatedContent = text.content.length > 100
-                ? text.content.substring(0, 100) + '...'
-                : text.content;
-
-            row.innerHTML = `
-                <td><strong>#${text.id}</strong></td>
-                <td class="text-content">${truncatedContent}</td>
-                <td>${difficultyBadge}</td>
-                <td class="actions">
-                    <button onclick="editText(${text.id}, \`${text.content.replace(/`/g, '\\`')}\`, '${text.difficulty}')" class="btn btn-secondary btn-small">
-                        Edit
-                    </button>
-                    <button onclick="deleteText(${text.id})" class="btn btn-danger btn-small">
-                        Delete
-                    </button>
-                </td>
-            `;
-            tableBody.appendChild(row);
-        });
     } catch (error) {
         console.error('Error loading texts:', error);
-        document.getElementById("textsTableBody").innerHTML =
-            '<tr><td colspan="4" class="alert alert-error">Error loading texts. Please refresh the page.</td></tr>';
+        document.getElementById('textsTableBody').innerHTML =
+            '<tr><td colspan="5" class="error">Error loading texts. Please refresh the page.</td></tr>';
     }
 }
 
-document.getElementById("addTextForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
+function displayTexts(texts) {
+    const tbody = document.getElementById('textsTableBody');
 
-    const content = document.getElementById("textContent").value;
-    const difficulty = document.getElementById("textDifficulty").value;
-    const submitBtn = event.target.querySelector('button[type="submit"]');
+    if (texts.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="loading">No texts available</td></tr>';
+        return;
+    }
 
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Adding...';
-    submitBtn.disabled = true;
+    tbody.innerHTML = texts.map(text => `
+        <tr>
+            <td>${text.id}</td>
+            <td>${text.content.substring(0, 100)}${text.content.length > 100 ? '...' : ''}</td>
+            <td><span class="difficulty-badge ${text.difficulty}">${text.difficulty}</span></td>
+            <td><span class="language-badge">${text.language === 'en' ? 'English' : 'Russian'}</span></td>
+            <td>
+                <button class="btn btn-sm btn-secondary" onclick="editText(${text.id})">Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteText(${text.id})">Delete</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+document.getElementById('addTextForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const content = document.getElementById('textContent').value;
+    const difficulty = document.getElementById('textDifficulty').value;
+    const language = document.getElementById('textLanguage').value;
+
+    if (!content.trim()) {
+        alert('Please enter text content');
+        return;
+    }
 
     try {
         const response = await fetch(API_URL, {
-            method: "POST",
+            method: 'POST',
             headers: getAuthHeaders(),
-            body: JSON.stringify({ content, difficulty })
+            body: JSON.stringify({ content, difficulty, language })
         });
 
-        if (!response.ok) {
-            throw new Error(`Failed to add text: ${response.status}`);
+        if (response.ok) {
+            alert('Text added successfully!');
+            document.getElementById('addTextForm').reset();
+            loadTexts();
+        } else {
+            const errorData = await response.text();
+            alert(`Failed to add text: ${errorData}`);
         }
-
-        document.getElementById("textContent").value = "";
-        loadTexts();
-        showNotification('Text added successfully!', 'success');
     } catch (error) {
         console.error('Error adding text:', error);
-        showNotification('Failed to add text. Please try again.', 'error');
-    } finally {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
+        alert('Error adding text. Please try again.');
     }
 });
 
@@ -153,20 +143,28 @@ async function deleteText(id) {
     }
 }
 
-function editText(id, content, difficulty) {
-    document.getElementById("editTextId").value = id;
-    document.getElementById("editTextContent").value = content;
-    document.getElementById("editTextDifficulty").value = difficulty;
-    document.getElementById("editTextForm").classList.remove("hidden");
-
-    document.getElementById("editTextForm").scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
+function editText(id) {
+    fetch(`${API_URL}/${id}`, {
+        headers: getAuthHeaders()
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch text');
+        }
+        return response.json();
+    })
+    .then(text => {
+        document.getElementById('editTextId').value = text.id;
+        document.getElementById('editTextContent').value = text.content;
+        document.getElementById('editTextDifficulty').value = text.difficulty;
+        document.getElementById('editTextLanguage').value = text.language || 'en';
+        document.getElementById('editTextForm').classList.remove('hidden');
+        document.getElementById('editTextForm').scrollIntoView({ behavior: 'smooth' });
+    })
+    .catch(error => {
+        console.error('Error fetching text:', error);
+        alert('Error loading text for editing');
     });
-}
-
-function cancelEdit() {
-    document.getElementById("editTextForm").classList.add("hidden");
 }
 
 document.getElementById("editTextForm").addEventListener("submit", async (event) => {
@@ -175,6 +173,7 @@ document.getElementById("editTextForm").addEventListener("submit", async (event)
     const id = document.getElementById("editTextId").value;
     const content = document.getElementById("editTextContent").value;
     const difficulty = document.getElementById("editTextDifficulty").value;
+    const language = document.getElementById("editTextLanguage").value;
     const submitBtn = event.target.querySelector('button[type="submit"]');
 
     const originalText = submitBtn.innerHTML;
@@ -185,7 +184,7 @@ document.getElementById("editTextForm").addEventListener("submit", async (event)
         const response = await fetch(`${API_URL}/${id}`, {
             method: "PUT",
             headers: getAuthHeaders(),
-            body: JSON.stringify({ content, difficulty })
+            body: JSON.stringify({ content, difficulty, language })
         });
 
         if (!response.ok) {

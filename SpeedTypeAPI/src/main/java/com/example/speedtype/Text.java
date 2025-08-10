@@ -16,11 +16,21 @@ public class Text {
     @Column(name = "difficulty", nullable = false)
     private String difficulty;
 
+    @Column(name = "language", nullable = false, length = 5)
+    private String language = "en";
+
     public Text() {}
 
     public Text(String content, String difficulty) {
         this.content = content;
         this.difficulty = difficulty;
+        this.language = "en";
+    }
+
+    public Text(String content, String difficulty, String language) {
+        this.content = content;
+        this.difficulty = difficulty;
+        this.language = language;
     }
 
     public Long getId() {
@@ -45,5 +55,13 @@ public class Text {
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

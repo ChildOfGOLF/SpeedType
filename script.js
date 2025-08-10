@@ -3,8 +3,10 @@ let startTime;
 let testRunning = false;
 let testText = "";
 let currentUser = null;
+let currentTextLanguage = localStorage.getItem('textLanguage') || 'en';
 
 document.addEventListener('DOMContentLoaded', function() {
+    initLocalization();
     initializeApp();
     setupEventListeners();
 });
@@ -12,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeApp() {
     checkUserAuth();
     setDifficulty();
+    // Устанавливаем сохраненный язык текста
+    document.getElementById('textLanguageSelect').value = currentTextLanguage;
 }
 
 function setupEventListeners() {
@@ -20,6 +24,8 @@ function setupEventListeners() {
     document.getElementById('inputText').addEventListener('input', checkTyping);
     document.getElementById('retryBtn').addEventListener('click', resetTest);
     document.getElementById('difficultySelect').addEventListener('change', setDifficulty);
+    document.getElementById('textLanguageSelect').addEventListener('change', setTextLanguage);
+    document.getElementById('interfaceLanguageSelect').addEventListener('change', setInterfaceLanguage);
 
     document.getElementById('logoutBtn').addEventListener('click', logout);
     document.getElementById('loginLinkBtn').addEventListener('click', goToLogin);
@@ -192,6 +198,7 @@ async function saveResult(wpm, errors) {
     }
 
     const difficulty = document.getElementById('difficultySelect').value;
+    const language = currentTextLanguage;
 
     try {
         showSaveStatus('Saving result...', 'info');
@@ -205,7 +212,8 @@ async function saveResult(wpm, errors) {
             body: JSON.stringify({
                 typingSpeed: wpm,
                 errors: errors,
-                difficulty: difficulty
+                difficulty: difficulty,
+                language: language
             })
         });
 
@@ -221,8 +229,9 @@ async function saveResult(wpm, errors) {
     }
 }
 
-function showSaveStatus(message, type) {
+function showSaveStatus(messageKey, type, isTranslated = false) {
     const saveStatusEl = document.getElementById('saveStatus');
+    const message = isTranslated ? messageKey : (t(messageKey) || messageKey);
     saveStatusEl.textContent = message;
     saveStatusEl.className = `save-status ${type}`;
     saveStatusEl.classList.remove('hidden');
@@ -267,7 +276,7 @@ function displayResults(results) {
     const container = document.getElementById('resultsContainer');
 
     if (results.length === 0) {
-        container.innerHTML = '<p>No results found. Complete some tests to see your progress!</p>';
+        container.innerHTML = `<p>${t('noResults')}</p>`;
         return;
     }
 
@@ -275,10 +284,11 @@ function displayResults(results) {
         <table class="results-table">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Speed (WPM)</th>
-                    <th>Errors</th>
-                    <th>Difficulty</th>
+                    <th>${t('date')}</th>
+                    <th>${t('speed')} (${t('wpm')})</th>
+                    <th>${t('errors')}</th>
+                    <th>${t('difficulty')}</th>
+                    <th>${t('language')}</th>
                 </tr>
             </thead>
             <tbody>
@@ -286,12 +296,15 @@ function displayResults(results) {
 
     results.forEach(result => {
         const date = new Date(result.date).toLocaleDateString();
+        const difficultyTranslated = t(result.difficulty);
+        const languageDisplay = result.language === 'en' ? t('english') : t('russian');
         html += `
             <tr>
                 <td>${date}</td>
                 <td>${result.typingSpeed}</td>
                 <td>${result.errors}</td>
-                <td>${result.difficulty}</td>
+                <td>${difficultyTranslated}</td>
+                <td>${languageDisplay}</td>
             </tr>
         `;
     });
@@ -306,8 +319,8 @@ function displayResults(results) {
         <div style="margin-top: 20px; text-align: center;">
             <h3>Your Statistics</h3>
             <p><strong>Total Tests:</strong> ${totalTests}</p>
-            <p><strong>Average Speed:</strong> ${avgSpeed} WPM</p>
-            <p><strong>Best Speed:</strong> ${bestSpeed} WPM</p>
+            <p><strong>Average Speed:</strong> ${avgSpeed} ${t('wpm')}</p>
+            <p><strong>Best Speed:</strong> ${bestSpeed} ${t('wpm')}</p>
         </div>
     `;
 
@@ -318,11 +331,25 @@ function closeModal() {
     document.getElementById('myResultsModal').classList.add('hidden');
 }
 
+function setTextLanguage() {
+    currentTextLanguage = document.getElementById('textLanguageSelect').value;
+    localStorage.setItem('textLanguage', currentTextLanguage);
+    setDifficulty();
+}
+
+function setInterfaceLanguage() {
+    const selectedLanguage = document.getElementById('interfaceLanguageSelect').value;
+    changeInterfaceLanguage(selectedLanguage);
+}
+
 async function setDifficulty() {
     const difficulty = document.getElementById('difficultySelect').value;
-    const url = `http://localhost:8080/texts?difficulty=${difficulty}`;
+    const language = currentTextLanguage;
+    const url = `http://localhost:8080/texts?difficulty=${difficulty}&language=${language}`;
 
     try {
+        document.getElementById('displayText').textContent = t('loadingText');
+
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error('Failed to fetch text');
@@ -339,9 +366,9 @@ async function setDifficulty() {
             document.getElementById('displayText').textContent = data.content;
             testText = data.content;
         } else {
-            document.getElementById('displayText').textContent = 'No text available for this difficulty.';
+            document.getElementById('displayText').textContent = t('errorLoadingText');
         }
     } catch (error) {
-        document.getElementById('displayText').textContent = 'Error loading text. Please try again.';
+        document.getElementById('displayText').textContent = t('errorLoadingText');
     }
 }

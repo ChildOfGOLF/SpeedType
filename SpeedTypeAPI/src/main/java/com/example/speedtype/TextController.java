@@ -14,12 +14,13 @@ public class TextController {
     private TextService textService;
 
     @GetMapping
-    public ResponseEntity<Text> getText(@RequestParam String difficulty) {
+    public ResponseEntity<Text> getText(
+            @RequestParam String difficulty,
+            @RequestParam(defaultValue = "en") String language) {
         try {
-            return ResponseEntity.ok(textService.getRandomTextByDifficulty(difficulty));
+            return ResponseEntity.ok(textService.getRandomTextByDifficultyAndLanguage(difficulty, language));
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 }
-

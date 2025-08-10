@@ -4,6 +4,7 @@ public class TypingResultDTO {
     private int typingSpeed;
     private int errors;
     private String difficulty;
+    private String language = "en";
 
     public TypingResultDTO() {}
 
@@ -11,6 +12,14 @@ public class TypingResultDTO {
         this.typingSpeed = typingSpeed;
         this.errors = errors;
         this.difficulty = difficulty;
+        this.language = "en";
+    }
+
+    public TypingResultDTO(int typingSpeed, int errors, String difficulty, String language) {
+        this.typingSpeed = typingSpeed;
+        this.errors = errors;
+        this.difficulty = difficulty;
+        this.language = language;
     }
 
     public int getTypingSpeed() {
@@ -35,5 +44,13 @@ public class TypingResultDTO {
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

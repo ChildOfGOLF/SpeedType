@@ -29,6 +29,7 @@ public class AdminTextController {
                 .map(text -> {
                     text.setContent(updatedText.getContent());
                     text.setDifficulty(updatedText.getDifficulty());
+                    text.setLanguage(updatedText.getLanguage());
                     return textRepository.save(text);
                 }).orElseThrow(() -> new RuntimeException("Text not found"));
     }

@@ -49,7 +49,10 @@ public class TypingResultController {
     }
 
     @PostMapping
-    public ResponseEntity<TypingResultResponseDTO> saveResult(@RequestBody TypingResultDTO resultDTO, Authentication authentication) {
+    public ResponseEntity<TypingResultResponseDTO> saveResult(
+            @RequestBody TypingResultDTO resultDTO,
+            Authentication authentication) {
+
         if (authentication == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -61,7 +64,8 @@ public class TypingResultController {
                 username,
                 resultDTO.getTypingSpeed(),
                 resultDTO.getErrors(),
-                resultDTO.getDifficulty()
+                resultDTO.getDifficulty(),
+                resultDTO.getLanguage() != null ? resultDTO.getLanguage() : "en"
             );
 
             return ResponseEntity.ok(new TypingResultResponseDTO(savedResult));

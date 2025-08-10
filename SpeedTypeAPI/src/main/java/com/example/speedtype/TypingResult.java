@@ -24,6 +24,9 @@ public class TypingResult {
     @Column(name = "difficulty", nullable = false)
     private String difficulty;
 
+    @Column(name = "language", nullable = false, length = 5)
+    private String language = "en";
+
     @Column(name = "test_date", nullable = false)
     private LocalDateTime date;
 
@@ -34,6 +37,16 @@ public class TypingResult {
         this.typingSpeed = typingSpeed;
         this.errors = errors;
         this.difficulty = difficulty;
+        this.language = "en";
+        this.date = LocalDateTime.now();
+    }
+
+    public TypingResult(User user, int typingSpeed, int errors, String difficulty, String language) {
+        this.user = user;
+        this.typingSpeed = typingSpeed;
+        this.errors = errors;
+        this.difficulty = difficulty;
+        this.language = language;
         this.date = LocalDateTime.now();
     }
 
@@ -75,6 +88,14 @@ public class TypingResult {
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public LocalDateTime getDate() {

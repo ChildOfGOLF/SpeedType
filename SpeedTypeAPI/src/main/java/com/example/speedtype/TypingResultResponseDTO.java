@@ -8,6 +8,7 @@ public class TypingResultResponseDTO {
     private int typingSpeed;
     private int errors;
     private String difficulty;
+    private String language;
     private LocalDateTime date;
 
     public TypingResultResponseDTO() {}
@@ -18,6 +19,7 @@ public class TypingResultResponseDTO {
         this.typingSpeed = result.getTypingSpeed();
         this.errors = result.getErrors();
         this.difficulty = result.getDifficulty();
+        this.language = result.getLanguage();
         this.date = result.getDate();
     }
 
@@ -59,6 +61,14 @@ public class TypingResultResponseDTO {
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public LocalDateTime getDate() {

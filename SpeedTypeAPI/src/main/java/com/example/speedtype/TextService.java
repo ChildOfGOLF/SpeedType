@@ -19,4 +19,12 @@ public class TextService {
         }
         return texts.get(new Random().nextInt(texts.size()));
     }
+
+    public Text getRandomTextByDifficultyAndLanguage(String difficulty, String language) {
+        List<Text> texts = textRepository.findByDifficultyAndLanguage(difficulty, language);
+        if (texts.isEmpty()) {
+            throw new RuntimeException("No texts found for difficulty: " + difficulty + " and language: " + language);
+        }
+        return texts.get(new Random().nextInt(texts.size()));
+    }
 }

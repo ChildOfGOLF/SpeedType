@@ -312,6 +312,31 @@ tr:last-child td {
     }
 }
 
+.language-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #6c757d;
+    color: white;
+    text-transform: uppercase;
+}
+
+.difficulty-badge.easy {
+    background: #28a745;
+    color: white;
+}
+
+.difficulty-badge.medium {
+    background: #ffc107;
+    color: #212529;
+}
+
+.difficulty-badge.hard {
+    background: #dc3545;
+    color: white;
+}
+
 @media (max-width: 768px) {
     .container {
         margin: 10px;
@@ -349,11 +374,16 @@ tr:last-child td {
     }
 
     table {
-        font-size: 14px;
+        font-size: 0.8rem;
     }
 
-    th, td {
-        padding: 10px 8px;
+    table th, table td {
+        padding: 8px 4px;
+    }
+
+    .language-badge {
+        font-size: 10px;
+        padding: 2px 6px;
     }
 }
 

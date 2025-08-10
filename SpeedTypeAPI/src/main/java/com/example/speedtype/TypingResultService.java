@@ -33,6 +33,14 @@ public class TypingResultService {
         return typingResultRepository.save(result);
     }
 
+    public TypingResult saveResult(String username, int typingSpeed, int errors, String difficulty, String language) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found: " + username));
+
+        TypingResult result = new TypingResult(user, typingSpeed, errors, difficulty, language);
+        return typingResultRepository.save(result);
+    }
+
     public void deleteResult(Long id) {
         typingResultRepository.deleteById(id);
     }

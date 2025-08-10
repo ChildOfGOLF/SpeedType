@@ -3,69 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpeedType - Typing Speed Test</title>
+    <title>SpeedType</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>SpeedType</h1>
+            <h1 data-translate="title">SpeedType</h1>
+            <div class="language-controls">
+                <label for="interfaceLanguageSelect" data-translate="interface">Interface:</label>
+                <select id="interfaceLanguageSelect">
+                    <option value="en" data-translate="english">English</option>
+                    <option value="ru" data-translate="russian">Russian</option>
+                </select>
+            </div>
             <div class="auth-section">
                 <div id="userPanel" class="user-panel hidden">
-                    <span>Welcome, <span id="usernameDisplay"></span>!</span>
-                    <button id="myResultsBtn" class="btn btn-secondary">My Results</button>
-                    <button id="logoutBtn" class="btn btn-logout">Logout</button>
+                    <span><span data-translate="welcome">Welcome</span>, <span id="usernameDisplay"></span>!</span>
+                    <button id="myResultsBtn" class="btn btn-secondary" data-translate="myResults">My Results</button>
+                    <button id="logoutBtn" class="btn btn-logout" data-translate="logout">Logout</button>
                 </div>
 
                 <div id="guestPanel" class="guest-panel">
-                    <button id="loginLinkBtn" class="btn btn-primary">Login / Register</button>
+                    <button id="loginLinkBtn" class="btn btn-primary" data-translate="login">Login / Register</button>
                 </div>
             </div>
         </header>
 
         <main>
-            <div class="difficulty-section">
-                <label for="difficultySelect">Difficulty:</label>
-                <select id="difficultySelect">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
+            <div class="controls-section">
+                <div class="difficulty-section">
+                    <label for="difficultySelect" data-translate="difficulty">Difficulty:</label>
+                    <select id="difficultySelect">
+                        <option value="easy" data-translate="easy">Easy</option>
+                        <option value="medium" data-translate="medium">Medium</option>
+                        <option value="hard" data-translate="hard">Hard</option>
+                    </select>
+                </div>
+
+                <div class="language-section">
+                    <label for="textLanguageSelect" data-translate="textLanguage">Language:</label>
+                    <select id="textLanguageSelect">
+                        <option value="en" data-translate="english">English</option>
+                        <option value="ru" data-translate="russian">Russian</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="text-display" id="displayText">
+            <div class="text-display" id="displayText" data-translate="loadingText">
                 Loading text...
             </div>
 
             <div class="input-section">
-                <textarea id="inputText" placeholder="Type the text above here..." disabled></textarea>
+                <textarea id="inputText" placeholder="Type the text above here..." data-translate="typeHere" disabled></textarea>
             </div>
 
             <div class="controls">
-                <button id="startBtn" class="btn btn-primary">Start Test</button>
-                <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                <button id="startBtn" class="btn btn-primary" data-translate="startTest">Start Test</button>
+                <button id="resetBtn" class="btn btn-secondary" data-translate="reset">Reset</button>
             </div>
 
             <div class="stats">
                 <div class="stat">
-                    <label>Time (s):</label>
+                    <label data-translate="time">Time (s):</label>
                     <span id="timeDisplay">0</span>
                 </div>
                 <div class="stat">
-                    <label>Speed (WPM):</label>
+                    <label data-translate="speed">Speed (WPM):</label>
                     <span id="speedDisplay">0</span>
                 </div>
                 <div class="stat">
-                    <label>Errors:</label>
+                    <label data-translate="errors">Errors:</label>
                     <span id="errorDisplay">0</span>
                 </div>
             </div>
 
             <div id="finalResults" class="final-results hidden">
-                <h3>Test Complete!</h3>
-                <p>Your typing speed: <strong><span id="finalSpeed">0</span> WPM</strong></p>
-                <p>Total errors: <strong><span id="finalErrors">0</span></strong></p>
-                <button id="retryBtn" class="btn btn-primary">Try Again</button>
+                <h3 data-translate="testComplete">Test Complete!</h3>
+                <p><span data-translate="yourTypingSpeed">Your typing speed</span>: <strong><span id="finalSpeed">0</span> <span data-translate="wpm">WPM</span></strong></p>
+                <p><span data-translate="totalErrors">Total errors</span>: <strong><span id="finalErrors">0</span></strong></p>
+                <button id="retryBtn" class="btn btn-primary" data-translate="tryAgain">Try Again</button>
             </div>
 
             <div id="saveStatus" class="save-status hidden"></div>
@@ -75,17 +92,18 @@
     <div id="myResultsModal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>My Results</h2>
+                <h2 data-translate="myResults">My Results</h2>
                 <span id="closeModal" class="close">&times;</span>
             </div>
             <div class="modal-body">
                 <div id="resultsContainer">
-                    <p>Loading your results...</p>
+                    <p data-translate="loadingResults">Loading your results...</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="localization.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
