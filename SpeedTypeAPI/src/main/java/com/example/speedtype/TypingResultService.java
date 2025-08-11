@@ -10,11 +10,13 @@ public class TypingResultService {
 
     private final TypingResultRepository typingResultRepository;
     private final UserRepository userRepository;
+    private final LeaderboardService leaderboardService;
 
     @Autowired
-    public TypingResultService(TypingResultRepository typingResultRepository, UserRepository userRepository) {
+    public TypingResultService(TypingResultRepository typingResultRepository, UserRepository userRepository, LeaderboardService leaderboardService) {
         this.typingResultRepository = typingResultRepository;
         this.userRepository = userRepository;
+        this.leaderboardService = leaderboardService;
     }
 
     public List<TypingResult> getAllResults() {
@@ -30,7 +32,11 @@ public class TypingResultService {
                 .orElseThrow(() -> new RuntimeException("User not found: " + username));
 
         TypingResult result = new TypingResult(user, typingSpeed, errors, difficulty);
-        return typingResultRepository.save(result);
+        TypingResult savedResult = typingResultRepository.save(result);
+
+        leaderboardService.clearLeaderboardCache();
+
+        return savedResult;
     }
 
     public TypingResult saveResult(String username, int typingSpeed, int errors, String difficulty, String language) {
@@ -38,10 +44,16 @@ public class TypingResultService {
                 .orElseThrow(() -> new RuntimeException("User not found: " + username));
 
         TypingResult result = new TypingResult(user, typingSpeed, errors, difficulty, language);
-        return typingResultRepository.save(result);
+        TypingResult savedResult = typingResultRepository.save(result);
+
+        leaderboardService.clearLeaderboardCache();
+
+        return savedResult;
     }
 
     public void deleteResult(Long id) {
         typingResultRepository.deleteById(id);
+
+        leaderboardService.clearLeaderboardCache();
     }
 }

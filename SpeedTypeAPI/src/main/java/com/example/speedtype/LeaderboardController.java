@@ -1,6 +1,7 @@
 package com.example.speedtype;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,5 +35,11 @@ public class LeaderboardController {
             @PathVariable String language,
             @RequestParam(defaultValue = "10") int limit) {
         return leaderboardService.getTopUsersByLanguageAndWPM(language, limit);
+    }
+
+    @DeleteMapping("/cache")
+    public ResponseEntity<String> clearCache() {
+        leaderboardService.clearLeaderboardCache();
+        return ResponseEntity.ok("Кэш лидерборда успешно очищен");
     }
 }
