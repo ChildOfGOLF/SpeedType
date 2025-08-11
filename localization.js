@@ -1,7 +1,6 @@
 const translations = {
     en: {
-        // Заголовки и навигация
-        title: "SpeedType - Typing Speed Test",
+        title: "SpeedType",
         welcome: "Welcome",
         login: "Login",
         register: "Register",
@@ -10,7 +9,6 @@ const translations = {
         interface: "Interface",
         leaderboard: "Leaderboard",
 
-        // Уровень сложности и язык текста
         difficulty: "Difficulty",
         textLanguage: "Language",
         easy: "Easy",
@@ -20,7 +18,6 @@ const translations = {
         reset: "Reset",
         tryAgain: "Try Again",
 
-        // Результаты теста
         time: "Time (s)",
         speed: "Speed (WPM)",
         errors: "Errors",
@@ -28,7 +25,6 @@ const translations = {
         yourTypingSpeed: "Your typing speed",
         totalErrors: "Total errors",
 
-        // Загрузка текста и результатов
         loadingText: "Loading text...",
         typeHere: "Type the text above here...",
         loadingResults: "Loading your results...",
@@ -37,18 +33,15 @@ const translations = {
         connectionError: "Connection error. Please try again.",
         pleaseLogin: "Please login to take typing tests...",
 
-        // Дата и время
         date: "Date",
         wpm: "WPM",
         difficulty: "Difficulty",
         language: "Language",
         noResults: "No results found.",
 
-        // Языковые настройки
         english: "English",
         russian: "Russian",
 
-        // Рейтинг
         topUsers: "Top Users",
         rank: "Rank",
         username: "Username",
@@ -62,7 +55,6 @@ const translations = {
         loadingLeaderboard: "Loading leaderboard...",
         noLeaderboardData: "No leaderboard data available.",
 
-        // Авторизация
         loginTitle: "Login to SpeedType",
         registerTitle: "Create Account",
         usernameLabel: "Username",
@@ -84,8 +76,7 @@ const translations = {
     },
 
     ru: {
-        // Заголовки и навигация
-        title: "SpeedType - Тест Скорости Печати",
+        title: "SpeedType",
         welcome: "Добро пожаловать",
         login: "Войти",
         register: "Регистрация",
@@ -94,7 +85,6 @@ const translations = {
         interface: "Интерфейс",
         leaderboard: "Рейтинг",
 
-        // Уровень сложности и язык текста
         difficulty: "Сложность",
         textLanguage: "Язык",
         easy: "Легкий",
@@ -104,7 +94,6 @@ const translations = {
         reset: "Сброс",
         tryAgain: "Попробовать Снова",
 
-        // Результаты теста
         time: "Время (с)",
         speed: "Скорость (сл/мин)",
         errors: "Ошибки",
@@ -112,7 +101,6 @@ const translations = {
         yourTypingSpeed: "Ваша скорость печати",
         totalErrors: "Всего ошибок",
 
-        // Загрузка текста и результатов
         loadingText: "Загрузка текста...",
         typeHere: "Введите текст выше здесь...",
         loadingResults: "Загрузка ваших результатов...",
@@ -121,18 +109,15 @@ const translations = {
         connectionError: "Ошибка соединения. Попробуйте еще раз.",
         pleaseLogin: "Войдите в систему для прохождения тестов печати...",
 
-        // Дата и время
         date: "Дата",
         wpm: "сл/мин",
         difficulty: "Сложность",
         language: "Язык",
         noResults: "Результаты не найдены.",
 
-        // Языковые настройки
         english: "Английский",
         russian: "Русский",
 
-        // Рейтинг
         topUsers: "Топ Пользователей",
         rank: "Место",
         username: "Пользователь",
@@ -146,7 +131,6 @@ const translations = {
         loadingLeaderboard: "Загрузка рейтинга...",
         noLeaderboardData: "Данные рейтинга недоступны.",
 
-        // Авторизация
         loginTitle: "Вход в SpeedType",
         registerTitle: "Создать Аккаунт",
         usernameLabel: "Имя пользователя",
@@ -180,12 +164,9 @@ function changeInterfaceLanguage(lang) {
     updateInterface();
 }
 
-// Функция для обновления интерфейса
 function updateInterface() {
-    // Обновляем title страницы
     document.title = t('title');
 
-    // Обновляем элементы с data-translate атрибутом
     const elements = document.querySelectorAll('[data-translate]');
     elements.forEach(element => {
         const key = element.getAttribute('data-translate');
@@ -200,19 +181,16 @@ function updateInterface() {
         }
     });
 
-    // Обновляем селектор языка интерфейса
     const langSelect = document.getElementById('interfaceLanguageSelect');
     if (langSelect) {
         langSelect.value = currentLanguage;
     }
 
-    // Обновляем селектор языка на странице авторизации
     const authLangSelect = document.getElementById('authLanguageSelect');
     if (authLangSelect) {
         authLangSelect.value = currentLanguage;
     }
 
-    // Обновляем placeholder поля ввода в зависимости от состояния пользователя
     const inputText = document.getElementById('inputText');
     if (inputText) {
         if (inputText.disabled) {

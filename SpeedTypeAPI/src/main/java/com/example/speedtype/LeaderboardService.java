@@ -46,7 +46,6 @@ public class LeaderboardService {
         entry.setDifficulty((String) result[4]);
         entry.setLanguage((String) result[5]);
 
-        // Правильная конвертация Timestamp в LocalDateTime
         Object dateObject = result[6];
         if (dateObject instanceof java.sql.Timestamp) {
             entry.setLastTestDate(((java.sql.Timestamp) dateObject).toLocalDateTime());

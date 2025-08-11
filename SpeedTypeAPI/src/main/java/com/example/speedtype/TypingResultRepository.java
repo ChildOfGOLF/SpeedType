@@ -17,7 +17,6 @@ public interface TypingResultRepository extends JpaRepository<TypingResult, Long
     @Query("SELECT tr FROM TypingResult tr WHERE tr.user.username = :username ORDER BY tr.date DESC")
     List<TypingResult> findResultsByUsername(@Param("username") String username);
 
-    // Топ пользователей по общему лучшему WPM
     @Query(value = """
         SELECT u.username, 
                MAX(tr.typing_speed) as best_wpm,
@@ -33,7 +32,6 @@ public interface TypingResultRepository extends JpaRepository<TypingResult, Long
         LIMIT :limit""", nativeQuery = true)
     List<Object[]> findTopUsersByWPM(@Param("limit") int limit);
 
-    // Топ пользователей по сложности
     @Query(value = """
         SELECT u.username, 
                MAX(tr.typing_speed) as best_wpm,
@@ -50,7 +48,6 @@ public interface TypingResultRepository extends JpaRepository<TypingResult, Long
         LIMIT :limit""", nativeQuery = true)
     List<Object[]> findTopUsersByDifficultyAndWPM(@Param("difficulty") String difficulty, @Param("limit") int limit);
 
-    // Топ пользователей по языку
     @Query(value = """
         SELECT u.username, 
                MAX(tr.typing_speed) as best_wpm,

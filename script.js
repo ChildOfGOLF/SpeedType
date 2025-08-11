@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeApp() {
     checkUserAuth();
     setDifficulty();
-    // Устанавливаем сохраненный язык текста
     document.getElementById('textLanguageSelect').value = currentTextLanguage;
 }
 
@@ -32,7 +31,6 @@ function setupEventListeners() {
     document.getElementById('myResultsBtn').addEventListener('click', showMyResults);
     document.getElementById('closeModal').addEventListener('click', closeModal);
 
-    // Обработчики для рейтинга
     document.getElementById('leaderboardBtn').addEventListener('click', showLeaderboard);
     document.getElementById('leaderboardBtn2').addEventListener('click', showLeaderboard);
     document.getElementById('closeLeaderboardModal').addEventListener('click', closeLeaderboardModal);
@@ -400,7 +398,6 @@ async function setDifficulty() {
     }
 }
 
-// Функции для работы с рейтингом
 async function showLeaderboard() {
     document.getElementById('leaderboardModal').classList.remove('hidden');
     await loadLeaderboard();
@@ -425,7 +422,6 @@ async function loadLeaderboard() {
         let url = 'http://localhost:8080/leaderboard/top?limit=20';
 
         if (difficulty !== 'all' && language !== 'all') {
-            // Если выбраны и сложность, и язык, показываем общий рейтинг с пометкой
             url = 'http://localhost:8080/leaderboard/top?limit=20';
         } else if (difficulty !== 'all') {
             url = `http://localhost:8080/leaderboard/top/difficulty/${difficulty}?limit=20`;
@@ -456,11 +452,9 @@ function displayLeaderboard(leaderboard, filterDifficulty, filterLanguage) {
         return;
     }
 
-    // Фильтруем данные на фронтенде, если нужно
     let filteredLeaderboard = leaderboard;
     if (filterDifficulty !== 'all' && filterLanguage !== 'all') {
-        // Если оба фильтра активны, оставляем только пользователей с такими результатами
-        // Это более сложная логика, пока показываем общий рейтинг
+        // пока показываем общий рейтинг
     }
 
     let html = `
@@ -497,7 +491,6 @@ function displayLeaderboard(leaderboard, filterDifficulty, filterLanguage) {
 
     html += '</tbody></table>';
 
-    // Добавляем информацию о фильтрах
     if (filterDifficulty !== 'all' || filterLanguage !== 'all') {
         html += '<div style="margin-top: 15px; text-align: center; color: #6c757d;">';
         html += '<small>';

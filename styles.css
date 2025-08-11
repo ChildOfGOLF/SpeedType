@@ -461,7 +461,6 @@ main {
     border-color: #007bff;
 }
 
-/* Стили для рейтинга */
 .leaderboard-filters {
     display: flex;
     gap: 20px;
@@ -538,7 +537,6 @@ main {
     color: #28a745;
 }
 
-/* Медали для топ-3 */
 .rank-medal {
     display: inline-block;
     width: 20px;
