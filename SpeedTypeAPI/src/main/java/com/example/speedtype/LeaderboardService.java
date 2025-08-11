@@ -1,6 +1,8 @@
 package com.example.speedtype;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,7 @@ public class LeaderboardService {
         this.typingResultRepository = typingResultRepository;
     }
 
+    @Cacheable(value = "leaderboard", key = "'top_users_' + #limit")
     public List<LeaderboardEntryDTO> getTopUsersByWPM(int limit) {
         List<Object[]> results = typingResultRepository.findTopUsersByWPM(limit);
         return results.stream()
@@ -23,6 +26,7 @@ public class LeaderboardService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable(value = "leaderboard", key = "'top_users_difficulty_' + #difficulty + '_' + #limit")
     public List<LeaderboardEntryDTO> getTopUsersByDifficultyAndWPM(String difficulty, int limit) {
         List<Object[]> results = typingResultRepository.findTopUsersByDifficultyAndWPM(difficulty, limit);
         return results.stream()
@@ -30,11 +34,16 @@ public class LeaderboardService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable(value = "leaderboard", key = "'top_users_language_' + #language + '_' + #limit")
     public List<LeaderboardEntryDTO> getTopUsersByLanguageAndWPM(String language, int limit) {
         List<Object[]> results = typingResultRepository.findTopUsersByLanguageAndWPM(language, limit);
         return results.stream()
                 .map(this::mapToLeaderboardEntry)
                 .collect(Collectors.toList());
+    }
+
+    @CacheEvict(value = "leaderboard", allEntries = true)
+    public void clearLeaderboardCache() {
     }
 
     private LeaderboardEntryDTO mapToLeaderboardEntry(Object[] result) {
