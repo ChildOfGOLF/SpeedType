@@ -52,6 +52,26 @@
                 </div>
             </div>
 
+            <div id="customTextModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 data-translate="uploadCustomText">Upload Your Text</h2>
+                        <span id="closeCustomTextModal" class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="custom-text-input">
+                            <label for="customTextArea" data-translate="pasteTextHere">Paste your text here:</label>
+                            <textarea id="customTextArea" placeholder="Paste your text here..." data-translate="pasteTextHere" rows="6"></textarea>
+                            <div id="customTextStatus" class="save-status hidden"></div>
+                            <div class="modal-buttons">
+                                <button id="useCustomTextBtn" class="btn btn-primary" data-translate="useCustomText">Use This Text</button>
+                                <button id="cancelCustomTextBtn" class="btn btn-secondary" data-translate="cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="text-display" id="displayText" data-translate="loadingText">
                 Loading text...
             </div>
@@ -63,6 +83,8 @@
             <div class="controls">
                 <button id="startBtn" class="btn btn-primary" data-translate="startTest">Start Test</button>
                 <button id="resetBtn" class="btn btn-secondary" data-translate="reset">Reset</button>
+                <button id="getNewTextBtn" class="btn btn-secondary" data-translate="getNewText">Get New Text</button>
+                <button id="customTextBtn" class="btn btn-info" data-translate="customText">Custom Text</button>
             </div>
 
             <div class="stats">

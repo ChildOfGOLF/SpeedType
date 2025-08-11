@@ -32,10 +32,13 @@ const translations = {
         errorSavingResult: "Error saving result. Please check your connection.",
         connectionError: "Connection error. Please try again.",
         pleaseLogin: "Please login to take typing tests...",
+        customTextNotSaved: "Custom text results are not saved to database",
+        customTextEmpty: "Please enter some text first!",
+        customTextTooShort: "Text should be at least 10 characters long!",
+        customTextLoaded: "Custom text loaded successfully!",
 
         date: "Date",
         wpm: "WPM",
-        difficulty: "Difficulty",
         language: "Language",
         noResults: "No results found.",
 
@@ -72,7 +75,17 @@ const translations = {
         confirmPasswordPlaceholder: "Confirm password",
         passwordMismatch: "Passwords do not match",
         loggingIn: "Logging in...",
-        registering: "Registering..."
+        registering: "Registering...",
+
+        customText: "Custom Text",
+        uploadCustomText: "Upload Your Text",
+        pasteTextHere: "Paste your text here",
+        useCustomText: "Use This Text",
+        backToPresetTexts: "Back to Preset Texts",
+        getNewText: "Get New Text",
+        textSource: "Text Source",
+        presetTexts: "Preset Texts",
+        cancel: "Cancel"
     },
 
     ru: {
@@ -108,10 +121,13 @@ const translations = {
         errorSavingResult: "Ошибка сохранения результата. Проверьте соединение.",
         connectionError: "Ошибка соединения. Попробуйте еще раз.",
         pleaseLogin: "Войдите в систему для прохождения тестов печати...",
+        customTextNotSaved: "Результаты пользовательского текста не сохраняются в базу данных",
+        customTextEmpty: "Пожалуйста, введите текст!",
+        customTextTooShort: "Текст должен содержать не менее 10 символов!",
+        customTextLoaded: "Пользовательский текст загружен успешно!",
 
         date: "Дата",
         wpm: "сл/мин",
-        difficulty: "Сложность",
         language: "Язык",
         noResults: "Результаты не найдены.",
 
@@ -148,7 +164,17 @@ const translations = {
         confirmPasswordPlaceholder: "Подтвердите пароль",
         passwordMismatch: "Пароли не совпадают",
         loggingIn: "Вход в систему...",
-        registering: "Регистрация..."
+        registering: "Регистрация...",
+
+        customText: "Свой Текст",
+        uploadCustomText: "Загрузить Свой Текст",
+        pasteTextHere: "Вставьте ваш текст здесь",
+        useCustomText: "Использовать Этот Текст",
+        backToPresetTexts: "Вернуться к Готовым Текстам",
+        getNewText: "Получить Новый Текст",
+        textSource: "Источник Текста",
+        presetTexts: "Готовые Тексты",
+        cancel: "Отмена"
     }
 };
 
