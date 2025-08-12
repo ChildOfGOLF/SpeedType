@@ -2,6 +2,9 @@ const API_URL = "http://localhost:8080/admin/texts";
 
 document.addEventListener('DOMContentLoaded', function() {
     checkAdminAuth();
+
+    // Добавляем обработчик для формы массовой загрузки
+    document.getElementById('bulkUploadForm').addEventListener('submit', handleBulkUpload);
 });
 
 function checkAdminAuth() {
@@ -227,4 +230,66 @@ function logout() {
     if (confirm('Return to main page?')) {
         window.location.href = '../index.html';
     }
+}
+
+async function handleBulkUpload(event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById('bulkFile');
+    const difficulty = document.getElementById('bulkDifficulty').value;
+    const language = document.getElementById('bulkLanguage').value;
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert('Пожалуйста, выберите файл для загрузки');
+        return;
+    }
+
+    // Проверяем размер файла (макс 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+        alert('Файл слишком большой. Максимальный размер: 5MB');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('difficulty', difficulty);
+    formData.append('language', language);
+
+    const submitBtn = event.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span>⏳</span> Загрузка...';
+    submitBtn.disabled = true;
+
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${API_URL}/bulk-upload`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            body: formData
+        });
+
+        if (response.ok) {
+            const uploadedTexts = await response.json();
+            alert(`Успешно загружено ${uploadedTexts.length} текстов!`);
+            document.getElementById('bulkUploadForm').reset();
+            loadTexts();
+            showNotification(`Добавлено ${uploadedTexts.length} новых текстов`, 'success');
+        } else {
+            const errorData = await response.text();
+            alert(`Ошибка загрузки: ${errorData}`);
+        }
+    } catch (error) {
+        console.error('Error uploading texts:', error);
+        alert('Ошибка при загрузке файла. Попробуйте еще раз.');
+    } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }
+}
+
+function cancelEdit() {
+    document.getElementById('editTextForm').classList.add('hidden');
 }

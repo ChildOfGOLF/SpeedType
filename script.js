@@ -46,6 +46,7 @@ function setupEventListeners() {
     document.getElementById('leaderboardLanguage').addEventListener('change', updateLeaderboard);
 
     document.getElementById('realTimeGameBtn').addEventListener('click', goToRealTimeGame);
+    document.getElementById('progressBtn').addEventListener('click', goToProgressAnalytics);
 
     document.getElementById('myResultsModal').addEventListener('click', function(e) {
         if (e.target === this) {
@@ -624,4 +625,8 @@ function useCustomText() {
 
 function goToRealTimeGame() {
     window.location.href = 'game.html';
+}
+
+function goToProgressAnalytics() {
+    window.location.href = 'progress.html';
 }

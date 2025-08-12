@@ -63,4 +63,9 @@ public interface TypingResultRepository extends JpaRepository<TypingResult, Long
         ORDER BY best_wpm DESC 
         LIMIT :limit""", nativeQuery = true)
     List<Object[]> findTopUsersByLanguageAndWPM(@Param("language") String language, @Param("limit") int limit);
+
+    List<TypingResult> findByUserIdOrderByDateAsc(Long userId);
+
+    @Query("SELECT tr FROM TypingResult tr WHERE tr.user.id = :userId ORDER BY tr.date ASC")
+    List<TypingResult> findByUserIdWithDateOrder(@Param("userId") Long userId);
 }

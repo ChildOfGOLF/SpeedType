@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedType - Progress Analytics</title>
+    <link rel="stylesheet" href="progress.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <h1>SpeedType Analytics</h1>
+                </div>
+                <div class="nav-controls">
+                    <button class="btn btn-secondary" onclick="goBack()">← Back to Main</button>
+                    <span class="username" id="currentUser"></span>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="summary-section">
+                <h2>Progress Summary</h2>
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">S</div>
+                        <div class="card-content">
+                            <h3 id="avgSpeed">0</h3>
+                            <p>Average WPM</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">B</div>
+                        <div class="card-content">
+                            <h3 id="maxSpeed">0</h3>
+                            <p>Best WPM</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">I</div>
+                        <div class="card-content">
+                            <h3 id="improvement">0%</h3>
+                            <p>Improvement</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">T</div>
+                        <div class="card-content">
+                            <h3 id="totalTests">0</h3>
+                            <p>Total Tests</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="filters-section">
+                <h2>Filters</h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="difficultyFilter">Difficulty:</label>
+                        <select id="difficultyFilter">
+                            <option value="">All</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="languageFilter">Language:</label>
+                        <select id="languageFilter">
+                            <option value="">All</option>
+                            <option value="en">English</option>
+                            <option value="ru">Russian</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="timeRange">Time Range:</label>
+                        <select id="timeRange">
+                            <option value="">All Time</option>
+                            <option value="7">Last 7 days</option>
+                            <option value="30">Last 30 days</option>
+                            <option value="90">Last 3 months</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+                </div>
+            </section>
+
+            <section class="chart-section">
+                <h2>Typing Speed Progress</h2>
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <h2>Activity Overview</h2>
+                <div class="activity-grid">
+                    <div class="activity-item">
+                        <h4>Most Active Day</h4>
+                        <p id="mostActiveDay">-</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>Avg Tests per Week</h4>
+                        <p id="avgTestsPerWeek">-</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>Current Streak</h4>
+                        <p id="currentStreak">-</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>Best Streak</h4>
+                        <p id="bestStreak">-</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="progress.js"></script>
+</body>
+</html>

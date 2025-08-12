@@ -120,6 +120,54 @@
                     </div>
                 </form>
             </div>
+
+            <div class="section-header">
+                <div class="section-icon">📁</div>
+                <h2>Bulk Upload Texts</h2>
+            </div>
+
+            <div class="form-container">
+                <form id="bulkUploadForm" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bulkFile">Upload Text File</label>
+                            <input type="file" id="bulkFile" accept=".txt,.md" required>
+                            <div class="file-help">
+                                <p><strong>Supported formats:</strong> .txt, .md</p>
+                                <p><strong>File structure:</strong></p>
+                                <ul>
+                                    <li>Separate texts with empty lines</li>
+                                    <li>Or use separators: --- or ===</li>
+                                    <li>Each text block will become a separate typing exercise</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bulkDifficulty">Difficulty Level</label>
+                            <select id="bulkDifficulty">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bulkLanguage">Language</label>
+                            <select id="bulkLanguage">
+                                <option value="en">English</option>
+                                <option value="ru">Russian</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: end;">
+                            <button type="submit" class="btn btn-success">
+                                <span>📁</span> Upload Texts
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

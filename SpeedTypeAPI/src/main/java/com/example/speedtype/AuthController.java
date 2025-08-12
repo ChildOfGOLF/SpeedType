@@ -48,6 +48,25 @@ public class AuthController {
         }
     }
 
+    @GetMapping("/profile")
+    public ResponseEntity<?> getProfile(@RequestHeader("Authorization") String authHeader) {
+        try {
+            String token = authHeader.replace("Bearer ", "");
+            User user = userService.getUserFromToken(token);
+
+            if (user != null) {
+                UserDTO userDTO = new UserDTO();
+                userDTO.setId(user.getId());
+                userDTO.setUsername(user.getUsername());
+                return ResponseEntity.ok(userDTO);
+            } else {
+                return ResponseEntity.status(401).body("Invalid token");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(401).body("Authentication failed");
+        }
+    }
+
     public static class TokenResponse {
         private String token;
 

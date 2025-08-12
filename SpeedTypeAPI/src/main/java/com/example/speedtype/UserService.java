@@ -43,4 +43,17 @@ public class UserService {
 
         throw new RuntimeException("Invalid credentials!");
     }
+
+    public User getUserFromToken(String token) {
+        try {
+            String username = jwtUtil.extractUsername(token);
+            if (username != null && jwtUtil.validateToken(token, username)) {
+                Optional<User> userOptional = userRepository.findByUsername(username);
+                return userOptional.orElse(null);
+            }
+        } catch (Exception e) {
+            System.err.println("Error extracting user from token: " + e.getMessage());
+        }
+        return null;
+    }
 }
