@@ -1,6 +1,8 @@
 package com.example.speedtype;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,10 +25,20 @@ public class TypingResultService {
         return typingResultRepository.findAll();
     }
 
+    @Cacheable(value = "userResults", key = "#username")
+    public List<TypingResultResponseDTO> getResultsByUserDTO(String username) {
+        List<TypingResult> results = typingResultRepository.findByUserUsernameOrderByDateDesc(username);
+        return results.stream()
+                .map(TypingResultResponseDTO::new)
+                .collect(java.util.stream.Collectors.toList());
+    }
+
+    // старый метод для внутреннего использования без кэширования
     public List<TypingResult> getResultsByUser(String username) {
         return typingResultRepository.findByUserUsernameOrderByDateDesc(username);
     }
 
+    @CacheEvict(value = "userResults", key = "#username")
     public TypingResult saveResult(String username, int typingSpeed, int errors, String difficulty) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found: " + username));
@@ -39,6 +51,7 @@ public class TypingResultService {
         return savedResult;
     }
 
+    @CacheEvict(value = "userResults", key = "#username")
     public TypingResult saveResult(String username, int typingSpeed, int errors, String difficulty, String language) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found: " + username));

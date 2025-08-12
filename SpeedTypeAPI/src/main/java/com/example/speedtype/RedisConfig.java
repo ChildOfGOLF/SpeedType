@@ -59,11 +59,15 @@ public class RedisConfig {
         RedisCacheConfiguration leaderboardConfig = defaultConfig
                 .entryTtl(Duration.ofMinutes(2)); // Рейтинг 2 минуты
 
+        RedisCacheConfiguration userResultsConfig = defaultConfig
+                .entryTtl(Duration.ofMinutes(10)); // Результаты пользователей 10 минут
+
         return RedisCacheManager.builder(connectionFactory)
                 .cacheDefaults(defaultConfig)
                 .withCacheConfiguration("game_states", gameStateConfig)
                 .withCacheConfiguration("player_progress", progressConfig)
                 .withCacheConfiguration("leaderboard", leaderboardConfig)
+                .withCacheConfiguration("userResults", userResultsConfig)
                 .build();
     }
 }

@@ -36,12 +36,7 @@ public class TypingResultController {
         String username = authentication.getName();
 
         try {
-            List<TypingResult> results = typingResultService.getResultsByUser(username);
-
-            List<TypingResultResponseDTO> responseResults = results.stream()
-                    .map(TypingResultResponseDTO::new)
-                    .collect(java.util.stream.Collectors.toList());
-            
+            List<TypingResultResponseDTO> responseResults = typingResultService.getResultsByUserDTO(username);
             return ResponseEntity.ok(responseResults);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
