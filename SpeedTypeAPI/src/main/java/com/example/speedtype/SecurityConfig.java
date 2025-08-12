@@ -38,6 +38,8 @@ public class SecurityConfig {
                         .requestMatchers("/results/**").permitAll()
                         .requestMatchers("/leaderboard/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/ws/**").permitAll()
+                        .requestMatchers("/api/games/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

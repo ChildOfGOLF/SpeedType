@@ -43,15 +43,27 @@ public class RedisConfig {
 
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMinutes(5))    // TTL 5 min
+        RedisCacheConfiguration defaultConfig = RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofMinutes(5))    // Общий TTL 5 минут
                 .serializeKeysWith(org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair
                         .fromSerializer(new StringRedisSerializer()))
                 .serializeValuesWith(org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair
                         .fromSerializer(new GenericJackson2JsonRedisSerializer(redisObjectMapper())));
 
+        RedisCacheConfiguration gameStateConfig = defaultConfig
+                .entryTtl(Duration.ofMinutes(30)); // Состояние игры 30 минут
+
+        RedisCacheConfiguration progressConfig = defaultConfig
+                .entryTtl(Duration.ofMinutes(5)); // Прогресс игроков 5 минут
+
+        RedisCacheConfiguration leaderboardConfig = defaultConfig
+                .entryTtl(Duration.ofMinutes(2)); // Рейтинг 2 минуты
+
         return RedisCacheManager.builder(connectionFactory)
-                .cacheDefaults(config)
+                .cacheDefaults(defaultConfig)
+                .withCacheConfiguration("game_states", gameStateConfig)
+                .withCacheConfiguration("player_progress", progressConfig)
+                .withCacheConfiguration("leaderboard", leaderboardConfig)
                 .build();
     }
 }

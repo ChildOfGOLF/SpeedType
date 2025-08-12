@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Соревнования в реальном времени - SpeedType</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Соревнования в реальном времени</h1>
+            <div class="user-info">
+                <span id="username"></span>
+                <button onclick="logout()">Выйти</button>
+                <button onclick="goToMain()">На главную</button>
+            </div>
+        </header>
+
+        <div id="gameMenu" class="game-menu">
+            <h2>Выберите режим игры</h2>
+            <div class="game-options">
+                <button class="game-btn" onclick="createGame()">Создать игру</button>
+                <button class="game-btn" onclick="showJoinGameModal()">Присоединиться по коду</button>
+                <button class="game-btn" onclick="showWaitingGames()">Доступные игры</button>
+                <button id="stopCurrentGameBtn" class="game-btn btn-danger" onclick="stopCurrentGame()" style="display: none;">Остановить текущую игру</button>
+            </div>
+            <div id="currentGameInfo" class="current-game-info" style="display: none;">
+                <p>Активная игра: <span id="currentGameCode"></span></p>
+                <p>Статус: <span id="currentGameStatus"></span></p>
+            </div>
+        </div>
+
+        <div id="joinGameModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeJoinGameModal()">&times;</span>
+                <h3>Введите код игры</h3>
+                <input type="text" id="gameCodeInput" placeholder="Код игры (например: ABC123)" maxlength="6">
+                <button onclick="joinGameByCode()">Присоединиться</button>
+            </div>
+        </div>
+
+        <div id="waitingGames" class="waiting-games" style="display: none;">
+            <h3>Доступные игры</h3>
+            <div id="gamesList"></div>
+            <button onclick="hideWaitingGames()">Назад</button>
+        </div>
+
+        <div id="gameLobby" class="game-lobby" style="display: none;">
+            <h2>Лобби игры</h2>
+            <div class="game-info">
+                <div class="game-code">
+                    <label>Код игры:</label>
+                    <span id="lobbyGameCode"></span>
+                    <button onclick="copyGameCode()">Копировать</button>
+                </div>
+                <div class="players">
+                    <div class="player">
+                        <span>Игрок 1:</span>
+                        <span id="player1Name"></span>
+                    </div>
+                    <div class="player">
+                        <span>Игрок 2:</span>
+                        <span id="player2Name">Ожидание...</span>
+                    </div>
+                </div>
+                <div class="text-preview">
+                    <h4>Текст для печати:</h4>
+                    <div id="textPreview"></div>
+                </div>
+                <div class="lobby-actions">
+                    <button id="startGameBtn" onclick="startGame()" disabled>Начать игру</button>
+                    <button onclick="leaveGame()">Покинуть игру</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameArea" class="game-area" style="display: none;">
+            <div class="game-header">
+                <div class="game-timer">
+                    <span>Время: <span id="gameTimer">00:00</span></span>
+                </div>
+                <div class="game-status">
+                    <span id="gameStatus">Готовность...</span>
+                </div>
+                <div class="game-controls">
+                    <button id="stopGameBtn" class="btn btn-danger" onclick="stopGame()">Остановить игру</button>
+                </div>
+            </div>
+
+            <div class="players-progress">
+                <div class="player-progress" id="player1Progress">
+                    <div class="player-name"></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="player-stats">
+                        <span class="wpm">0 WPM</span>
+                        <span class="accuracy">100%</span>
+                    </div>
+                </div>
+                <div class="player-progress" id="player2Progress">
+                    <div class="player-name"></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="player-stats">
+                        <span class="wpm">0 WPM</span>
+                        <span class="accuracy">100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-display">
+                <div id="textToType"></div>
+            </div>
+
+            <div class="input-area">
+                <textarea id="userInput" placeholder="Начните печатать здесь..." disabled></textarea>
+            </div>
+
+            <div class="game-results" id="gameResults" style="display: none;">
+                <h3>Результаты игры</h3>
+                <div class="winner">
+                    <span id="winnerText"></span>
+                </div>
+                <div class="final-stats">
+                    <div id="finalStats"></div>
+                </div>
+                <button onclick="newGame()">Новая игра</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

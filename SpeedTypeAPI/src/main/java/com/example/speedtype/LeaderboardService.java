@@ -11,15 +11,11 @@ import java.util.stream.Collectors;
 @Service
 public class LeaderboardService {
 
-    private final TypingResultRepository typingResultRepository;
-
     @Autowired
-    public LeaderboardService(TypingResultRepository typingResultRepository) {
-        this.typingResultRepository = typingResultRepository;
-    }
+    private TypingResultRepository typingResultRepository;
 
     @Cacheable(value = "leaderboard", key = "'top_users_' + #limit")
-    public List<LeaderboardEntryDTO> getTopUsersByWPM(int limit) {
+    public List<LeaderboardEntryDTO> getTopUsers(int limit) {
         List<Object[]> results = typingResultRepository.findTopUsersByWPM(limit);
         return results.stream()
                 .map(this::mapToLeaderboardEntry)
@@ -27,7 +23,7 @@ public class LeaderboardService {
     }
 
     @Cacheable(value = "leaderboard", key = "'top_users_difficulty_' + #difficulty + '_' + #limit")
-    public List<LeaderboardEntryDTO> getTopUsersByDifficultyAndWPM(String difficulty, int limit) {
+    public List<LeaderboardEntryDTO> getTopUsersByDifficulty(String difficulty, int limit) {
         List<Object[]> results = typingResultRepository.findTopUsersByDifficultyAndWPM(difficulty, limit);
         return results.stream()
                 .map(this::mapToLeaderboardEntry)
@@ -35,7 +31,7 @@ public class LeaderboardService {
     }
 
     @Cacheable(value = "leaderboard", key = "'top_users_language_' + #language + '_' + #limit")
-    public List<LeaderboardEntryDTO> getTopUsersByLanguageAndWPM(String language, int limit) {
+    public List<LeaderboardEntryDTO> getTopUsersByLanguage(String language, int limit) {
         List<Object[]> results = typingResultRepository.findTopUsersByLanguageAndWPM(language, limit);
         return results.stream()
                 .map(this::mapToLeaderboardEntry)

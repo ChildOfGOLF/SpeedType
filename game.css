@@ -1,0 +1,394 @@
+.game-menu {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.game-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.game-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.game-btn:hover {
+    background: #0056b3;
+}
+
+.current-game-info {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.current-game-info p {
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+.current-game-info span {
+    color: #856404;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 400px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#gameCodeInput {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.waiting-games {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.game-item {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-item-info {
+    flex: 1;
+}
+
+.game-item button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.game-lobby {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.game-info {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.game-code {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.game-code span {
+    font-weight: bold;
+    font-family: monospace;
+    background: #e9ecef;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.players {
+    margin: 1.5rem 0;
+}
+
+.player {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.text-preview {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.lobby-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+#startGameBtn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+.game-area {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.game-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.game-status {
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+.players-progress {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.player-progress {
+    flex: 1;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.player-progress.current-user {
+    border-color: #007bff;
+}
+
+.player-progress.opponent {
+    border-color: #dc3545;
+}
+
+.player-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #28a745, #20c997);
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.player-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.text-display {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    min-height: 200px;
+}
+
+.char-correct {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.char-incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.char-current {
+    background-color: #007bff;
+    color: white;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.5; }
+}
+
+.input-area {
+    margin-bottom: 2rem;
+}
+
+#userInput {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    resize: vertical;
+}
+
+#userInput:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.game-results {
+    background: white;
+    border: 2px solid #28a745;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.winner {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.final-stats {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.results-section {
+    flex: 1;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 4px solid #007bff;
+}
+
+.results-section h4 {
+    color: #007bff;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.results-section div {
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.results-section div:last-child {
+    border-bottom: none;
+}
+
+.game-results button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.game-results button:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .players-progress {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .game-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .lobby-actions {
+        flex-direction: column;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+
+    .final-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .results-section {
+        margin-bottom: 1.5rem;
+    }
+}

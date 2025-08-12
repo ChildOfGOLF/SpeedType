@@ -45,6 +45,8 @@ function setupEventListeners() {
     document.getElementById('leaderboardDifficulty').addEventListener('change', updateLeaderboard);
     document.getElementById('leaderboardLanguage').addEventListener('change', updateLeaderboard);
 
+    document.getElementById('realTimeGameBtn').addEventListener('click', goToRealTimeGame);
+
     document.getElementById('myResultsModal').addEventListener('click', function(e) {
         if (e.target === this) {
             closeModal();
@@ -103,7 +105,7 @@ function showUserPanel(username) {
 
     const inputText = document.getElementById('inputText');
     inputText.disabled = false;
-    inputText.placeholder = t('typeHere'); // Используем локализованный текст
+    inputText.placeholder = t('typeHere');
 
     document.getElementById('startBtn').disabled = false;
 }
@@ -115,7 +117,7 @@ function showGuestPanel() {
 
     const inputText = document.getElementById('inputText');
     inputText.disabled = true;
-    inputText.placeholder = t('pleaseLogin'); // Используем локализованный текст
+    inputText.placeholder = t('pleaseLogin');
     inputText.value = '';
 
     document.getElementById('startBtn').disabled = true;
@@ -391,7 +393,6 @@ function closeModal() {
 function setTextLanguage() {
     currentTextLanguage = document.getElementById('textLanguageSelect').value;
     localStorage.setItem('textLanguage', currentTextLanguage);
-    // Сбрасываем флаг кастомного текста при смене языка
     isCustomTextMode = false;
     setDifficulty();
 }
@@ -619,4 +620,8 @@ function useCustomText() {
 
     showSaveStatus('customTextLoaded', 'success');
     resetTest();
+}
+
+function goToRealTimeGame() {
+    window.location.href = 'game.html';
 }
