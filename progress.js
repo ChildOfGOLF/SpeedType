@@ -131,12 +131,23 @@ function initializeCharts() {
                     title: {
                         display: true,
                         text: 'Words Per Minute'
+                    },
+                    ticks: {
+                        stepSize: 5 // уменьшенный шаг
                     }
                 },
                 x: {
                     title: {
                         display: true,
                         text: 'Date'
+                    },
+                    ticks: {
+                        callback: function(value, index, ticks) {
+                            // Показываем только день и месяц
+                            const label = this.getLabelForValue(value);
+                            const parts = label.split(' ');
+                            return parts.length > 1 ? parts[1] + ' ' + parts[0] : label;
+                        }
                     }
                 }
             }

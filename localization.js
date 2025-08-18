@@ -6,6 +6,7 @@ const translations = {
         register: "Register",
         logout: "Logout",
         myResults: "My Results",
+        progress: "Progress",
         interface: "Interface",
         leaderboard: "Leaderboard",
 
@@ -74,6 +75,11 @@ const translations = {
         loginButton: "Login",
         registerButton: "Register",
         backToMain: "← Back to SpeedType",
+        loginTitle: "Login - SpeedType",
+        welcomeTitle: "Welcome to SpeedType",
+        username: "Username",
+        password: "Password",
+        confirmPassword: "Confirm Password",
 
         loginSuccess: "Login successful! Redirecting...",
         loginError: "Invalid username or password",
@@ -83,7 +89,29 @@ const translations = {
         registering: "Registering...",
         loggingIn: "Logging in...",
 
-        realTimeGame: "Real-time Game"
+        realTimeGame: "Real-time Game",
+
+        activityTitle: "SpeedType Activity",
+        progressSummary: "Progress Summary",
+        filters: "Filters",
+        averageWPM: "Average WPM",
+        bestWPM: "Best WPM",
+        improvement: "Improvement",
+        totalTests: "Total Tests",
+        allDifficulties: "All",
+        allLanguages: "All",
+        timeRange: "Time Range:",
+        allTime: "All Time",
+        last7days: "Last 7 days",
+        last30days: "Last 30 days",
+        last3months: "Last 3 months",
+        applyFilters: "Apply Filters",
+        mostActiveDay: "Most Active Day",
+        avgTestsPerWeek: "Avg Tests per Week",
+        currentStreak: "Current Streak",
+        bestStreak: "Best Streak",
+        activityOverview: "Activity Overview",
+        progress: "Progress"
     },
 
     ru: {
@@ -93,6 +121,7 @@ const translations = {
         register: "Регистрация",
         logout: "Выйти",
         myResults: "Мои результаты",
+        progress: "Прогресс",
         interface: "Интерфейс",
         leaderboard: "Рейтинг",
 
@@ -161,6 +190,11 @@ const translations = {
         loginButton: "Войти",
         registerButton: "Зарегистрироваться",
         backToMain: "← Вернуться на главную",
+        loginTitle: "Вход - SpeedType",
+        welcomeTitle: "Добро пожаловать в SpeedType",
+        username: "Имя пользователя",
+        password: "Пароль",
+        confirmPassword: "Подтвердите пароль",
 
         loginSuccess: "Вход выполнен успешно! Перенаправление...",
         loginError: "Неверное имя пользователя или пароль",
@@ -170,7 +204,28 @@ const translations = {
         registering: "Регистрация...",
         loggingIn: "Вход...",
 
-        realTimeGame: "Игра в реальном времени"
+        realTimeGame: "Турнир",
+
+        activityTitle: "Активность SpeedType",
+        progressSummary: "Сводка прогресса",
+        filters: "Фильтры",
+        averageWPM: "Средний СПМ",
+        bestWPM: "Лучший СПМ",
+        improvement: "Прогресс",
+        totalTests: "Всего тестов",
+        allDifficulties: "Все",
+        allLanguages: "Все",
+        timeRange: "Период:",
+        allTime: "Всё время",
+        last7days: "Последние 7 дней",
+        last30days: "Последние 30 дней",
+        last3months: "Последние 3 месяца",
+        applyFilters: "Применить фильтры",
+        mostActiveDay: "Самый активный день",
+        avgTestsPerWeek: "Среднее тестов в неделю",
+        currentStreak: "Текущая серия",
+        bestStreak: "Лучшая серия",
+        activityOverview: "Обзор активности",
     }
 };
 

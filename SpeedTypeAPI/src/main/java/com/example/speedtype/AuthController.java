@@ -51,7 +51,10 @@ public class AuthController {
     @GetMapping("/profile")
     public ResponseEntity<?> getProfile(@RequestHeader("Authorization") String authHeader) {
         try {
-            String token = authHeader.replace("Bearer ", "");
+            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                return ResponseEntity.status(401).body("Missing or invalid Authorization header");
+            }
+            String token = authHeader.substring(7);
             User user = userService.getUserFromToken(token);
 
             if (user != null) {

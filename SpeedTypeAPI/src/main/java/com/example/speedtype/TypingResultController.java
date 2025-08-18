@@ -56,11 +56,11 @@ public class TypingResultController {
 
         try {
             TypingResult savedResult = typingResultService.saveResult(
-                username,
-                resultDTO.getTypingSpeed(),
-                resultDTO.getErrors(),
-                resultDTO.getDifficulty(),
-                resultDTO.getLanguage() != null ? resultDTO.getLanguage() : "en"
+                    username,
+                    resultDTO.getTypingSpeed(),
+                    resultDTO.getErrors(),
+                    resultDTO.getDifficulty(),
+                    resultDTO.getLanguage() != null ? resultDTO.getLanguage() : "en"
             );
 
             return ResponseEntity.ok(new TypingResultResponseDTO(savedResult));

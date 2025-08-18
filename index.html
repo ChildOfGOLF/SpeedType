@@ -9,51 +9,137 @@
 <body>
     <div class="container">
         <header>
-            <h1 data-translate="title">SpeedType</h1>
-            <div class="language-controls">
-                <label for="interfaceLanguageSelect" data-translate="interface">Interface:</label>
-                <select id="interfaceLanguageSelect">
-                    <option value="en" data-translate="english">English</option>
-                    <option value="ru" data-translate="russian">Russian</option>
-                </select>
-            </div>
-            <div class="auth-section">
-                <div id="userPanel" class="user-panel hidden">
-                    <span><span data-translate="welcome">Welcome</span>, <span id="usernameDisplay"></span>!</span>
-                    <button id="progressBtn" class="btn btn-secondary" data-translate="progress">Progress Analytics</button>
-                    <button id="realTimeGameBtn" class="btn btn-primary" data-translate="realTimeGame">Real-time Game</button>
-                    <button id="leaderboardBtn" class="btn btn-secondary" data-translate="leaderboard">Leaderboard</button>
-                    <button id="myResultsBtn" class="btn btn-secondary" data-translate="myResults">My Results</button>
-                    <button id="logoutBtn" class="btn btn-logout" data-translate="logout">Logout</button>
+            <div class="header-top">
+                <!-- Первая строка: заголовок и переключатель языка -->
+                <div class="header-row">
+                    <div class="header-left">
+                        <div class="title-section">
+                            <h1 data-translate="title">SpeedType</h1>
+                            <div id="welcomeText" class="welcome-text hidden">
+                                <span><span data-translate="welcome">Welcome</span>, <span id="usernameDisplay"></span>!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <!-- Переключатель языка -->
+                        <div class="language-switcher">
+                            <select id="interfaceLanguageSelect">
+                                <option value="en" data-translate="english">English</option>
+                                <option value="ru" data-translate="russian">Russian</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="guestPanel" class="guest-panel">
-                    <button id="leaderboardBtn2" class="btn btn-secondary" data-translate="leaderboard">Leaderboard</button>
-                    <button id="loginLinkBtn" class="btn btn-primary" data-translate="login">Login / Register</button>
+                <!-- Вторая строка: кнопки навигации и авторизации -->
+                <div class="header-row">
+                    <div class="header-left">
+                        <div class="header-buttons">
+                            <div id="userButtons" class="user-buttons hidden">
+                                <button id="realTimeGameBtn" class="btn btn-primary" data-translate="realTimeGame">Real-time</button>
+                                <button id="progressBtn" class="btn btn-info" data-translate="progress">Progress</button>
+                                <button id="myResultsBtn" class="btn btn-secondary" data-translate="myResults">Results</button>
+                                <button id="leaderboardBtn" class="btn btn-secondary" data-translate="leaderboard">Board</button>
+                            </div>
+                            <div id="guestButtons" class="guest-buttons">
+                                <button id="leaderboardBtn2" class="btn btn-secondary" data-translate="leaderboard">Board</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <div class="header-right-buttons">
+                            <button id="loginLinkBtn" class="btn btn-primary auth-btn" data-translate="login">Login / Register</button>
+                            <button id="logoutBtn" class="btn btn-logout auth-btn hidden" data-translate="logout">Logout</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
 
         <main>
-            <div class="controls-section">
-                <div class="difficulty-section">
-                    <label for="difficultySelect" data-translate="difficulty">Difficulty:</label>
-                    <select id="difficultySelect">
-                        <option value="easy" data-translate="easy">Easy</option>
-                        <option value="medium" data-translate="medium">Medium</option>
-                        <option value="hard" data-translate="hard">Hard</option>
-                    </select>
+            <!-- Панель быстрых настроек -->
+            <div class="quick-settings">
+                <div class="settings-group">
+                    <div class="setting-item">
+                        <label for="difficultySelect" data-translate="difficulty">Difficulty:</label>
+                        <select id="difficultySelect">
+                            <option value="easy" data-translate="easy">Easy</option>
+                            <option value="medium" data-translate="medium">Medium</option>
+                            <option value="hard" data-translate="hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-item">
+                        <label for="textLanguageSelect" data-translate="textLanguage">Language:</label>
+                        <select id="textLanguageSelect">
+                            <option value="en" data-translate="english">English</option>
+                            <option value="ru" data-translate="russian">Russian</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="language-section">
-                    <label for="textLanguageSelect" data-translate="textLanguage">Language:</label>
-                    <select id="textLanguageSelect">
-                        <option value="en" data-translate="english">English</option>
-                        <option value="ru" data-translate="russian">Russian</option>
-                    </select>
+                <div class="quick-actions">
+                    <button id="getNewTextBtn" class="btn btn-secondary" data-translate="getNewText">New Text</button>
+                    <button id="customTextBtn" class="btn btn-info" data-translate="customText">Custom Text</button>
                 </div>
             </div>
 
+            <!-- Область тестирования -->
+            <div class="test-area">
+                <div class="text-display" id="displayText" data-translate="loadingText">
+                    Loading text...
+                </div>
+
+                <div class="input-section">
+                    <textarea id="inputText" placeholder="Type the text above here..." data-translate="typeHere" disabled></textarea>
+                </div>
+
+                <!-- Основные кнопки управления -->
+                <div class="main-controls">
+                    <button id="startBtn" class="btn btn-primary btn-large" data-translate="startTest">Start Test</button>
+                    <button id="resetBtn" class="btn btn-secondary" data-translate="reset">Reset</button>
+                </div>
+
+                <!-- Статистика в реальном времени -->
+                <div class="stats">
+                    <div class="stat">
+                        <label data-translate="time">Time (s):</label>
+                        <span id="timeDisplay">0</span>
+                    </div>
+                    <div class="stat">
+                        <label data-translate="speed">Speed (WPM):</label>
+                        <span id="speedDisplay">0</span>
+                    </div>
+                    <div class="stat">
+                        <label data-translate="errors">Errors:</label>
+                        <span id="errorDisplay">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Результаты теста -->
+            <div id="finalResults" class="final-results hidden">
+                <div class="results-header">
+                    <h3 data-translate="testComplete">Test Complete!</h3>
+                    <div class="completion-animation">🎉</div>
+                </div>
+                <div class="results-content">
+                    <div class="result-highlight">
+                        <span class="result-label" data-translate="yourTypingSpeed">Your typing speed</span>
+                        <span class="result-value"><span id="finalSpeed">0</span> <span data-translate="wpm">WPM</span></span>
+                    </div>
+                    <div class="result-secondary">
+                        <span data-translate="totalErrors">Total errors</span>: <strong><span id="finalErrors">0</span></strong>
+                    </div>
+                    <div class="results-actions">
+                        <button id="retryBtn" class="btn btn-primary" data-translate="tryAgain">Try Again</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="saveStatus" class="save-status hidden"></div>
+
+            <!-- Модальные окна -->
             <div id="customTextModal" class="modal hidden">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -73,48 +159,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="text-display" id="displayText" data-translate="loadingText">
-                Loading text...
-            </div>
-
-            <div class="input-section">
-                <textarea id="inputText" placeholder="Type the text above here..." data-translate="typeHere" disabled></textarea>
-            </div>
-
-            <div class="controls">
-                <button id="startBtn" class="btn btn-primary" data-translate="startTest">Start Test</button>
-                <button id="resetBtn" class="btn btn-secondary" data-translate="reset">Reset</button>
-                <button id="getNewTextBtn" class="btn btn-secondary" data-translate="getNewText">Get New Text</button>
-                <button id="customTextBtn" class="btn btn-info" data-translate="customText">Custom Text</button>
-            </div>
-
-            <div class="stats">
-                <div class="stat">
-                    <label data-translate="time">Time (s):</label>
-                    <span id="timeDisplay">0</span>
-                </div>
-                <div class="stat">
-                    <label data-translate="speed">Speed (WPM):</label>
-                    <span id="speedDisplay">0</span>
-                </div>
-                <div class="stat">
-                    <label data-translate="errors">Errors:</label>
-                    <span id="errorDisplay">0</span>
-                </div>
-            </div>
-
-            <div id="finalResults" class="final-results hidden">
-                <h3 data-translate="testComplete">Test Complete!</h3>
-                <p><span data-translate="yourTypingSpeed">Your typing speed</span>: <strong><span id="finalSpeed">0</span> <span data-translate="wpm">WPM</span></strong></p>
-                <p><span data-translate="totalErrors">Total errors</span>: <strong><span id="finalErrors">0</span></strong></p>
-                <button id="retryBtn" class="btn btn-primary" data-translate="tryAgain">Try Again</button>
-            </div>
-
-            <div id="saveStatus" class="save-status hidden"></div>
         </main>
     </div>
 
+    <!-- Остальные модальные окна остаются без изменений -->
     <div id="myResultsModal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">

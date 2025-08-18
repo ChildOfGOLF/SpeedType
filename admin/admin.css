@@ -1,69 +1,75 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    padding: 20px;
+textarea {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
+
+.section-header h2 {
+    font-size: 1.8rem;
     background: white;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
-.admin-header {
+.admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+.section-icon {
+    width: 30px;
+    height: 30px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 30px;
-    text-align: center;
-    position: relative;
-}
-
-.admin-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: 300;
-}
-
-.admin-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-.logout-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.logout-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-}
-
-.admin-content {
-    padding: 40px;
-}
-
-.section-header {
     display: flex;
     align-items: center;
+    padding: 24px 32px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+textarea {
+.admin-title {
+    resize: vertical;
+    font-size: 2rem;
+}
+    background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+.btn {
+    padding: 12px 25px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+.admin-badge {
+    background: var(--warning-gradient);
+    color: var(--text-white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    gap: 8px;
+}
+.btn-primary {
+    padding: 40px;
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+}
     margin-bottom: 25px;
     padding-bottom: 15px;
     border-bottom: 2px solid #f0f0f0;
@@ -73,52 +79,52 @@ body {
     font-size: 1.8rem;
     color: #333;
     margin-right: 15px;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
 }
-
-.section-icon {
     width: 30px;
     height: 30px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: white;
-    font-weight: bold;
 }
 
-.form-container {
+.btn-danger:hover {
+    color: white;
+    font-weight: bold;
+    background: #5a6268;
+    transform: translateY(-2px);
+
     background: #f8f9fa;
     padding: 30px;
     border-radius: 15px;
     margin-bottom: 40px;
     border: 1px solid #e9ecef;
-}
-
-.form-row {
-    display: flex;
-    gap: 20px;
+.table-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     margin-bottom: 20px;
-}
 
-.form-group {
-    flex: 1;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #495057;
-}
-
-textarea, select, input {
+table {
     width: 100%;
-    padding: 15px;
+    border-collapse: collapse;
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+    padding: 20px 15px;
+    color: #495057;
+    font-weight: 600;
+    color: white;
+textarea, select, input {
+}
+
     border: 2px solid #e9ecef;
     border-radius: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+
     background: white;
 }
 
@@ -126,24 +132,24 @@ textarea:focus, select:focus, input:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background-color: #f8f9fa;
 }
-
 textarea {
-    min-height: 120px;
-    resize: vertical;
+tr:last-child td {
+    border-bottom: none;
     font-family: inherit;
-}
-
-.btn {
+    border-radius: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
     padding: 12px 25px;
-    border: none;
+}
     border-radius: 10px;
-    font-size: 16px;
-    font-weight: 600;
+    background: #d4edda;
+    color: #155724;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
+}
+
     gap: 8px;
 }
 
@@ -201,7 +207,7 @@ textarea {
 }
 
 table {
-    width: 100%;
+    font-weight: 600;
     border-collapse: collapse;
 }
 
@@ -257,15 +263,15 @@ tr:last-child td {
     background: #fff3cd;
     color: #856404;
 }
-
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 .difficulty-hard {
     background: #f8d7da;
     color: #721c24;
-}
-
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 .actions {
     display: flex;
-    gap: 8px;
+    background: #f8d7da;
 }
 
 .edit-form {
@@ -275,7 +281,7 @@ tr:last-child td {
     padding: 30px;
     margin-top: 30px;
 }
-
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 .edit-form h3 {
     color: #856404;
     margin-bottom: 20px;
@@ -283,19 +289,19 @@ tr:last-child td {
     align-items: center;
     gap: 10px;
 }
-
+    margin: 0 auto;
 .hidden {
     display: none !important;
-}
-
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
 .loading {
     text-align: center;
     padding: 40px;
     color: #6c757d;
+    border-bottom: 2px solid #f0f0f0;
 }
-
 .loading::after {
-    content: '';
+    display: flex;
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -304,14 +310,14 @@ tr:last-child td {
     border-top-color: transparent;
     animation: spin 1s linear infinite;
     margin-left: 10px;
-}
-
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
 @keyframes spin {
     to {
         transform: rotate(360deg);
     }
 }
-
+    width: 30px;
 .language-badge {
     padding: 4px 8px;
     border-radius: 12px;
@@ -321,11 +327,11 @@ tr:last-child td {
     color: white;
     text-transform: uppercase;
 }
-
+    color: white;
 .difficulty-badge.easy {
     background: #28a745;
     color: white;
-}
+    gap: 20px;
 
 .difficulty-badge.medium {
     background: #ffc107;
@@ -360,7 +366,7 @@ tr:last-child td {
 }
 
 input[type="file"] {
-    width: 100%;
+.edit-form {
     padding: 12px;
     border: 2px dashed #dee2e6;
     border-radius: 8px;
@@ -378,22 +384,22 @@ input[type="file"]:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
+    padding: 30px;
+    margin-top: 30px;
 .alert {
     padding: 15px 20px;
     margin-bottom: 20px;
     border-radius: 8px;
     font-weight: 500;
     animation: slideDown 0.3s ease;
-}
-
+.edit-form h3 {
+    color: #856404;
 .alert-success {
     background: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
+    gap: 10px;
 }
-
 .alert-error {
     background: #f8d7da;
     color: #721c24;
@@ -409,54 +415,5501 @@ input[type="file"]:focus {
         opacity: 1;
         transform: translateY(0);
     }
+    padding: 40px;
+    color: #6c757d;
+/* Основная сетка админки */
+.admin-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    display: inline-block;
+    width: 20px;
+/* Боковая панель */
+.admin-sidebar {
+}
+
+    padding: 4px 8px;
+    border-radius: 12px;
+    padding: 24px;
+    font-weight: 600;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    background: #6c757d;
+    color: white;
+.sidebar-section {
+.difficulty-badge.easy {
+}
+
+.sidebar-section h3 {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin-bottom: 8px;
+}
+
+.sidebar-menu a {
+    background: #ffc107;
+    align-items: center;
+    padding: 12px 16px;
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: var(--accent-gradient);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+}
+
+.sidebar-menu a .icon {
+    margin-right: 12px;
+    font-size: 1.1rem;
+.file-help {
+    margin-top: 10px;
+/* Основной контент админки */
+.admin-main {
+    height: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-danger:hover {
+    box-shadow: var(--shadow-xl);
+    margin-bottom: 8px;
+}
+/* Статистические карточки */
+.stats-grid {
+.file-help ul {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    color: white;
+    margin-bottom: 0;
+}
+.admin-stat-card {
+.file-help li {
+    border-radius: var(--radius-md);
+    margin-bottom: 4px;
+
+    width: 100%;
+    transform: translateY(-2px);
+
+    background: #f8f9fa;
+    padding: 30px;
+.admin-stat-card::before {
+    margin-bottom: 40px;
+    border: 1px solid #e9ecef;
+.table-container {
+    left: 0;
+    border-radius: 15px;
+    height: 4px;
+    background: var(--accent-gradient);
+    padding: 12px;
+    border: 2px dashed #dee2e6;
+.admin-stat-card:hover {
+    transform: translateY(-4px);
+    border-radius: 10px;
+
+    gap: 8px;
+.stat-header {
+input[type="file"]:hover {
+}
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
+input[type="file"]:focus {
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+}
+
+.btn-danger:hover {
+    font-size: 1.5rem;
+    transform: translateY(-2px);
+}
+
+.stat-icon.users {
+    background: var(--success-gradient);
+}
+
+.stat-icon.texts {
+    background: var(--accent-gradient);
+}
+
+.stat-icon.results {
+    background: var(--warning-gradient);
+}
+
+.stat-icon.performance {
+    background: var(--danger-gradient);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.3);
+    border-color: #667eea;
+    margin-bottom: 4px;
+
+.alert {
+.stat-label {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.stat-change {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+.btn-secondary {
+    background: #6c757d;
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    background: #5a6268;
+    transform: translateY(-2px);
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+.btn-small {
+    font-size: 14px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.table-container {
+    background: white;
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+    font-weight: 600;
+th {
+    text-align: left;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    font-size: 14px;
+.form-group textarea,
+.form-group select {
+}
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+    margin-bottom: 24px;
+    background: white;
+
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+tr:hover {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+    resize: vertical;
+    min-height: 120px;
+.text-content {
+    max-width: 300px;
+    word-wrap: break-word;
+.form-group textarea:focus,
+.form-group select:focus {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+.difficulty-badge {
+    padding: 4px 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+    margin: 0 auto;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+    width: 30px;
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+    color: white;
+.admin-table th {
+    resize: vertical;
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    font-size: 12px;
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+    vertical-align: top;
+    gap: 20px;
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+}
+
+.difficulty-easy {
+    font-size: 12px;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    color: #856404;
+    font-size: 16px;
+    font-weight: 600;
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    padding: 8px 16px;
+}
+    font-size: 12px;
+.edit-form {
+    background: #fff3cd;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 20px;
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+.admin-modal-content {
+}
+
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-weight: 600;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+    background: #6c757d;
+    color: white;
+.modal-header {
+}
+    justify-content: space-between;
+    align-items: center;
+.difficulty-badge.easy {
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid #f0f0f0;
+}
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+}
+.notification.success {
+    background: var(--success-gradient);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.notification.error {
+    background: var(--danger-gradient);
+
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    color: white;
+}
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    padding: 24px;
+
+    transition: all 0.3s ease;
+    position: relative;
+    color: white;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+.difficulty-badge.hard {
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    margin-top: 10px;
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    color: var(--text-secondary);
+    color: #6c757d;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    margin-bottom: 8px;
+}
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+    margin-bottom: 0;
+}
+/* Формы и элементы управления */
+.admin-form {
+.file-help li {
+    border-radius: var(--radius-md);
+    margin-bottom: 4px;
+    margin-bottom: 24px;
+
+
+input[type="file"]:focus {
+.admin-form h3 {
+    border-color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    padding: 30px;
+    color: #721c24;
+    color: var(--text-primary);
+    font-size: 14px;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    border-radius: 15px;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #6c757d;
+.difficulty-badge.easy {
+    background: white;
+
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+
+table {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+textarea, select, input {
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 12px;
+    color: white;
+
+}
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+textarea {
+.action-btn.edit {
+    background: var(--accent-gradient);
+    border-bottom: none;
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    background: #d4edda;
+    color: #155724;
+/* Модальные окна для админки */
+.admin-modal {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    gap: 8px;
+}
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+
+.btn-success {
+.modal-header {
+    color: white;
+    justify-content: space-between;
+}
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    color: white;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid #f0f0f0;
+}
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    transform: translateY(-2px);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+.file-help {
+.notification.success {
+    background: var(--success-gradient);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.notification.error {
+    background: var(--danger-gradient);
+}
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    color: white;
+    margin-bottom: 0;
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    margin-bottom: 4px;
+
+    border-radius: 15px;
+    position: relative;
+    border: 2px dashed #dee2e6;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    border-color: #667eea;
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    background: #6c757d;
+    .admin-stat-card {
+        padding: 16px;
+    }
+    transform: translateY(-2px);
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.stat-change {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+
+table {
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+/* Формы и элементы управления */
+.admin-form {
+.btn-small {
+    font-size: 14px;
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+table {
+    font-weight: 600;
+    margin-bottom: 20px;
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+    font-weight: 600;
+th {
+    text-align: left;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    font-size: 14px;
+.form-group textarea,
+.form-group select {
+}
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+    margin-bottom: 24px;
+    background: white;
+
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+tr:last-child td {
+.text-content {
+    max-width: 300px;
+    word-wrap: break-word;
+.form-group textarea:focus,
+.form-group select:focus {
+
+.difficulty-badge {
+    padding: 4px 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+textarea, select, input {
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    font-size: 12px;
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+}
+
+.difficulty-easy {
+    font-size: 12px;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    color: #856404;
+}
+
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+}
+    left: 0;
+.edit-form {
+    background: #fff3cd;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border: 2px solid #e9ecef;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 20px;
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+.admin-modal-content {
+}
+
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-weight: 600;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+    background: #6c757d;
+    color: white;
+.modal-header {
+}
+    justify-content: space-between;
+    align-items: center;
+.difficulty-badge.easy {
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    border-radius: 10px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+}
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+}
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    padding: 24px;
+
+    transition: all 0.3s ease;
+    position: relative;
+    color: white;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    color: var(--text-primary);
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+.difficulty-badge.hard {
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    margin-top: 10px;
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    color: var(--text-secondary);
+    color: #6c757d;
+    border-bottom: 1px solid #f0f0f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+}
+
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+}
+    border-radius: var(--radius-md);
+    margin-bottom: 4px;
+    margin-bottom: 24px;
+
+
+input[type="file"]:focus {
+.admin-form h3 {
+    border-color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    padding: 30px;
+    color: #721c24;
+    color: var(--text-primary);
+    font-size: 14px;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #6c757d;
+.difficulty-badge.easy {
+    background: white;
+
+
+    font-family: inherit;
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+}
+
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: white;
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+.sidebar-menu {
+    list-style: none;
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+.sidebar-menu li {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+    transition: all 0.3s ease;
+}
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+textarea {
+.action-btn.edit {
+    background: var(--accent-gradient);
+    border-bottom: none;
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    background: #d4edda;
+    color: #155724;
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    gap: 8px;
+}
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+
+.btn-success {
+.modal-header {
+    color: white;
+    justify-content: space-between;
+}
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+.file-help {
+.notification.success {
+    background: var(--success-gradient);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.notification.error {
+    background: var(--danger-gradient);
+}
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    color: white;
+    margin-bottom: 0;
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    margin-bottom: 4px;
+
+    width: 100%;
+    transform: translateY(-2px);
+    border: 2px dashed #dee2e6;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+.admin-stat-card:hover {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    gap: 8px;
+
+    .form-actions {
+}
+    transform: translateY(-2px);
+
+    .admin-table-container {
+        overflow-x: auto;
+    height: 48px;
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+.btn-danger:hover {
+}
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+    background: var(--success-gradient);
+    .stat-value {
+        font-size: 2rem;
+    }
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.3);
+    border-color: #667eea;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.stat-change {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+.btn-secondary {
+    background: #6c757d;
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    background: #5a6268;
+    transform: translateY(-2px);
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+.btn-small {
+    font-size: 14px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.table-container {
+    background: white;
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+    font-weight: 600;
+th {
+    text-align: left;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    font-size: 14px;
+.form-group textarea,
+.form-group select {
+}
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+    margin-bottom: 24px;
+    background: white;
+
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+}
+    resize: vertical;
+    min-height: 120px;
+.text-content {
+    max-width: 300px;
+    word-wrap: break-word;
+.form-group textarea:focus,
+.form-group select:focus {
+
+.difficulty-badge {
+    padding: 4px 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    font-size: 12px;
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+}
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+}
+
+.difficulty-easy {
+    font-size: 12px;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    color: #856404;
+}
+
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+}
+    left: 0;
+.edit-form {
+    background: #fff3cd;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+.btn-danger:hover {
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 20px;
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+.admin-modal-content {
+}
+
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-weight: 600;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+    background: #6c757d;
+    color: white;
+.modal-header {
+}
+    justify-content: space-between;
+    align-items: center;
+.difficulty-badge.easy {
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    transform: translateY(-2px);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+}
+}
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+}
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+}
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    padding: 24px;
+
+    transition: all 0.3s ease;
+    position: relative;
+    color: white;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    color: var(--text-primary);
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+.difficulty-badge.hard {
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    margin-top: 10px;
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    color: var(--text-secondary);
+    color: #6c757d;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-change {
+    font-size: 12px;
+.btn-secondary:hover {
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+    background: #5a6268;
+    transform: translateY(-2px);
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    margin-bottom: 8px;
+}
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+    margin-bottom: 0;
+}
+/* Формы и элементы управления */
+.admin-form {
+.file-help li {
+    font-size: 14px;
+    margin-bottom: 4px;
+    margin-bottom: 30px;
+
+
+input[type="file"]:focus {
+.admin-form h3 {
+    border-color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+
+table {
+    font-weight: 600;
+    margin-bottom: 20px;
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+    padding: 30px;
+    color: #721c24;
+th {
+    text-align: left;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    font-size: 14px;
+.form-group textarea,
+.form-group select {
+}
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #6c757d;
+.difficulty-badge.easy {
+    background: white;
+
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+tr:last-child td {
+.text-content {
+    max-width: 300px;
+    word-wrap: break-word;
+.form-group textarea:focus,
+.form-group select:focus {
+
+.difficulty-badge {
+    padding: 4px 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    font-size: 12px;
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+}
+
+.difficulty-easy {
+    font-size: 12px;
+    color: white;
+    transition: all 0.3s ease;
+    color: #856404;
+}
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+}
+    left: 0;
+.edit-form {
+    background: #fff3cd;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 20px;
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+.admin-modal-content {
+}
+    width: 30px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-weight: 600;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+    background: #6c757d;
+    color: white;
+.modal-header {
+}
+    justify-content: space-between;
+    align-items: center;
+.difficulty-badge.easy {
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    gap: 20px;
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+
+.difficulty-badge.hard {
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: white;
+}
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+.file-help {
+
+.notification.show {
+    transform: translateX(0);
+}
+.file-help {
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+}
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+    margin-bottom: 0;
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    margin-bottom: 4px;
+
+    width: 100%;
+    position: relative;
+    border: 2px dashed #dee2e6;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    border-color: #667eea;
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    margin-top: 10px;
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.stat-change {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    margin-bottom: 8px;
+}
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+    margin-bottom: 0;
+}
+/* Формы и элементы управления */
+.admin-form {
+.file-help li {
+}
+    padding: 24px;
+    margin-bottom: 24px;
+
+}
+
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+    margin-bottom: 24px;
+    background: white;
+
+.edit-form {
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+
+input[type="file"]:focus {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    padding: 30px;
+    margin-top: 30px;
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+.alert {
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+    animation: slideDown 0.3s ease;
+.edit-form h3 {
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    background: #f8d7da;
+        transform: translateY(-10px);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    }
+    to {
+.action-btn.edit {
+    background: var(--accent-gradient);
+    }
+    padding: 40px;
+    color: #6c757d;
+.action-btn.delete {
+.admin-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+/* Боковая панель */
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+.admin-sidebar {
+}
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    border-radius: 12px;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    padding: 24px;
+
+.notification.show {
+    transform: translateX(0);
+}
+}
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+}
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    padding: 24px;
+
+    transition: all 0.3s ease;
+    position: relative;
+    align-items: center;
+        text-align: center;
+    }
+    font-weight: 600;
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    color: var(--text-primary);
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+}
+
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #6c757d;
+.difficulty-badge.easy {
+    background: white;
+
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+.file-help {
+.notification.success {
+    background: var(--success-gradient);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.notification.error {
+    background: var(--danger-gradient);
+}
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    color: white;
+    margin-bottom: 0;
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    margin-bottom: 4px;
+
+    width: 100%;
+    transform: translateY(-2px);
+    border: 2px dashed #dee2e6;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+.admin-stat-card:hover {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    gap: 8px;
+
+    .form-actions {
+}
+    transform: translateY(-2px);
+
+    .admin-table-container {
+        overflow-x: auto;
+    height: 48px;
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+.btn-danger:hover {
+}
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+    background: var(--success-gradient);
+    .stat-value {
+        font-size: 2rem;
+    }
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.3);
+    border-color: #667eea;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.stat-change {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+.btn-secondary {
+    background: #6c757d;
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    background: #5a6268;
+    transform: translateY(-2px);
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+.btn-small {
+    font-size: 14px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.table-container {
+    background: white;
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+    font-weight: 600;
+th {
+    text-align: left;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    font-size: 14px;
+.form-group textarea,
+.form-group select {
+}
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+    margin-bottom: 24px;
+    background: white;
+
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+}
+    resize: vertical;
+    min-height: 120px;
+.text-content {
+    max-width: 300px;
+    word-wrap: break-word;
+.form-group textarea:focus,
+.form-group select:focus {
+
+.difficulty-badge {
+    padding: 4px 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    resize: vertical;
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    font-size: 12px;
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+}
+
+.difficulty-easy {
+    font-size: 12px;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    color: #856404;
+    font-size: 16px;
+    font-weight: 600;
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    padding: 8px 16px;
+}
+    font-size: 12px;
+.edit-form {
+    background: #fff3cd;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 20px;
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+.admin-modal-content {
+}
+
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-weight: 600;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+    background: #6c757d;
+    color: white;
+.modal-header {
+}
+    justify-content: space-between;
+    align-items: center;
+.difficulty-badge.easy {
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid #f0f0f0;
+}
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+}
+.notification.success {
+    background: var(--success-gradient);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.notification.error {
+    background: var(--danger-gradient);
+
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    color: white;
+}
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    padding: 24px;
+
+    transition: all 0.3s ease;
+    position: relative;
+    color: white;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    color: var(--text-primary);
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+.difficulty-badge.hard {
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    margin-top: 10px;
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    color: var(--text-secondary);
+    color: #6c757d;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    margin-bottom: 8px;
+}
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+    margin-bottom: 0;
+}
+/* Формы и элементы управления */
+.admin-form {
+.file-help li {
+    border-radius: var(--radius-md);
+    margin-bottom: 4px;
+    margin-bottom: 24px;
+
+
+input[type="file"]:focus {
+.admin-form h3 {
+    border-color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    padding: 30px;
+    color: #721c24;
+    color: var(--text-primary);
+    font-size: 14px;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    border-radius: 15px;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #6c757d;
+.difficulty-badge.easy {
+    background: white;
+
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+
+table {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+textarea, select, input {
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 12px;
+    color: white;
+
+}
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+textarea {
+.action-btn.edit {
+    background: var(--accent-gradient);
+    border-bottom: none;
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    background: #d4edda;
+    color: #155724;
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    gap: 8px;
+}
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+
+.btn-success {
+.modal-header {
+    color: white;
+    justify-content: space-between;
+}
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.3);
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    transform: translateY(-2px);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+.file-help {
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+}
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+    margin-bottom: 0;
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    margin-bottom: 4px;
+
+    width: 100%;
+    position: relative;
+    border: 2px dashed #dee2e6;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    border-color: #667eea;
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    background: #6c757d;
+    .admin-stat-card {
+        padding: 16px;
+    }
+    transform: translateY(-2px);
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.stat-change {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+}
+
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+.btn-small {
+    font-size: 14px;
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+table {
+    font-weight: 600;
+    margin-bottom: 20px;
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+    font-weight: 600;
+th {
+    text-align: left;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    font-size: 14px;
+.form-group textarea,
+.form-group select {
+}
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+    margin-bottom: 24px;
+    background: white;
+
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+tr:last-child td {
+.text-content {
+    max-width: 300px;
+    word-wrap: break-word;
+.form-group textarea:focus,
+.form-group select:focus {
+
+.difficulty-badge {
+    padding: 4px 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    font-size: 12px;
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+}
+
+.difficulty-easy {
+    font-size: 12px;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    color: #856404;
+}
+
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+}
+    left: 0;
+.edit-form {
+    background: #fff3cd;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 20px;
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+.admin-modal-content {
+}
+
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-weight: 600;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+    background: #6c757d;
+    color: white;
+.modal-header {
+}
+    justify-content: space-between;
+    align-items: center;
+.difficulty-badge.easy {
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+}
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+}
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    padding: 24px;
+
+    transition: all 0.3s ease;
+    position: relative;
+    color: white;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    color: var(--text-primary);
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+.difficulty-badge.hard {
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    margin-top: 10px;
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    color: var(--text-secondary);
+    color: #6c757d;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+}
+
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+}
+    border-radius: var(--radius-md);
+    margin-bottom: 4px;
+    margin-bottom: 24px;
+
+
+input[type="file"]:focus {
+.admin-form h3 {
+    border-color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    padding: 30px;
+    color: #721c24;
+    color: var(--text-primary);
+    font-size: 14px;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #6c757d;
+.difficulty-badge.easy {
+    background: white;
+
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+}
+
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+.sidebar-menu {
+    list-style: none;
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+.sidebar-menu li {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+.file-help {
+.notification.success {
+    background: var(--success-gradient);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.notification.error {
+    background: var(--danger-gradient);
+}
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    color: white;
+    margin-bottom: 0;
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    margin-bottom: 4px;
+
+    width: 100%;
+    transform: translateY(-2px);
+    border: 2px dashed #dee2e6;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+.admin-stat-card:hover {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    gap: 8px;
+
+    .form-actions {
+}
+    transform: translateY(-2px);
+
+    .admin-table-container {
+        overflow-x: auto;
+    height: 48px;
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+.btn-danger:hover {
+}
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+    background: var(--success-gradient);
+    .stat-value {
+        font-size: 2rem;
+    }
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.3);
+    border-color: #667eea;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.stat-change {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+.btn-secondary {
+    background: #6c757d;
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    background: #5a6268;
+    transform: translateY(-2px);
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+.btn-small {
+    font-size: 14px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+.table-container {
+    background: white;
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+    font-weight: 600;
+th {
+    text-align: left;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    font-size: 14px;
+.form-group textarea,
+.form-group select {
+}
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+    margin-bottom: 24px;
+    background: white;
+
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+}
+    resize: vertical;
+    min-height: 120px;
+.text-content {
+    max-width: 300px;
+    word-wrap: break-word;
+.form-group textarea:focus,
+.form-group select:focus {
+
+.difficulty-badge {
+    padding: 4px 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    font-size: 12px;
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+}
+
+.difficulty-easy {
+    font-size: 12px;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    color: #856404;
+}
+
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+}
+    left: 0;
+.edit-form {
+    background: #fff3cd;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 20px;
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+.admin-modal-content {
+}
+
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-weight: 600;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+    background: #6c757d;
+    color: white;
+.modal-header {
+}
+    justify-content: space-between;
+    align-items: center;
+.difficulty-badge.easy {
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+}
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+}
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    padding: 24px;
+
+    transition: all 0.3s ease;
+    position: relative;
+    color: white;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    color: var(--text-primary);
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+.difficulty-badge.hard {
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    margin-top: 10px;
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    color: var(--text-secondary);
+    color: #6c757d;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+    margin-bottom: 8px;
+}
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+    margin-bottom: 0;
+}
+/* Формы и элементы управления */
+.admin-form {
+.file-help li {
+    border-radius: var(--radius-md);
+    margin-bottom: 4px;
+    margin-bottom: 24px;
+
+
+input[type="file"]:focus {
+.admin-form h3 {
+    border-color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    padding: 30px;
+    color: #721c24;
+    color: var(--text-primary);
+    font-size: 14px;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: #6c757d;
+.difficulty-badge.easy {
+    background: white;
+
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+.file-help {
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+}
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+    margin-bottom: 0;
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    margin-bottom: 4px;
+
+    width: 100%;
+    position: relative;
+    border: 2px dashed #dee2e6;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    border-color: #667eea;
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+.stat-change {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+}
+
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+    margin-bottom: 24px;
+    background: white;
+
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+    font-weight: 600;
+    margin-bottom: 16px;
+.form-actions {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    align-items: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+}
+.notification.success {
+    background: var(--success-gradient);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+.notification.error {
+    background: var(--danger-gradient);
+
+/* Статистические карточки */
+.notification.warning {
+    background: var(--warning-gradient);
+    margin-bottom: 32px;
+}
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+.admin-stat-card {
+    .admin-container {
+        padding: 16px;
+    padding: 24px;
+
+    transition: all 0.3s ease;
+    position: relative;
+    align-items: center;
+        text-align: center;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+    background: var(--warning-gradient);
+    .admin-main, .admin-sidebar {
+        padding: 20px;
+    }
+    color: var(--text-primary);
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .admin-table-container {
+        overflow-x: auto;
+    }
+
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+.stat-label {
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.stat-change.positive {
+    background: rgba(17, 153, 142, 0.1);
+    color: #11998e;
+}
+
+.stat-change.negative {
+    background: rgba(253, 29, 29, 0.1);
+    color: #fd1d1d;
+}
+
+/* Формы и элементы управления */
+.admin-form {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    background: white;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+/* Таблицы */
+.admin-table-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--primary-gradient);
+    color: var(--text-white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+.admin-table tr:hover {
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Действия в таблице */
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-btn.edit {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+}
+
+.action-btn.delete {
+    background: var(--danger-gradient);
+    color: var(--text-white);
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Модальные окна для админки */
+.admin-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.admin-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-modal-content {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.admin-modal.show .admin-modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    color: var(--text-white);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: var(--success-gradient);
+}
+
+.notification.error {
+    background: var(--danger-gradient);
+}
+
+.notification.warning {
+    background: var(--warning-gradient);
+}
+
+/* Адаптивность для админки */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
-    .container {
-        margin: 10px;
-        border-radius: 15px;
+    .admin-container {
+        padding: 16px;
     }
 
     .admin-header {
         padding: 20px;
+        flex-direction: column;
+        text-align: center;
     }
 
-    .admin-header h1 {
-        font-size: 2rem;
+    .admin-title {
+        font-size: 1.5rem;
     }
 
-    .admin-content {
+    .admin-main, .admin-sidebar {
         padding: 20px;
     }
 
-    .form-row {
-        flex-direction: column;
-        gap: 15px;
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 
-    .logout-btn {
-        position: static;
-        margin-top: 15px;
-    }
-
-    .actions {
+    .form-actions {
         flex-direction: column;
     }
 
-    .text-content {
-        max-width: 200px;
+    .admin-table-container {
+        overflow-x: auto;
     }
 
-    table {
-        font-size: 0.8rem;
+    .admin-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
     }
 
-    table th, table td {
-        padding: 8px 4px;
+    .admin-stat-card {
+        padding: 16px;
     }
 
-    .language-badge {
-        font-size: 10px;
-        padding: 2px 6px;
+    .stat-value {
+        font-size: 2rem;
     }
 }

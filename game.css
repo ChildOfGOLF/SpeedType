@@ -1,50 +1,137 @@
+/* Импорт современных шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Использование переменных из основного файла стилей */
+:root {
+    /* Цветовая палитра */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --warning-gradient: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
+    --danger-gradient: linear-gradient(135deg, #fd1d1d 0%, #fcb045 100%);
+
+    /* Цвета текста */
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-light: #718096;
+    --text-white: #ffffff;
+
+    /* Фоновые цвета */
+    --bg-primary: #f7fafc;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-glass: rgba(255, 255, 255, 0.1);
+
+    /* Тени */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    /* Радиусы */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+/* Специфичные стили для игровой страницы */
 .game-menu {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-xl);
     text-align: center;
-    padding: 2rem;
     max-width: 600px;
     margin: 0 auto;
+}
+
+.game-menu h2 {
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 24px;
 }
 
 .game-options {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 16px;
+    margin-top: 24px;
 }
 
 .game-btn {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    background: #007bff;
-    color: white;
+    padding: 16px 32px;
+    font-size: 16px;
+    background: var(--accent-gradient);
+    color: var(--text-white);
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    font-family: inherit;
+}
+
+.game-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.game-btn:hover::before {
+    left: 100%;
 }
 
 .game-btn:hover {
-    background: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
 }
 
+.game-btn:active {
+    transform: translateY(0);
+}
+
+.btn-danger {
+    background: var(--danger-gradient) !important;
+}
+
+.btn-success {
+    background: var(--success-gradient) !important;
+}
+
+.btn-warning {
+    background: var(--warning-gradient) !important;
+}
+
+/* Информация о текущей игре */
 .current-game-info {
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-top: 1rem;
-    text-align: left;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    margin-top: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .current-game-info p {
-    margin: 0.5rem 0;
-    font-weight: bold;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin: 8px 0;
 }
 
-.current-game-info span {
-    color: #856404;
-}
-
+/* Модальные окна */
 .modal {
     position: fixed;
     z-index: 1000;
@@ -52,343 +139,389 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-content {
-    background-color: white;
+    background: var(--bg-card);
     margin: 15% auto;
-    padding: 2rem;
-    border-radius: 8px;
-    width: 400px;
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--shadow-xl);
     position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-content h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    margin-bottom: 20px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 15px;
+    background: var(--accent-gradient);
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.modal-content button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .close {
     position: absolute;
-    right: 1rem;
-    top: 1rem;
-    font-size: 2rem;
+    top: 15px;
+    right: 20px;
+    color: var(--text-secondary);
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-#gameCodeInput {
-    width: 100%;
-    padding: 0.8rem;
-    margin: 1rem 0;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    text-transform: uppercase;
+.close:hover {
+    color: var(--text-primary);
 }
 
+/* Список доступных игр */
 .waiting-games {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-xl);
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem;
+}
+
+.waiting-games h3 {
+    color: var(--text-white);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+#gamesList {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 24px;
 }
 
 .game-item {
-    background: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    margin: 1rem 0;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.game-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .game-item-info {
     flex: 1;
 }
 
+.game-item-info h4 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.game-item-info p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
 .game-item button {
-    background: #28a745;
-    color: white;
+    padding: 10px 20px;
+    background: var(--success-gradient);
+    color: var(--text-white);
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
+.game-item button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Лобби игры */
 .game-lobby {
-    max-width: 800px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-xl);
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
-.game-info {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 2rem;
+.game-lobby h2 {
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: center;
 }
 
-.game-code {
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
+.lobby-info {
+    background: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.game-code span {
-    font-weight: bold;
-    font-family: monospace;
-    background: #e9ecef;
-    padding: 0.5rem;
-    border-radius: 4px;
+.lobby-info h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 16px;
 }
 
-.players {
-    margin: 1.5rem 0;
+.lobby-info p {
+    color: var(--text-secondary);
+    margin: 8px 0;
 }
 
-.player {
-    padding: 0.5rem 0;
-    font-size: 1.1rem;
+/* Список игроков */
+.players-list {
+    background: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.text-preview {
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    max-height: 200px;
-    overflow-y: auto;
+.players-list h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 16px;
 }
 
-.lobby-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+.player-item {
+    padding: 12px 16px;
+    margin: 8px 0;
+    background: rgba(79, 172, 254, 0.1);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-weight: 500;
+    border: 1px solid rgba(79, 172, 254, 0.2);
 }
 
-#startGameBtn:disabled {
-    background: #6c757d;
-    cursor: not-allowed;
-}
-
-.game-area {
+/* Игровой интерфейс */
+.game-interface {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-xl);
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem;
 }
 
-.game-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+.game-text {
+    background: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-md);
 }
 
-.game-timer {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.game-status {
-    font-size: 1.2rem;
-    color: #007bff;
-}
-
-.players-progress {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.player-progress {
-    flex: 1;
-    background: white;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.player-progress.current-user {
-    border-color: #007bff;
-}
-
-.player-progress.opponent {
-    border-color: #dc3545;
-}
-
-.player-name {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.progress-bar {
+.game-input {
     width: 100%;
-    height: 20px;
-    background: #e9ecef;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 1rem 0;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #28a745, #20c997);
-    transition: width 0.3s ease;
-    width: 0%;
-}
-
-.player-stats {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-}
-
-.text-display {
-    background: white;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 1rem;
-    font-family: 'Courier New', monospace;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    min-height: 200px;
-}
-
-.char-correct {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.char-incorrect {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
-.char-current {
-    background-color: #007bff;
-    color: white;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    50% { opacity: 0.5; }
-}
-
-.input-area {
-    margin-bottom: 2rem;
-}
-
-#userInput {
-    width: 100%;
-    min-height: 150px;
-    padding: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-family: 'Courier New', monospace;
-    font-size: 1.1rem;
+    padding: 20px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 18px;
+    line-height: 1.8;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--text-primary);
     resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.3s ease;
 }
 
-#userInput:focus {
-    border-color: #007bff;
+.game-input:focus {
     outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
 }
 
-.game-results {
-    background: white;
-    border: 2px solid #28a745;
-    border-radius: 12px;
-    padding: 2rem;
+/* Статистика игры */
+.game-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--radius-md);
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.winner {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border-radius: 8px;
-    background: rgba(40, 167, 69, 0.1);
+.stat-card h4 {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.final-stats {
-    margin: 2rem 0;
-    display: flex;
-    justify-content: space-around;
-    gap: 2rem;
+.stat-card .value {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-.results-section {
-    flex: 1;
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 1.5rem;
-    border-left: 4px solid #007bff;
+/* Результаты игры */
+.game-results {
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.results-section h4 {
-    color: #007bff;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+.game-results h2 {
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
 }
 
-.results-section div {
-    margin: 0.8rem 0;
-    font-size: 1.1rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #e9ecef;
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
 }
 
-.results-section div:last-child {
-    border-bottom: none;
+.results-table th,
+.results-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.game-results button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background-color 0.3s;
+.results-table th {
+    background: var(--accent-gradient);
+    color: var(--text-white);
+    font-weight: 600;
 }
 
-.game-results button:hover {
-    background: #0056b3;
+.results-table td {
+    color: var(--text-primary);
 }
 
+.results-table tr:hover {
+    background: rgba(79, 172, 254, 0.1);
+}
+
+/* Адаптивность */
 @media (max-width: 768px) {
-    .players-progress {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .game-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-
-    .lobby-actions {
-        flex-direction: column;
-    }
-
     .modal-content {
-        width: 90%;
+        width: 95%;
         margin: 10% auto;
+        padding: 20px;
     }
 
-    .final-stats {
-        flex-direction: column;
-        align-items: center;
+    .game-options {
+        gap: 12px;
     }
 
-    .results-section {
-        margin-bottom: 1.5rem;
+    .game-btn {
+        padding: 14px 24px;
+        font-size: 14px;
+    }
+
+    .game-stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+    }
+
+    .results-table {
+        font-size: 14px;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 12px 8px;
     }
 }

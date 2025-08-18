@@ -101,8 +101,15 @@ async function verifyToken(token, username) {
 
 function showUserPanel(username) {
     document.getElementById('usernameDisplay').textContent = username;
-    document.getElementById('userPanel').classList.remove('hidden');
-    document.getElementById('guestPanel').classList.add('hidden');
+
+    // Показываем элементы для авторизованного пользователя
+    document.getElementById('userButtons').classList.remove('hidden');
+    document.getElementById('welcomeText').classList.remove('hidden');
+    document.getElementById('logoutBtn').classList.remove('hidden');
+
+    // Скрываем элементы для гостя
+    document.getElementById('guestButtons').classList.add('hidden');
+    document.getElementById('loginLinkBtn').classList.add('hidden');
 
     const inputText = document.getElementById('inputText');
     inputText.disabled = false;
@@ -112,8 +119,15 @@ function showUserPanel(username) {
 }
 
 function showGuestPanel() {
-    document.getElementById('userPanel').classList.add('hidden');
-    document.getElementById('guestPanel').classList.remove('hidden');
+    // Скрываем элементы для авторизованного пользователя
+    document.getElementById('userButtons').classList.add('hidden');
+    document.getElementById('welcomeText').classList.add('hidden');
+    document.getElementById('logoutBtn').classList.add('hidden');
+
+    // Показываем элементы для гостя
+    document.getElementById('guestButtons').classList.remove('hidden');
+    document.getElementById('loginLinkBtn').classList.remove('hidden');
+
     currentUser = null;
 
     const inputText = document.getElementById('inputText');
@@ -189,14 +203,18 @@ function checkTyping() {
         let char = testText[i];
         let inputChar = inputText[i] || '';
 
-        if (inputChar === char) {
-            highlightedText += `<span class="correct">${char}</span>`;
-        } else if (inputChar) {
-            highlightedText += `<span class="incorrect">${char}</span>`;
-            errors++;
+        if (i < inputText.length) {
+            if (inputChar === char) {
+                highlightedText += `<span class="correct">${char}</span>`;
+            } else {
+                highlightedText += `<span class="incorrect">${char}</span>`;
+                errors++;
+            }
+        } else if (i === inputText.length) {
+            // Текущий символ для ввода
+            highlightedText += `<span class="current-char">${char}</span>`;
         } else {
             highlightedText += `<span class="remaining">${char}</span>`;
-            isCompleted = false;
         }
     }
 
@@ -214,7 +232,7 @@ function checkTyping() {
         }
     }
 
-    if (isCompleted) {
+    if (isCompleted && inputText.length === testText.length) {
         clearInterval(timer);
         testRunning = false;
         const elapsedTime = (new Date().getTime() - startTime) / 60000;
@@ -376,7 +394,7 @@ function displayResults(results) {
     const totalTests = results.length;
 
     html += `
-        <div style="margin-top: 20px; text-align: center;">
+        <div class="user-stats">
             <h3>Your Statistics</h3>
             <p><strong>Total Tests:</strong> ${totalTests}</p>
             <p><strong>Average Speed:</strong> ${avgSpeed} ${t('wpm')}</p>

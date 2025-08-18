@@ -2,7 +2,7 @@ const API_URL = "http://localhost:8080/admin/texts";
 
 document.addEventListener('DOMContentLoaded', function() {
     checkAdminAuth();
-
+    
     // Добавляем обработчик для формы массовой загрузки
     document.getElementById('bulkUploadForm').addEventListener('submit', handleBulkUpload);
 });
