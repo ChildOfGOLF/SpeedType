@@ -7,35 +7,34 @@
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <div class="container">
-        <div class="admin-header">
-            <button class="logout-btn" onclick="logout()">← Back to Main</button>
-            <h1>Admin Panel</h1>
-            <p>Manage typing texts and monitor application content</p>
+    <header class="glass-card header-fixed-width">
+        <div class="header-content">
+            <h1 class="admin-title">Admin Panel</h1>
+            <p>Manage typing texts</p>
         </div>
-
-        <div class="admin-content">
+        <button class="btn btn-secondary header-btn" onclick="logout()">← Back to Main</button>
+    </header>
+    <div class="container">
+        <div class="glass-card">
             <div class="section-header">
                 <div class="section-icon">+</div>
                 <h2>Add New Text</h2>
             </div>
-
             <div class="form-container">
                 <form id="addTextForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="textContent">Text Content</label>
-                            <textarea id="textContent" placeholder="Enter the text that users will type..." required></textarea>
+                            <label for="textContent">Text</label>
+                            <textarea id="textContent" placeholder="Enter the text for typing..." required></textarea>
                         </div>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="textDifficulty">Difficulty Level</label>
+                            <label for="textDifficulty">Difficulty</label>
                             <select id="textDifficulty">
-                                <option value="easy">Easy - Simple words and phrases</option>
-                                <option value="medium">Medium - Technical terms and longer sentences</option>
-                                <option value="hard">Hard - Complex vocabulary and advanced concepts</option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -47,24 +46,24 @@
                         </div>
                         <div class="form-group" style="display: flex; align-items: end;">
                             <button type="submit" class="btn btn-primary">
-                                <span>+</span> Add Text
+                                <span>+</span> Add
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
-
+        </div>
+        <div class="glass-card">
             <div class="section-header">
                 <div class="section-icon">T</div>
                 <h2>Existing Texts</h2>
             </div>
-
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Text Content</th>
+                            <th>Text</th>
                             <th>Difficulty</th>
                             <th>Language</th>
                             <th>Actions</th>
@@ -72,60 +71,52 @@
                     </thead>
                     <tbody id="textsTableBody">
                         <tr>
-                            <td colspan="5" class="loading">Loading texts...</td>
+                            <td colspan="5" class="loading">Loading...</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <div id="editTextForm" class="edit-form hidden">
-                <h3>
-                    <span>Edit Text</span>
-                </h3>
-                <form>
-                    <input type="hidden" id="editTextId">
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="editTextContent">Text Content</label>
-                            <textarea id="editTextContent" required></textarea>
-                        </div>
+        </div>
+        <div class="glass-card" id="editTextForm" class="edit-form hidden">
+            <h3>
+                <span>Edit Text</span>
+            </h3>
+            <form>
+                <input type="hidden" id="editTextId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editTextContent">Text</label>
+                        <textarea id="editTextContent" required></textarea>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="editTextDifficulty">Difficulty Level</label>
-                            <select id="editTextDifficulty">
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard">Hard</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="editTextLanguage">Language</label>
-                            <select id="editTextLanguage">
-                                <option value="en">English</option>
-                                <option value="ru">Russian</option>
-                            </select>
-                        </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editTextDifficulty">Difficulty</label>
+                        <select id="editTextDifficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
                     </div>
-
-                    <div class="form-row">
-                        <button type="submit" class="btn btn-success">
-                            Save Changes
-                        </button>
-                        <button type="button" class="btn btn-secondary" onclick="cancelEdit()">
-                            Cancel
-                        </button>
+                    <div class="form-group">
+                        <label for="editTextLanguage">Language</label>
+                        <select id="editTextLanguage">
+                            <option value="en">English</option>
+                            <option value="ru">Russian</option>
+                        </select>
                     </div>
-                </form>
-            </div>
-
+                    <div class="form-group" style="display: flex; align-items: end;">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="glass-card bulk-upload-section">
             <div class="section-header">
                 <div class="section-icon">📁</div>
                 <h2>Bulk Upload Texts</h2>
             </div>
-
             <div class="form-container">
                 <form id="bulkUploadForm" enctype="multipart/form-data">
                     <div class="form-row">
@@ -137,33 +128,10 @@
                                 <p><strong>File structure:</strong></p>
                                 <ul>
                                     <li>Separate texts with empty lines</li>
-                                    <li>Or use separators: --- or ===</li>
-                                    <li>Each text block will become a separate typing exercise</li>
+                                    <li>Or use delimiters: --- or ===</li>
+                                    <li>Each block will become a separate exercise</li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="bulkDifficulty">Difficulty Level</label>
-                            <select id="bulkDifficulty">
-                                <option value="easy">Easy</option>
-                                <option value="medium">Medium</option>
-                                <option value="hard">Hard</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="bulkLanguage">Language</label>
-                            <select id="bulkLanguage">
-                                <option value="en">English</option>
-                                <option value="ru">Russian</option>
-                            </select>
-                        </div>
-                        <div class="form-group" style="display: flex; align-items: end;">
-                            <button type="submit" class="btn btn-success">
-                                <span>📁</span> Upload Texts
-                            </button>
                         </div>
                     </div>
                 </form>

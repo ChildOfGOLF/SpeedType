@@ -150,37 +150,57 @@ header {
 }
 
 .progress-user-controls .btn {
-    min-width: 120px;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    min-width: 180px;
+    max-width: 220px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    height: auto;
+    white-space: nowrap;
+}
+
+.progress-user-controls .btn::before {
+    display: none;
 }
 
 .progress-user-controls .username {
-    color: var(--text-white);
-    font-weight: 600;
-    font-size: 1.1rem;
     background: var(--accent-gradient);
+    color: var(--text-white);
     padding: 12px 20px;
     border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 140px;
+    max-width: 140px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: var(--shadow-md);
+    text-align: center;
+    height: auto;
 }
 
 /* Кнопки */
 .btn {
-    padding: 12px 24px;
+    padding: 16px 32px;
     border: none;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     font-family: inherit;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
+    min-width: 140px;
+    height: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 120px;
-    box-shadow: var(--shadow-md);
 }
 
 .btn::before {

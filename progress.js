@@ -171,12 +171,34 @@ function updateCharts(data) {
     progressChart.update();
 }
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const lang = localStorage.getItem('interfaceLanguage') || 'en';
+    return date.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
+
+function getDayWord(days) {
+    const lang = localStorage.getItem('interfaceLanguage') || 'en';
+    if (lang === 'ru') {
+        if (days % 10 === 1 && days % 100 !== 11) return 'день';
+        if ([2,3,4].includes(days % 10) && ![12,13,14].includes(days % 100)) return 'дня';
+        return 'дней';
+    } else {
+        return days === 1 ? 'day' : 'days';
+    }
+}
+
 function updateActivityStats(data) {
     if (data.length === 0) return;
 
+    const lang = localStorage.getItem('interfaceLanguage') || 'en';
     const dayCount = {};
     data.forEach(item => {
-        const day = formatDate(item.date);
+        const day = formatDate(item.date); // используем функцию formatDate для локализации
         dayCount[day] = (dayCount[day] || 0) + 1;
     });
 
@@ -188,8 +210,8 @@ function updateActivityStats(data) {
     document.getElementById('avgTestsPerWeek').textContent = avgTestsPerWeek;
 
     const streaks = calculateStreaks(data);
-    document.getElementById('currentStreak').textContent = `${streaks.current} дней`;
-    document.getElementById('bestStreak').textContent = `${streaks.best} дней`;
+    document.getElementById('currentStreak').textContent = `${streaks.current} ${getDayWord(streaks.current)}`;
+    document.getElementById('bestStreak').textContent = `${streaks.best} ${getDayWord(streaks.best)}`;
 }
 
 function calculateStreaks(data) {
@@ -263,15 +285,6 @@ async function applyFilters() {
         showError('Ошибка применения фильтров');
         hideLoading();
     }
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('ru-RU', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    });
 }
 
 function showLoading() {

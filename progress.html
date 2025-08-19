@@ -14,14 +14,14 @@
         <header>
             <div class="header-row">
                 <div class="activity-title" data-translate="activityTitle">SpeedType Activity</div>
-                <div class="header-col header-col-vertical">
-                    <div class="language-switcher">
+                <div class="header-col" style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="language-switcher" style="margin-bottom: 8px;">
                         <select id="interfaceLanguageSelect">
                             <option value="en" data-translate="english">English</option>
                             <option value="ru" data-translate="russian">Russian</option>
                         </select>
                     </div>
-                    <div class="progress-user-controls">
+                    <div class="progress-user-controls" style="display: flex; align-items: center; gap: 10px;">
                         <button class="btn btn-secondary" id="backToMainBtn" data-translate="backToMain" onclick="goBack()">← Back to Main</button>
                         <span class="username" id="currentUser"></span>
                     </div>
@@ -98,7 +98,7 @@
             </section>
 
             <section class="chart-section glass-card">
-                <div class="chart-header-row">
+                <div class="chart-header-row" style="display: flex; justify-content: center;">
                     <h2 data-translate="progress">Typing Speed Progress</h2>
                 </div>
                 <div class="chart-container">

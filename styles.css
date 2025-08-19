@@ -1385,7 +1385,7 @@ header::before {
 .btn, .text-display, .modal-content, .stat {
     will-change: transform;
 }
-
+Н
 .text-display {
     letter-spacing: 0.5px;
     word-spacing: 2px;
