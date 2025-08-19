@@ -9,91 +9,96 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Соревнования в реальном времени</h1>
-            <div class="user-info">
-                <span id="username"></span>
-                <button onclick="logout()">Выйти</button>
-                <button onclick="goToMain()">На главную</button>
+        <header class="glass-card">
+            <h1 data-translate="realtimeTitle">Соревнования в реальном времени</h1>
+            <div class="user-info" style="display: flex; align-items: center; justify-content: space-between;">
+                <span id="username" style="color: #fff; font-weight: 600; font-size: 1.1rem;"></span>
+                <div class="language-switcher" style="margin-left: 24px;">
+                    <select id="interfaceLanguageSelect">
+                        <option value="en" data-translate="english">English</option>
+                        <option value="ru" data-translate="russian">Русский</option>
+                    </select>
+                </div>
+                <button class="btn btn-secondary" style="margin-left: auto;" onclick="goToMain()" data-translate="toMain">На главную</button>
             </div>
         </header>
 
-        <div id="gameMenu" class="game-menu">
-            <h2>Выберите режим игры</h2>
-            <div class="game-options">
-                <button class="game-btn" onclick="createGame()">Создать игру</button>
-                <button class="game-btn" onclick="showJoinGameModal()">Присоединиться по коду</button>
-                <button class="game-btn" onclick="showWaitingGames()">Доступные игры</button>
-                <button id="stopCurrentGameBtn" class="game-btn btn-danger" onclick="stopCurrentGame()" style="display: none;">Остановить текущую игру</button>
+        <div id="gameMenu" class="game-menu glass-card">
+            <h2 data-translate="chooseMode">Выберите режим игры</h2>
+            <div class="game-options center-wide-btns">
+                <button class="btn btn-primary wide-btn" onclick="createGame()" data-translate="createGame">Создать игру</button>
+                <button class="btn btn-info wide-btn" onclick="showJoinGameModal()" data-translate="joinByCode">Присоединиться по коду</button>
+                <button class="btn btn-secondary wide-btn" onclick="showWaitingGames()" data-translate="availableGames">Доступные игры</button>
+                <button id="stopCurrentGameBtn" class="btn btn-danger wide-btn" onclick="stopCurrentGame()" style="display: none;" data-translate="stopCurrentGame">Остановить текущую игру</button>
             </div>
             <div id="currentGameInfo" class="current-game-info" style="display: none;">
-                <p>Активная игра: <span id="currentGameCode"></span></p>
-                <p>Статус: <span id="currentGameStatus"></span></p>
+                <p><span data-translate="activeGame">Активная игра:</span> <span id="currentGameCode"></span></p>
+                <p><span data-translate="status">Статус:</span> <span id="currentGameStatus"></span></p>
             </div>
         </div>
 
-        <div id="joinGameModal" class="modal" style="display: none;">
+        <div id="joinGameModal" class="modal glass-card" style="display: none;">
             <div class="modal-content">
                 <span class="close" onclick="closeJoinGameModal()">&times;</span>
-                <h3>Введите код игры</h3>
-                <input type="text" id="gameCodeInput" placeholder="Код игры (например: ABC123)" maxlength="6">
-                <button onclick="joinGameByCode()">Присоединиться</button>
+                <h3 data-translate="enterGameCode">Введите код игры</h3>
+                <input type="text" id="gameCodeInput" placeholder="Код игры (например: ABC123)" maxlength="6" data-translate="gameCodePlaceholder">
+                <button class="btn btn-primary" onclick="joinGameByCode()" data-translate="join">Присоединиться</button>
             </div>
         </div>
 
-        <div id="waitingGames" class="waiting-games" style="display: none;">
-            <h3>Доступные игры</h3>
+        <div id="waitingGames" class="waiting-games glass-card" style="display: none;">
+            <h3 data-translate="availableGames">Доступные игры</h3>
             <div id="gamesList"></div>
-            <button onclick="hideWaitingGames()">Назад</button>
+            <button class="btn btn-secondary" onclick="hideWaitingGames()" data-translate="back">Назад</button>
         </div>
 
-        <div id="gameLobby" class="game-lobby" style="display: none;">
-            <h2>Лобби игры</h2>
+        <div id="gameLobby" class="game-lobby glass-card" style="display: none;">
+            <h2 data-translate="lobby">Лобби игры</h2>
             <div class="game-info">
                 <div class="game-code">
-                    <label>Код игры:</label>
+                    <label data-translate="gameCode">Код игры:</label>
                     <span id="lobbyGameCode"></span>
-                    <button onclick="copyGameCode()">Копировать</button>
+                    <button class="btn btn-info" onclick="copyGameCode()" data-translate="copy">Копировать</button>
                 </div>
                 <div class="players">
                     <div class="player">
-                        <span>Игрок 1:</span>
+                        <span data-translate="player1">Игрок 1:</span>
                         <span id="player1Name"></span>
                     </div>
                     <div class="player">
-                        <span>Игрок 2:</span>
+                        <span data-translate="player2">Игрок 2:</span>
                         <span id="player2Name">Ожидание...</span>
                     </div>
                 </div>
                 <div class="text-preview">
-                    <h4>Текст для печати:</h4>
+                    <h4 data-translate="textToType">Текст для печати:</h4>
                     <div id="textPreview"></div>
                 </div>
                 <div class="lobby-actions">
-                    <button id="startGameBtn" onclick="startGame()" disabled>Начать игру</button>
-                    <button onclick="leaveGame()">Покинуть игру</button>
+                    <button id="startGameBtn" class="btn btn-primary" onclick="startGame()" disabled data-translate="startGame">Начать игру</button>
+                    <button class="btn btn-secondary" onclick="leaveGame()" data-translate="leaveGame">Покинуть игру</button>
                 </div>
             </div>
         </div>
 
-        <div id="gameArea" class="game-area" style="display: none;">
+        <div id="gameArea" class="game-area glass-card" style="display: none;">
             <div class="game-header">
                 <div class="game-timer">
-                    <span>Время: <span id="gameTimer">00:00</span></span>
+                    <span data-translate="time">Время:</span> <span id="gameTimer">00:00</span>
                 </div>
                 <div class="game-status">
-                    <span id="gameStatus">Готовность...</span>
+                    <span id="gameStatus" data-translate="ready">Готовность...</span>
                 </div>
                 <div class="game-controls">
-                    <button id="stopGameBtn" class="btn btn-danger" onclick="stopGame()">Остановить игру</button>
+                    <button id="stopGameBtn" class="btn btn-danger" onclick="stopGame()" data-translate="stopGame">Остановить игру</button>
                 </div>
             </div>
 
             <div class="players-progress">
                 <div class="player-progress" id="player1Progress">
                     <div class="player-name"></div>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
+                    <div class="progress-bar glass-card">
+                        <div class="progress-fill" id="progressFill1"></div>
                     </div>
                     <div class="player-stats">
                         <span class="wpm">0 WPM</span>
@@ -102,8 +107,8 @@
                 </div>
                 <div class="player-progress" id="player2Progress">
                     <div class="player-name"></div>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
+                    <div class="progress-bar glass-card">
+                        <div class="progress-fill" id="progressFill2"></div>
                     </div>
                     <div class="player-stats">
                         <span class="wpm">0 WPM</span>
@@ -112,23 +117,23 @@
                 </div>
             </div>
 
-            <div class="text-display">
-                <div id="textToType"></div>
+            <div class="text-display glass-card">
+                <div id="textToType" data-translate="textToType"></div>
             </div>
 
             <div class="input-area">
-                <textarea id="userInput" placeholder="Начните печатать здесь..." disabled></textarea>
+                <textarea id="userInput" placeholder="Начните печатать здесь..." disabled data-translate="typeHere"></textarea>
             </div>
 
-            <div class="game-results" id="gameResults" style="display: none;">
-                <h3>Результаты игры</h3>
+            <div class="game-results glass-card" id="gameResults" style="display: none;">
+                <h3 data-translate="gameResults">Результаты игры</h3>
                 <div class="winner">
-                    <span id="winnerText"></span>
+                    <span id="winnerText" data-translate="winner"></span>
                 </div>
                 <div class="final-stats">
                     <div id="finalStats"></div>
                 </div>
-                <button onclick="newGame()">Новая игра</button>
+                <button class="btn btn-primary" onclick="newGame()" data-translate="newGame">Новая игра</button>
             </div>
         </div>
     </div>
@@ -136,5 +141,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="game.js"></script>
+    <script src="localization.js"></script>
+    <script>
+        const username = localStorage.getItem('username') || 'Гость';
+        function renderUsername() {
+            const welcome = t('welcome');
+            document.getElementById('username').innerHTML = `${welcome}, <b>${username}</b>!`;
+        }
+        // Инициализация локализации
+        function initGameLocalization() {
+            if (typeof updateInterface === 'function') updateInterface();
+            renderUsername();
+        }
+        // Смена языка по select
+        document.getElementById('interfaceLanguageSelect').addEventListener('change', function(e) {
+            changeInterfaceLanguage(e.target.value);
+            renderUsername();
+        });
+        // Первичная инициализация
+        initGameLocalization();
+    </script>
 </body>
 </html>
