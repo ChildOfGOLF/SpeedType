@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<artifactId>speedtype-api</artifactId>
+	<version>1.0.0</version>
+	<name>SpeedTypeAPI</name>
+	<description>REST API for the SpeedType online typing service. Provides authentication, user management, gameplay, results tracking, and leaderboard functionality.</description>
 	<url/>
 	<licenses>
 		<license/>

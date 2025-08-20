@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedType - Progress Analytics</title>
+    <link rel="stylesheet" href="../styles/progress.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
+    <script src="../localization/localization.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-row">
+                <div class="activity-title" data-translate="activityTitle">SpeedType Activity</div>
+                <div class="header-col" style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div class="language-switcher" style="margin-bottom: 8px;">
+                        <select id="interfaceLanguageSelect">
+                            <option value="en" data-translate="english">English</option>
+                            <option value="ru" data-translate="russian">Russian</option>
+                        </select>
+                    </div>
+                    <div class="progress-user-controls" style="display: flex; align-items: center; gap: 10px;">
+                        <button class="btn btn-secondary" id="backToMainBtn" data-translate="backToMain" onclick="goBack()">← Back to Main</button>
+                        <span class="username" id="currentUser"></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="summary-section">
+                <h2 data-translate="progressSummary">Progress Summary</h2>
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">S</div>
+                        <div class="card-content">
+                            <h3 id="avgSpeed">0</h3>
+                            <p data-translate="averageWPM">Average WPM</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">B</div>
+                        <div class="card-content">
+                            <h3 id="maxSpeed">0</h3>
+                            <p data-translate="bestWPM">Best WPM</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">I</div>
+                        <div class="card-content">
+                            <h3 id="improvement">0%</h3>
+                            <p data-translate="improvement">Improvement</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">T</div>
+                        <div class="card-content">
+                            <h3 id="totalTests">0</h3>
+                            <p data-translate="totalTests">Total Tests</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="filters-section">
+                <h2 data-translate="filters">Filters</h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="difficultyFilter" data-translate="difficulty">Difficulty:</label>
+                        <select id="difficultyFilter">
+                            <option value="" data-translate="allDifficulties">All</option>
+                            <option value="easy" data-translate="easy">Easy</option>
+                            <option value="medium" data-translate="medium">Medium</option>
+                            <option value="hard" data-translate="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="languageFilter" data-translate="language">Language:</label>
+                        <select id="languageFilter">
+                            <option value="" data-translate="allLanguages">All</option>
+                            <option value="en" data-translate="english">English</option>
+                            <option value="ru" data-translate="russian">Russian</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="timeRange" data-translate="timeRange">Time Range:</label>
+                        <select id="timeRange">
+                            <option value="" data-translate="allTime">All Time</option>
+                            <option value="7" data-translate="last7days">Last 7 days</option>
+                            <option value="30" data-translate="last30days">Last 30 days</option>
+                            <option value="90" data-translate="last3months">Last 3 months</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="applyFilters()" data-translate="applyFilters">Apply Filters</button>
+                </div>
+            </section>
+
+            <section class="chart-section glass-card">
+                <div class="chart-header-row" style="display: flex; justify-content: center;">
+                    <h2 data-translate="progress">Typing Speed Progress</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </section>
+
+            <section class="stats-section glass-card">
+                <h2 data-translate="activityOverview">Activity Overview</h2>
+                <div class="activity-grid">
+                    <div class="activity-item">
+                        <h4 data-translate="mostActiveDay">Most Active Day</h4>
+                        <p id="mostActiveDay">-</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4 data-translate="avgTestsPerWeek">Avg Tests per Week</h4>
+                        <p id="avgTestsPerWeek">-</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4 data-translate="currentStreak">Current Streak</h4>
+                        <p id="currentStreak">-</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4 data-translate="bestStreak">Best Streak</h4>
+                        <p id="bestStreak">-</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../scripts/progress.js"></script>
+</body>
+</html>

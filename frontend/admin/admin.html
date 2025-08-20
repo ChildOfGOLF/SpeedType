@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedType - Admin</title>
+    <link rel="stylesheet" href="../admin/admin.css">
+</head>
+<body>
+    <header class="glass-card header-fixed-width">
+        <div class="header-content">
+            <h1 class="admin-title">Admin Panel</h1>
+            <p>Manage typing texts</p>
+        </div>
+        <button class="btn btn-secondary header-btn" onclick="logout()">← Back to Main</button>
+    </header>
+    <div class="container">
+        <div class="glass-card">
+            <div class="section-header">
+                <div class="section-icon">+</div>
+                <h2>Add New Text</h2>
+            </div>
+            <div class="form-container">
+                <form id="addTextForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="textContent">Text</label>
+                            <textarea id="textContent" placeholder="Enter the text for typing..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="textDifficulty">Difficulty</label>
+                            <select id="textDifficulty">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="textLanguage">Language</label>
+                            <select id="textLanguage">
+                                <option value="en">English</option>
+                                <option value="ru">Russian</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: end;">
+                            <button type="submit" class="btn btn-primary">
+                                <span>+</span> Add
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="glass-card">
+            <div class="section-header">
+                <div class="section-icon">T</div>
+                <h2>Existing Texts</h2>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Text</th>
+                            <th>Difficulty</th>
+                            <th>Language</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="textsTableBody">
+                        <tr>
+                            <td colspan="5" class="loading">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="glass-card" id="editTextForm" class="edit-form hidden">
+            <h3>
+                <span>Edit Text</span>
+            </h3>
+            <form>
+                <input type="hidden" id="editTextId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editTextContent">Text</label>
+                        <textarea id="editTextContent" required></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editTextDifficulty">Difficulty</label>
+                        <select id="editTextDifficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTextLanguage">Language</label>
+                        <select id="editTextLanguage">
+                            <option value="en">English</option>
+                            <option value="ru">Russian</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: end;">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="glass-card bulk-upload-section">
+            <div class="section-header">
+                <div class="section-icon">📁</div>
+                <h2>Bulk Upload Texts</h2>
+            </div>
+            <div class="form-container">
+                <form id="bulkUploadForm" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bulkFile">Upload Text File</label>
+                            <input type="file" id="bulkFile" accept=".txt,.md" required>
+                            <div class="file-help">
+                                <p><strong>Supported formats:</strong> .txt, .md</p>
+                                <p><strong>File structure:</strong></p>
+                                <ul>
+                                    <li>Separate texts with empty lines</li>
+                                    <li>Or use delimiters: --- or ===</li>
+                                    <li>Each block will become a separate exercise</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../admin/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="loginTitle">Login - SpeedType</title>
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+    <div class="language-switcher">
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+        </select>
+    </div>
+
+    <div class="auth-container">
+        <h1 data-translate="welcomeTitle">Welcome to SpeedType</h1>
+
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="showLogin()" data-translate="login">Login</button>
+            <button class="tab-button" onclick="showRegister()" data-translate="register">Register</button>
+        </div>
+
+        <div id="messageContainer"></div>
+
+        <form id="loginForm" class="auth-form">
+            <div class="form-group">
+                <label for="loginUsername" data-translate="username">Username:</label>
+                <input type="text" id="loginUsername" required>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword" data-translate="password">Password:</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" data-translate="loginButton">Login</button>
+        </form>
+
+        <form id="registerForm" class="auth-form hidden">
+            <div class="form-group">
+                <label for="registerUsername" data-translate="username">Username:</label>
+                <input type="text" id="registerUsername" required>
+            </div>
+
+            <div class="form-group">
+                <label for="registerPassword" data-translate="password">Password:</label>
+                <input type="password" id="registerPassword" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword" data-translate="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" data-translate="registerButton">Register</button>
+        </form>
+
+        <a href="index.html" class="back-link" data-translate="backToMain">← Back to Main</a>
+    </div>
+
+    <script src="../localization/localization.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('interfaceLanguage') || 'en';
+            document.getElementById('languageSelect').value = savedLanguage;
+            changeInterfaceLanguage(savedLanguage);
+        });
+
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            const selectedLanguage = this.value;
+            changeInterfaceLanguage(selectedLanguage);
+        });
+
+        function showLogin() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('registerForm').classList.add('hidden');
+            document.querySelectorAll('.tab-button')[0].classList.add('active');
+            document.querySelectorAll('.tab-button')[1].classList.remove('active');
+        }
+
+        function showRegister() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('registerForm').classList.remove('hidden');
+            document.querySelectorAll('.tab-button')[0].classList.remove('active');
+            document.querySelectorAll('.tab-button')[1].classList.add('active');
+        }
+
+        function showMessage(message, type = 'info') {
+            const messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = `<div class="message ${type}">${message}</div>`;
+
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 5000);
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const response = await fetch('http://localhost:8080/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('username', username);
+                    showMessage(t('loginSuccess'), 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                } else {
+                    const errorData = await response.json();
+                    showMessage(errorData.message || t('loginError'), 'error');
+                }
+            } catch (error) {
+                showMessage(t('connectionError'), 'error');
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                showMessage(t('passwordMismatch'), 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:8080/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (response.ok) {
+                    showMessage(t('registerSuccess'), 'success');
+                    showLogin();
+                } else {
+                    const errorData = await response.json();
+                    showMessage(errorData.message || t('registerError'), 'error');
+                }
+            } catch (error) {
+                showMessage(t('connectionError'), 'error');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedType</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="header-row">
+                    <div class="header-left">
+                        <div class="title-section">
+                            <h1 data-translate="title">SpeedType</h1>
+                            <div id="welcomeText" class="welcome-text hidden">
+                                <span><span data-translate="welcome">Welcome</span>, <span id="usernameDisplay"></span>!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <div class="language-switcher">
+                            <select id="interfaceLanguageSelect">
+                                <option value="en" data-translate="english">English</option>
+                                <option value="ru" data-translate="russian">Russian</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-row">
+                    <div class="header-left">
+                        <div class="header-buttons">
+                            <button id="menuToggle" class="hamburger" aria-label="Меню">
+                                <span></span><span></span><span></span>
+                            </button>
+                            <div id="userButtons" class="user-buttons hidden">
+                                <button id="realTimeGameBtn" class="btn btn-primary" data-translate="realTimeGame">Real-time</button>
+                                <button id="progressBtn" class="btn btn-info" data-translate="progress">Progress</button>
+                                <button id="myResultsBtn" class="btn btn-secondary" data-translate="myResults">Results</button>
+                                <button id="leaderboardBtn" class="btn btn-secondary" data-translate="leaderboard">Board</button>
+                            </div>
+                            <div id="guestButtons" class="guest-buttons hidden">
+                                <button id="leaderboardBtn2" class="btn btn-secondary" data-translate="leaderboard">Board</button>
+                            </div>
+                            <nav id="dropdownMenu" class="dropdown-menu">
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <div class="header-right-buttons">
+                            <button id="loginLinkBtn" class="btn btn-primary auth-btn" data-translate="login">Login / Register</button>
+                            <button id="logoutBtn" class="btn btn-logout auth-btn hidden" data-translate="logout">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="quick-settings">
+                <div class="settings-group">
+                    <div class="setting-item">
+                        <label for="difficultySelect" data-translate="difficulty">Difficulty:</label>
+                        <select id="difficultySelect">
+                            <option value="easy" data-translate="easy">Easy</option>
+                            <option value="medium" data-translate="medium">Medium</option>
+                            <option value="hard" data-translate="hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-item">
+                        <label for="textLanguageSelect" data-translate="textLanguage">Language:</label>
+                        <select id="textLanguageSelect">
+                            <option value="en" data-translate="english">English</option>
+                            <option value="ru" data-translate="russian">Russian</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button id="getNewTextBtn" class="btn btn-secondary" data-translate="getNewText">New Text</button>
+                    <button id="customTextBtn" class="btn btn-info" data-translate="customText">Custom Text</button>
+                </div>
+            </div>
+
+            <div class="test-area">
+                <div class="text-display" id="displayText" data-translate="loadingText">
+                    Loading text...
+                </div>
+
+                <div class="input-section">
+                    <textarea id="inputText" placeholder="Type the text above here..." data-translate="typeHere" disabled></textarea>
+                </div>
+
+                <div class="main-controls">
+                    <button id="startBtn" class="btn btn-primary btn-large" data-translate="startTest">Start Test</button>
+                    <button id="resetBtn" class="btn btn-secondary" data-translate="reset">Reset</button>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <label data-translate="time">Time (s):</label>
+                        <span id="timeDisplay">0</span>
+                    </div>
+                    <div class="stat">
+                        <label data-translate="speed">Speed (WPM):</label>
+                        <span id="speedDisplay">0</span>
+                    </div>
+                    <div class="stat">
+                        <label data-translate="errors">Errors:</label>
+                        <span id="errorDisplay">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="finalResults" class="final-results hidden">
+                <div class="results-header">
+                    <h3 data-translate="testComplete">Test Complete!</h3>
+                    <div class="completion-animation">🎉</div>
+                </div>
+                <div class="results-content">
+                    <div class="result-highlight">
+                        <span class="result-label" data-translate="yourTypingSpeed">Your typing speed</span>
+                        <span class="result-value"><span id="finalSpeed">0</span> <span data-translate="wpm">WPM</span></span>
+                    </div>
+                    <div class="result-secondary">
+                        <span data-translate="totalErrors">Total errors</span>: <strong><span id="finalErrors">0</span></strong>
+                    </div>
+                    <div class="results-actions">
+                        <button id="retryBtn" class="btn btn-primary" data-translate="tryAgain">Try Again</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="saveStatus" class="save-status hidden"></div>
+
+            <div id="customTextModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 data-translate="uploadCustomText">Upload Your Text</h2>
+                        <span id="closeCustomTextModal" class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="custom-text-input">
+                            <label for="customTextArea" data-translate="pasteTextHere">Paste your text here:</label>
+                            <textarea id="customTextArea" placeholder="Paste your text here..." data-translate="pasteTextHere" rows="6"></textarea>
+                            <div id="customTextStatus" class="save-status hidden"></div>
+                            <div class="modal-buttons">
+                                <button id="useCustomTextBtn" class="btn btn-primary" data-translate="useCustomText">Use This Text</button>
+                                <button id="cancelCustomTextBtn" class="btn btn-secondary" data-translate="cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="myResultsModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="myResults">My Results</h2>
+                <span id="closeModal" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="resultsContainer">
+                    <p data-translate="loadingResults">Loading your results...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="leaderboardModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="topUsers">Top Users</h2>
+                <span id="closeLeaderboardModal" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="leaderboard-filters">
+                    <div class="filter-group">
+                        <label for="leaderboardDifficulty" data-translate="filterBy">Filter by:</label>
+                        <select id="leaderboardDifficulty">
+                            <option value="all" data-translate="allDifficulties">All Difficulties</option>
+                            <option value="easy" data-translate="easy">Easy</option>
+                            <option value="medium" data-translate="medium">Medium</option>
+                            <option value="hard" data-translate="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="leaderboardLanguage" data-translate="textLanguage">Language:</label>
+                        <select id="leaderboardLanguage">
+                            <option value="all" data-translate="allLanguages">All Languages</option>
+                            <option value="en" data-translate="english">English</option>
+                            <option value="ru" data-translate="russian">Russian</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="leaderboardContainer">
+                    <p data-translate="loadingLeaderboard">Loading leaderboard...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fabMenu" class="fab-menu">
+        <button id="fabToggle" class="fab-btn" aria-label="Меню">
+            <span class="fab-icon">☰</span>
+        </button>
+        <nav id="fabDropdown" class="fab-dropdown">
+            <div id="fabUserButtons" class="user-buttons hidden">
+                <button id="fabRealTimeGameBtn" class="btn btn-primary" data-translate="realTimeGame">Real-time</button>
+                <button id="fabProgressBtn" class="btn btn-info" data-translate="progress">Progress</button>
+                <button id="fabMyResultsBtn" class="btn btn-secondary" data-translate="myResults">Results</button>
+                <button id="fabLeaderboardBtn" class="btn btn-secondary" data-translate="leaderboard">Board</button>
+                <button id="fabLogoutBtn" class="btn btn-logout" data-translate="logout">Logout</button>
+            </div>
+            <div id="fabGuestButtons" class="guest-buttons hidden">
+                <button id="fabLeaderboardBtn2" class="btn btn-secondary" data-translate="leaderboard">Board</button>
+                <button id="fabLoginBtn" class="btn btn-primary auth-btn" data-translate="login">Login / Register</button>
+            </div>
+        </nav>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <span>&copy; 2025 SpeedType</span>
+            <span>|</span>
+            <a href="https://github.com/ChildOfGOLF/SpeedType" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+    </footer>
+    <script src="../localization/localization.js"></script>
+    <script src="../scripts/script.js"></script>
+</body>
+</html>
