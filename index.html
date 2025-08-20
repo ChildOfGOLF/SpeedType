@@ -32,7 +32,10 @@
                 <div class="header-row">
                     <div class="header-left">
                         <div class="header-buttons">
-                            <div id="userButtons" class="user-buttons hidden">
+                            <button id="menuToggle" class="hamburger" aria-label="Меню">
+                                <span></span><span></span><span></span>
+                            </button>
+                            <div id="userButtons" class="user-buttons">
                                 <button id="realTimeGameBtn" class="btn btn-primary" data-translate="realTimeGame">Real-time</button>
                                 <button id="progressBtn" class="btn btn-info" data-translate="progress">Progress</button>
                                 <button id="myResultsBtn" class="btn btn-secondary" data-translate="myResults">Results</button>
@@ -41,6 +44,8 @@
                             <div id="guestButtons" class="guest-buttons">
                                 <button id="leaderboardBtn2" class="btn btn-secondary" data-translate="leaderboard">Board</button>
                             </div>
+                            <nav id="dropdownMenu" class="dropdown-menu">
+                            </nav>
                         </div>
                     </div>
                     <div class="header-right">
@@ -198,6 +203,25 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="fabMenu" class="fab-menu">
+        <button id="fabToggle" class="fab-btn" aria-label="Меню">
+            <span class="fab-icon">☰</span>
+        </button>
+        <nav id="fabDropdown" class="fab-dropdown">
+            <div id="fabUserButtons" class="user-buttons hidden">
+                <button id="fabRealTimeGameBtn" class="btn btn-primary" data-translate="realTimeGame">Real-time</button>
+                <button id="fabProgressBtn" class="btn btn-info" data-translate="progress">Progress</button>
+                <button id="fabMyResultsBtn" class="btn btn-secondary" data-translate="myResults">Results</button>
+                <button id="fabLeaderboardBtn" class="btn btn-secondary" data-translate="leaderboard">Board</button>
+                <button id="fabLogoutBtn" class="btn btn-logout" data-translate="logout">Logout</button>
+            </div>
+            <div id="fabGuestButtons" class="guest-buttons">
+                <button id="fabLeaderboardBtn2" class="btn btn-secondary" data-translate="leaderboard">Board</button>
+                <button id="fabLoginBtn" class="btn btn-primary auth-btn" data-translate="login">Login / Register</button>
+            </div>
+        </nav>
     </div>
 
     <script src="localization.js"></script>

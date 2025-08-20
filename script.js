@@ -65,6 +65,56 @@ function setupEventListeners() {
             closeCustomTextModal();
         }
     });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    document.addEventListener('click', function(e) {
+        if (menuToggle && menuToggle.contains(e.target)) {
+            dropdownMenu.classList.toggle('open');
+        } else if (dropdownMenu && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('open');
+        }
+    });
+
+    const fabToggle = document.getElementById('fabToggle');
+    const fabDropdown = document.getElementById('fabDropdown');
+    fabToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        fabDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+        if (fabDropdown.classList.contains('open') && !fabDropdown.contains(e.target) && e.target !== fabToggle) {
+            fabDropdown.classList.remove('open');
+        }
+    });
+    document.getElementById('fabRealTimeGameBtn').addEventListener('click', goToRealTimeGame);
+    document.getElementById('fabProgressBtn').addEventListener('click', goToProgressAnalytics);
+    document.getElementById('fabMyResultsBtn').addEventListener('click', showMyResults);
+    document.getElementById('fabLeaderboardBtn').addEventListener('click', showLeaderboard);
+    document.getElementById('fabLeaderboardBtn2').addEventListener('click', showLeaderboard);
+    document.getElementById('fabLoginBtn').addEventListener('click', goToLogin);
+    document.getElementById('fabLogoutBtn').addEventListener('click', logout);
+
+    function updateFabMenu() {
+        if (currentUser) {
+            document.getElementById('fabUserButtons').classList.remove('hidden');
+            document.getElementById('fabGuestButtons').classList.add('hidden');
+        } else {
+            document.getElementById('fabUserButtons').classList.add('hidden');
+            document.getElementById('fabGuestButtons').classList.remove('hidden');
+        }
+    }
+    updateFabMenu();
+    const origShowUserPanel = showUserPanel;
+    showUserPanel = function(username) {
+        origShowUserPanel(username);
+        updateFabMenu();
+    };
+    const origShowGuestPanel = showGuestPanel;
+    showGuestPanel = function() {
+        origShowGuestPanel();
+        updateFabMenu();
+    };
 }
 
 function checkUserAuth() {
