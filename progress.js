@@ -133,7 +133,7 @@ function initializeCharts() {
                         text: 'Words Per Minute'
                     },
                     ticks: {
-                        stepSize: 5 // уменьшенный шаг
+                        stepSize: 5
                     }
                 },
                 x: {
@@ -143,7 +143,6 @@ function initializeCharts() {
                     },
                     ticks: {
                         callback: function(value, index, ticks) {
-                            // Показываем только день и месяц
                             const label = this.getLabelForValue(value);
                             const parts = label.split(' ');
                             return parts.length > 1 ? parts[1] + ' ' + parts[0] : label;
@@ -198,7 +197,7 @@ function updateActivityStats(data) {
     const lang = localStorage.getItem('interfaceLanguage') || 'en';
     const dayCount = {};
     data.forEach(item => {
-        const day = formatDate(item.date); // используем функцию formatDate для локализации
+        const day = formatDate(item.date);
         dayCount[day] = (dayCount[day] || 0) + 1;
     });
 

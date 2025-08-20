@@ -102,12 +102,10 @@ async function verifyToken(token, username) {
 function showUserPanel(username) {
     document.getElementById('usernameDisplay').textContent = username;
 
-    // Показываем элементы для авторизованного пользователя
     document.getElementById('userButtons').classList.remove('hidden');
     document.getElementById('welcomeText').classList.remove('hidden');
     document.getElementById('logoutBtn').classList.remove('hidden');
 
-    // Скрываем элементы для гостя
     document.getElementById('guestButtons').classList.add('hidden');
     document.getElementById('loginLinkBtn').classList.add('hidden');
 
@@ -119,12 +117,10 @@ function showUserPanel(username) {
 }
 
 function showGuestPanel() {
-    // Скрываем элементы для авторизованного пользователя
     document.getElementById('userButtons').classList.add('hidden');
     document.getElementById('welcomeText').classList.add('hidden');
     document.getElementById('logoutBtn').classList.add('hidden');
 
-    // Показываем элементы для гостя
     document.getElementById('guestButtons').classList.remove('hidden');
     document.getElementById('loginLinkBtn').classList.remove('hidden');
 
@@ -211,7 +207,6 @@ function checkTyping() {
                 errors++;
             }
         } else if (i === inputText.length) {
-            // Текущий символ для ввода
             highlightedText += `<span class="current-char">${char}</span>`;
         } else {
             highlightedText += `<span class="remaining">${char}</span>`;

@@ -116,6 +116,15 @@ const translations = {
         winner: "Winner:",
         newGame: "New Game",
         toMain: "To Main",
+
+        activityTitle: "SpeedType Activity",
+        progressSummary: "Progress Summary",
+        activityOverview: "Activity Overview",
+        avgTestsPerWeek: "Avg Tests per Week",
+        mostActiveDay: "Most Active Day",
+        currentStreak: "Current Streak",
+        bestStreak: "Best Streak",
+        improvement: "Improvement",
     },
 
     ru: {
@@ -235,6 +244,15 @@ const translations = {
         winner: "Победитель:",
         newGame: "Новая игра",
         toMain: "На главную",
+
+        activityTitle: "Активность SpeedType",
+        progressSummary: "Сводка прогресса",
+        activityOverview: "Обзор активности",
+        avgTestsPerWeek: "Среднее тестов в неделю",
+        mostActiveDay: "Самый активный день",
+        currentStreak: "Текущая серия",
+        bestStreak: "Лучшая серия",
+        improvement: "Прогресс",
     }
 };
 

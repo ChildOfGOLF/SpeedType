@@ -340,7 +340,6 @@ main {
     box-shadow: var(--shadow-lg);
 }
 
-/* Улучшенная подсветка символов при наборе - более мягкая */
 .correct {
     background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
     color: #155724;
@@ -362,7 +361,6 @@ main {
     background: transparent;
 }
 
-/* Текущий символ для ввода */
 .current-char {
     background: linear-gradient(135deg, #cce5ff 0%, #b3d9ff 100%);
     color: #0066cc;
@@ -377,7 +375,6 @@ main {
     51%, 100% { opacity: 0.7; }
 }
 
-/* Область ввода */
 .input-section {
     margin-bottom: 24px;
 }
@@ -409,7 +406,6 @@ main {
     opacity: 0.7;
 }
 
-/* Элементы управления */
 .controls {
     display: flex;
     gap: 16px;
@@ -417,7 +413,6 @@ main {
     flex-wrap: wrap;
 }
 
-/* Статистика */
 .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -464,7 +459,6 @@ main {
     display: block;
 }
 
-/* Модальные окна */
 .modal {
     position: fixed;
     z-index: 1000;
@@ -538,7 +532,6 @@ main {
     color: var(--text-primary);
 }
 
-/* Таблицы результатов и лидерборда */
 .results-table,
 .leaderboard-table {
     width: 100%;
@@ -584,7 +577,6 @@ main {
     background: rgba(79, 172, 254, 0.1);
 }
 
-/* Специальные стили для лидерборда */
 .rank-cell {
     text-align: center;
     font-weight: 700;
@@ -630,7 +622,6 @@ main {
     font-size: 16px;
 }
 
-/* Фильтры лидерборда */
 .leaderboard-filters {
     display: flex;
     gap: 20px;
@@ -650,7 +641,7 @@ main {
 }
 
 .filter-group label {
-    color: var(--text-white);
+    color: #000 !important;
     font-weight: 500;
     font-size: 14px;
 }
@@ -672,7 +663,6 @@ main {
     box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
 }
 
-/* Статистика пользователя в результатах - более контрастная */
 .user-stats {
     margin-top: 24px;
     padding: 20px;
@@ -701,7 +691,6 @@ main {
     font-weight: 700;
 }
 
-/* Переключатель языка как на странице логина */
 .language-switcher {
     position: absolute;
     top: 20px;
@@ -732,7 +721,6 @@ main {
     color: var(--text-white);
 }
 
-/* Улучшенный заголовок без языковых контролов */
 .header-left {
     display: flex;
     flex-direction: column;
@@ -748,8 +736,6 @@ main {
     justify-content: flex-end;
 }
 
-
-/* Основные кнопки управления */
 .main-controls {
     display: flex;
     gap: 16px;
@@ -779,7 +765,6 @@ main {
     box-shadow: var(--shadow-xl), 0 0 25px rgba(79, 172, 254, 0.4);
 }
 
-/* Улучшенная статистика в реальном времени */
 .live-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -857,7 +842,6 @@ main {
     letter-spacing: 0.5px;
 }
 
-/* Улучшенная подсветка символов при наборе - непрерывная подсветка */
 .text-display .char {
     position: relative;
     transition: all 0.2s ease;
@@ -917,7 +901,6 @@ main {
     padding: 0;
 }
 
-/* Непрерывная подсветка строк */
 .text-display .line {
     display: inline;
 }
@@ -926,7 +909,6 @@ main {
     display: inline;
 }
 
-/* Альтернативный вариант - подсветка слов целиком */
 .text-display.word-highlight .word.correct {
     background: linear-gradient(135deg, rgba(72, 187, 120, 0.15) 0%, rgba(56, 178, 172, 0.15) 100%);
     border-radius: 6px;
@@ -955,7 +937,6 @@ main {
     border: 1px solid rgba(79, 172, 254, 0.4);
 }
 
-/* Улучшенные результаты теста */
 .final-results {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -1053,7 +1034,6 @@ main {
     font-weight: 600;
 }
 
-/* Панель быстрых настроек - исправляем стили */
 .quick-settings {
     background: var(--bg-glass);
     backdrop-filter: blur(10px);
@@ -1117,7 +1097,6 @@ main {
     min-width: 110px;
 }
 
-/* Область тестирования */
 .test-area {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -1129,7 +1108,6 @@ main {
     margin-bottom: 24px;
 }
 
-/* Кастомные модалки */
 .custom-text-input {
     display: flex;
     flex-direction: column;
@@ -1194,7 +1172,6 @@ main {
     color: var(--text-white);
 }
 
-/* Адаптивность */
 @media (max-width: 1024px) {
     .header-top {
         flex-direction: column;
@@ -1339,12 +1316,10 @@ main {
     }
 }
 
-/* Плавные переходы для всех интерактивных элементов */
 button, select, input, textarea {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Улучшения для скроллбара */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -1363,7 +1338,6 @@ button, select, input, textarea {
     background: rgba(255, 255, 255, 0.5);
 }
 
-/* Анимации для shimmer эффекта */
 header::before {
     content: '';
     position: absolute;
@@ -1381,7 +1355,6 @@ header::before {
     100% { left: 100%; }
 }
 
-/* Дополнительные анимации для интерактивности */
 .btn, .text-display, .modal-content, .stat {
     will-change: transform;
 }

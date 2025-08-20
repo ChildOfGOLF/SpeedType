@@ -10,7 +10,6 @@
     <div class="container">
         <header>
             <div class="header-top">
-                <!-- Первая строка: заголовок и переключатель языка -->
                 <div class="header-row">
                     <div class="header-left">
                         <div class="title-section">
@@ -21,7 +20,6 @@
                         </div>
                     </div>
                     <div class="header-right">
-                        <!-- Переключатель языка -->
                         <div class="language-switcher">
                             <select id="interfaceLanguageSelect">
                                 <option value="en" data-translate="english">English</option>
@@ -31,7 +29,6 @@
                     </div>
                 </div>
 
-                <!-- Вторая строка: кнопки навигации и авторизации -->
                 <div class="header-row">
                     <div class="header-left">
                         <div class="header-buttons">
@@ -57,7 +54,6 @@
         </header>
 
         <main>
-            <!-- Панель быстрых настроек -->
             <div class="quick-settings">
                 <div class="settings-group">
                     <div class="setting-item">
@@ -84,7 +80,6 @@
                 </div>
             </div>
 
-            <!-- Область тестирования -->
             <div class="test-area">
                 <div class="text-display" id="displayText" data-translate="loadingText">
                     Loading text...
@@ -94,13 +89,11 @@
                     <textarea id="inputText" placeholder="Type the text above here..." data-translate="typeHere" disabled></textarea>
                 </div>
 
-                <!-- Основные кнопки управления -->
                 <div class="main-controls">
                     <button id="startBtn" class="btn btn-primary btn-large" data-translate="startTest">Start Test</button>
                     <button id="resetBtn" class="btn btn-secondary" data-translate="reset">Reset</button>
                 </div>
 
-                <!-- Статистика в реальном времени -->
                 <div class="stats">
                     <div class="stat">
                         <label data-translate="time">Time (s):</label>
@@ -117,7 +110,6 @@
                 </div>
             </div>
 
-            <!-- Результаты теста -->
             <div id="finalResults" class="final-results hidden">
                 <div class="results-header">
                     <h3 data-translate="testComplete">Test Complete!</h3>
@@ -139,7 +131,6 @@
 
             <div id="saveStatus" class="save-status hidden"></div>
 
-            <!-- Модальные окна -->
             <div id="customTextModal" class="modal hidden">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -162,7 +153,6 @@
         </main>
     </div>
 
-    <!-- Остальные модальные окна остаются без изменений -->
     <div id="myResultsModal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">

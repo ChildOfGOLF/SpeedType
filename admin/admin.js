@@ -2,8 +2,7 @@ const API_URL = "http://localhost:8080/admin/texts";
 
 document.addEventListener('DOMContentLoaded', function() {
     checkAdminAuth();
-    
-    // Добавляем обработчик для формы массовой загрузки
+
     document.getElementById('bulkUploadForm').addEventListener('submit', handleBulkUpload);
 });
 
@@ -245,7 +244,7 @@ async function handleBulkUpload(event) {
         return;
     }
 
-    // Проверяем размер файла (макс 5MB)
+    // Проверяем размер файла макс 5MB
     if (file.size > 5 * 1024 * 1024) {
         alert('Файл слишком большой. Максимальный размер: 5MB');
         return;

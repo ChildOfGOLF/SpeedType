@@ -148,17 +148,14 @@
             const welcome = t('welcome');
             document.getElementById('username').innerHTML = `${welcome}, <b>${username}</b>!`;
         }
-        // Инициализация локализации
         function initGameLocalization() {
             if (typeof updateInterface === 'function') updateInterface();
             renderUsername();
         }
-        // Смена языка по select
         document.getElementById('interfaceLanguageSelect').addEventListener('change', function(e) {
             changeInterfaceLanguage(e.target.value);
             renderUsername();
         });
-        // Первичная инициализация
         initGameLocalization();
     </script>
 </body>

@@ -1,9 +1,6 @@
-/* Импорт современных шрифтов */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* Использование переменных из основного файла стилей */
 :root {
-    /* Цветовая палитра */
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
@@ -11,31 +8,26 @@
     --warning-gradient: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
     --danger-gradient: linear-gradient(135deg, #fd1d1d 0%, #fcb045 100%);
 
-    /* Цвета текста */
     --text-primary: #2d3748;
     --text-secondary: #4a5568;
     --text-light: #718096;
     --text-white: #ffffff;
 
-    /* Фоновые цвета */
     --bg-primary: #f7fafc;
     --bg-card: rgba(255, 255, 255, 0.9);
     --bg-glass: rgba(255, 255, 255, 0.1);
 
-    /* Тени */
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
-    /* Радиусы */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
 }
 
-/* Специфичные стили для игровой страницы */
 .game-menu {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -79,7 +71,6 @@
     background: var(--warning-gradient) !important;
 }
 
-/* Информация о текущей игре */
 .current-game-info {
     background: var(--bg-card);
     padding: 20px;
@@ -94,8 +85,6 @@
     font-weight: 500;
     margin: 8px 0;
 }
-
-/* --- Новый современный стиль для игровых элементов --- */
 
 .game-area {
     padding: 32px;
@@ -243,7 +232,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Модальные окна */
 .modal {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -279,7 +267,6 @@
     color: #fd1d1d;
 }
 
-/* Список доступных игр */
 .waiting-games {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -355,7 +342,6 @@
     box-shadow: var(--shadow-md);
 }
 
-/* Лобби игры */
 .game-lobby {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -396,7 +382,6 @@
     margin: 8px 0;
 }
 
-/* Список игроков */
 .players-list {
     background: var(--bg-card);
     padding: 24px;
@@ -422,7 +407,6 @@
     border: 1px solid rgba(79, 172, 254, 0.2);
 }
 
-/* Игровой интерфейс */
 .game-interface {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -468,7 +452,6 @@
     box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
 }
 
-/* Статистика игры */
 .game-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -500,7 +483,6 @@
     font-weight: 700;
 }
 
-/* Результаты игры */
 .game-results {
     margin: 32px auto 0 auto;
     padding: 32px;
@@ -529,7 +511,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Модальные окна */
 .modal {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -565,7 +546,6 @@
     color: #fd1d1d;
 }
 
-/* Список доступных игр */
 .waiting-games {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -641,7 +621,6 @@
     box-shadow: var(--shadow-md);
 }
 
-/* Лобби игры */
 .game-lobby {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -682,7 +661,6 @@
     margin: 8px 0;
 }
 
-/* Список игроков */
 .players-list {
     background: var(--bg-card);
     padding: 24px;
@@ -708,7 +686,6 @@
     border: 1px solid rgba(79, 172, 254, 0.2);
 }
 
-/* Игровой интерфейс */
 .game-interface {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -754,7 +731,6 @@
     box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
 }
 
-/* Статистика игры */
 .game-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -786,7 +762,6 @@
     font-weight: 700;
 }
 
-/* Результаты игры */
 .game-results {
     margin: 32px auto 0 auto;
     padding: 32px;
@@ -815,7 +790,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Модальные окна */
 .modal {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -851,7 +825,6 @@
     color: #fd1d1d;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .modal-content {
         width: 95%;

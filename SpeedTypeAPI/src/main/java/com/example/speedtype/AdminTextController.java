@@ -1,6 +1,7 @@
 package com.example.speedtype;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -90,5 +91,12 @@ public class AdminTextController {
         }
 
         return savedTexts;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Text> getTextById(@PathVariable Long id) {
+        return textRepository.findById(id)
+            .map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <!-- Переключатель языка -->
     <div class="language-switcher">
         <select id="languageSelect">
             <option value="en">English</option>
@@ -23,10 +22,8 @@
             <button class="tab-button" onclick="showRegister()" data-translate="register">Register</button>
         </div>
 
-        <!-- Сообщения об ошибках/успехе -->
         <div id="messageContainer"></div>
 
-        <!-- Форма входа -->
         <form id="loginForm" class="auth-form">
             <div class="form-group">
                 <label for="loginUsername" data-translate="username">Username:</label>
@@ -41,7 +38,6 @@
             <button type="submit" class="btn btn-primary" data-translate="loginButton">Login</button>
         </form>
 
-        <!-- Форма регистрации -->
         <form id="registerForm" class="auth-form hidden">
             <div class="form-group">
                 <label for="registerUsername" data-translate="username">Username:</label>
@@ -66,7 +62,6 @@
 
     <script src="localization.js"></script>
     <script>
-        // Инициализация локализации
         document.addEventListener('DOMContentLoaded', function() {
             const savedLanguage = localStorage.getItem('interfaceLanguage') || 'en';
             document.getElementById('languageSelect').value = savedLanguage;
@@ -78,7 +73,6 @@
             changeInterfaceLanguage(selectedLanguage);
         });
 
-        // Переключение между формами
         function showLogin() {
             document.getElementById('loginForm').classList.remove('hidden');
             document.getElementById('registerForm').classList.add('hidden');
@@ -93,7 +87,6 @@
             document.querySelectorAll('.tab-button')[1].classList.add('active');
         }
 
-        // Показ сообщений
         function showMessage(message, type = 'info') {
             const messageContainer = document.getElementById('messageContainer');
             messageContainer.innerHTML = `<div class="message ${type}">${message}</div>`;
@@ -103,7 +96,6 @@
             }, 5000);
         }
 
-        // Обработка формы входа
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -136,7 +128,6 @@
             }
         });
 
-        // Обработка формы регистрации
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 

@@ -54,7 +54,6 @@ body::before {
     66% { transform: translateY(20px) rotate(-1deg); }
 }
 
-/* Унификация кнопок и карточек с главной страницей */
 .btn {
     padding: 12px 24px;
     border: none;
@@ -83,7 +82,6 @@ body::before {
     color: var(--text-white);
 }
 
-/* Кнопка delete */
 .btn-delete {
     background: var(--danger-gradient);
     color: var(--text-white);
@@ -255,7 +253,6 @@ tr:last-child td {
     color: var(--text-light);
 }
 
-/* Красивая подсказка для загрузки файла */
 .file-help {
     font-size: 0.95rem;
     color: var(--text-light);
@@ -299,12 +296,10 @@ tr:last-child td {
     }
 }
 
-/* Цвет текста в разделе массовой загрузки */
 .bulk-upload-section, .bulk-upload-section * {
     color: var(--text-primary) !important;
 }
 
-/* Мелкие улучшения */
 ::-webkit-scrollbar {
     width: 8px;
     background: #f7fafc;
