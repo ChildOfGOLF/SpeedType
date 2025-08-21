@@ -32,8 +32,9 @@ CREATE INDEX IF NOT EXISTS idx_games_status ON games(status);
 CREATE INDEX IF NOT EXISTS idx_game_progress_game_user ON game_progress(game_id, user_id);
 
 INSERT INTO users (username, password, role) VALUES
-('admin', '$2a$10$0EgUt/2JcMn5OAkLgMs/kuHpIVLZ5l6m00UmMEEZlgrqbAZTmxr.a', 'ADMIN'),
-('testuser', '$2a$10$0EgUt/2JcMn5OAkLgMs/kuHpIVLZ5l6m00UmMEEZlgrqbAZTmxr.a', 'USER');
+('admin', '$2a$10$urDqYlq7/bHzFV/0k5D07u06jBUntSPCBptKW7D.r0ELUKkbONGKS', 'ADMIN'),
+('testuser', '$2a$10$urDqYlq7/bHzFV/0k5D07u06jBUntSPCBptKW7D.r0ELUKkbONGKS', 'USER')
+ON CONFLICT (username) DO NOTHING;
 
 INSERT INTO texts (content, difficulty, language) VALUES
 ('The quick brown fox jumps over the lazy dog. This is a simple test.', 'easy', 'en'),
@@ -54,4 +55,5 @@ INSERT INTO texts (content, difficulty, language) VALUES
 ('Принципы объектно-ориентированного программирования включают инкапсуляцию, наследование и полиморфизм.', 'medium', 'ru'),
 ('Квантовые вычисления представляют смену парадигмы в вычислительной методологии, используя квантовые механические явления.', 'hard', 'ru'),
 ('Криптографические протоколы обеспечивают безопасную связь через математическую сложность и вычислительную невозможность.', 'hard', 'ru'),
-('Алгоритмы машинного обучения требуют обширного обучения на больших наборах данных для достижения оптимальных показателей производительности.', 'hard', 'ru');
+('Алгоритмы машинного обучения требуют обширного обучения на больших наборах данных для достижения оптимальных показателей производительности.', 'hard', 'ru')
+ON CONFLICT (content) DO NOTHING;
