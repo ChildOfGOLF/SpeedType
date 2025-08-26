@@ -19,6 +19,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -40,6 +43,7 @@ public class GameService {
     private GameCacheService gameCacheService;
 
     private final Random random = new Random();
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
     public Game createGame(User creator) {
         Optional<Game> activeGame = gameRepository.findActiveGameByUser(creator);
@@ -64,7 +68,21 @@ public class GameService {
         GameStateDTO gameState = createGameStateDTO(game);
         gameCacheService.cacheGameState(game.getGameCode(), gameState);
 
+        // Запуск задачи автозакрытия через 3 минуты
+        final String code = game.getGameCode();
+        scheduler.schedule(() -> cancelIfNoSecondPlayer(code), 3, TimeUnit.MINUTES);
+
         return game;
+    }
+
+    private void cancelIfNoSecondPlayer(String gameCode) {
+        Game game = gameRepository.findByGameCode(gameCode).orElse(null);
+        if (game != null && game.getStatus() == Game.GameStatus.WAITING_FOR_PLAYER) {
+            game.setStatus(Game.GameStatus.CANCELLED);
+            game.setFinishedAt(LocalDateTime.now());
+            gameRepository.save(game);
+            broadcastGameUpdate(game); // уведомление через WebSocket
+        }
     }
 
     public Game joinGame(String gameCode, User player) {

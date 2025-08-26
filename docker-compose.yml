@@ -10,5 +10,44 @@ services:
     command: redis-server --appendonly yes
     restart: unless-stopped
 
+  postgres:
+    image: postgres:15-alpine
+    container_name: speedtype-postgres
+    environment:
+      POSTGRES_DB: speedtype
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    build: ./SpeedTypeAPI
+    container_name: speedtype-backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./SpeedTypeAPI/.env
+    environment:
+      - SERVER_PORT=8080
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: speedtype-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
 volumes:
   redis_data:
+  postgres_data:

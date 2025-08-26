@@ -1,6 +1,20 @@
--- для инициализации базы данных SpeedType
+-- для инициализации базы данных
 
--- Создание таблиц для игр в реальном времени
+CREATE TABLE IF NOT EXISTS users (
+    id BIGSERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS texts (
+    id BIGSERIAL PRIMARY KEY,
+    content TEXT NOT NULL,
+    difficulty VARCHAR(20) NOT NULL,
+    language VARCHAR(5) NOT NULL
+);
+
+-- Создание таблиц для игр
 CREATE TABLE IF NOT EXISTS games (
     id BIGSERIAL PRIMARY KEY,
     game_code VARCHAR(10) UNIQUE NOT NULL,
@@ -56,4 +70,3 @@ INSERT INTO texts (content, difficulty, language) VALUES
 ('Квантовые вычисления представляют смену парадигмы в вычислительной методологии, используя квантовые механические явления.', 'hard', 'ru'),
 ('Криптографические протоколы обеспечивают безопасную связь через математическую сложность и вычислительную невозможность.', 'hard', 'ru'),
 ('Алгоритмы машинного обучения требуют обширного обучения на больших наборах данных для достижения оптимальных показателей производительности.', 'hard', 'ru')
-ON CONFLICT (content) DO NOTHING;
