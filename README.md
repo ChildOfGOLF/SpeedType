@@ -1,51 +1,62 @@
 # SpeedType
 
-SpeedType – это веб-приложение для тестирования скорости печати, аутентификации пользователей и хранения их результатов.
+SpeedType — это веб-приложение для тестирования скорости печати с поддержкой многопользовательских онлайн-игр, статистики и админ-панели. Проект полностью контейнеризирован с помощью Docker.
 
 ## Функциональность
 - Регистрация и авторизация пользователей (JWT)
 - Выбор уровня сложности текста
-- Прохождение теста на скорость печати
-- Сохранение результатов (скорость, точность, дата)
+- Прохождение теста на скорость печати (одиночно и онлайн с соперником)
+- Сохранение результатов
 - Просмотр личной статистики
 - Топ-10 лучших результатов
+- Админ-панель для управления пользователями и текстами
+- Многопользовательские игры через WebSocket
+- Автоматическое закрытие неактивных игр
 
 ## Технологии
-- **Backend:** Java, Spring Boot (Security, Data JPA), H2 Database, JWT
-- **Frontend:** HTML, CSS, JavaScript (Fetch API для взаимодействия с сервером)
-- **База данных:** H2
+- **Backend:** Java, Spring Boot (Security, Data JPA, WebSocket), PostgreSQL, Redis, JWT
+- **Frontend:** HTML, CSS, JavaScript (Fetch API, WebSocket)
+- **Docker:** docker-compose для запуска всех сервисов
 
-## Запуск проекта
+## Быстрый старт (Docker)
 
 ### Клонирование репозитория
 ```bash
-git clone https://github.com/ChildOfGOLF/SpeedType/.git
+git clone https://github.com/ChildOfGOLF/SpeedType.git
 cd SpeedType
 ```
 
-### Настройка переменных окружения
-```properties
-jwt.secret=your_secret_key
-spring.datasource.url=jdbc:h2:mem:typingdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-```
-
-### Запуск сервера
+### Запуск через Docker Compose
 ```bash
-mvn spring-boot:run
+docker-compose up --build
 ```
 
-### Запуск фронтенда
-Открой `index.html` в браузере.
+- Приложение будет доступно по адресу: http://localhost (фронтенд)
+- Backend API: http://localhost:8080
+- Админ-панель: http://localhost/admin/admin.html
 
-### Доступ к API
-- **Регистрация:** `POST /users/register`
-- **Логин:** `POST /users/login`
-- **Сохранение результата:** `POST /results`
-- **Получение статистики:** `GET /results/user/{username}`
-- **Получение текста для теста:** `GET /texts?difficulty=easy|medium|hard`
+### Переменные окружения
 
+Для backend (SpeedTypeAPI/.env):
+```
+SERVER_PORT=8080
+SPRING_REDIS_HOST=redis
+SPRING_REDIS_PORT=6379
+DB_URL=jdbc:postgresql://postgres:5432/speedtype
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+JWT_SECRET=your_secret_key
+```
+
+## Структура проекта
+- `frontend/` — клиентская часть (HTML, CSS, JS)
+- `SpeedTypeAPI/` — серверная часть (Spring Boot, Java)
+- `docker-compose.yml` — запуск всех сервисов
+
+## Миграции и тестовые данные
+- SQL-скрипты для создания таблиц и тестовых данных находятся в `SpeedTypeAPI/src/main/resources/`
+
+## Примечания
+- Для работы WebSocket и Redis ничего дополнительно настраивать не нужно — всё запускается через Docker.
+- Для доступа к админ-панели используйте пользователя с ролью ADMIN.
 
