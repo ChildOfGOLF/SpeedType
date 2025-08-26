@@ -31,7 +31,7 @@ cd SpeedType
 docker-compose up --build
 ```
 
-- Приложение будет доступно по адресу: http://localhost (фронтенд)
+- Приложение будет доступно по адресу: http://localhost
 - Backend API: http://localhost:8080
 - Админ-панель: http://localhost/admin/admin.html
 
